@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Administration</title>
+    <title>Web Guyane</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -18,10 +18,10 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b></b><br>Administration</a>
+        <a href="#"><b></b><br>Web Guyane</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign In</p>
+        <p class="login-box-msg">Connexion</p>
         <?php $this->load->helper('form'); ?>
         <div class="row">
             <div class="col-md-12">
@@ -67,7 +67,7 @@
               </div>  -->                       
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In" />
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Suivant" />
             </div><!-- /.col -->
           </div>
         </form>

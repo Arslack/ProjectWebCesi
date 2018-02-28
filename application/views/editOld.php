@@ -26,7 +26,7 @@ if(!empty($userInfo))
     <section class="content-header">
       <h1>
         <i class="fa fa-users"></i> Utilisateurs
-        <small>Add / Edit User</small>
+        <small>Ajout Edition Utilisateur</small>
       </h1>
     </section>
     

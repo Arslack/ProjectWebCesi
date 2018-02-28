@@ -29,7 +29,7 @@ $autoload['libraries'] = array('database', 'session');
 
 //	$autoload['helper'] = array('url', 'file');
 
-$autoload['helper'] = array('url', 'file','cias_helper','security');
+$autoload['helper'] = array('url', 'file','Mon_helper','security');
 
 //	$autoload['config'] = array('config1', 'config2');
 // ONLY if you have created custom  config files.  

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title> Administration</title>
+    <title> Web Guyane</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -18,7 +18,7 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b></b><br>Administration</a>
+        <a href="#"><b></b><br>Web Guyane</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Réinitialiser mot de passe</p>
@@ -42,7 +42,7 @@
         
         <form action="<?php echo base_url(); ?>createPasswordUser" method="post">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email" name="email" value="<?php echo $email; ?>" readonly required />
+            <input type="email" class="form-control" placeholder="email" name="email" value="<?php echo $email; ?>" readonly required />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             <input type="hidden" name="activation_code"  value="<?php echo $activation_code; ?>" required />
           </div>
@@ -64,7 +64,7 @@
               </div>  -->                       
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Submit" />
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Envoi" />
             </div><!-- /.col -->
           </div>
         </form>

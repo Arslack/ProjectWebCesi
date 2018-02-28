@@ -21,7 +21,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="inputPassword1">Ancien mot de passe</label>
-                                        <input type="password" class="form-control" id="inputOldPassword" placeholder="Old password" name="oldPassword" maxlength="10" required>
+                                        <input type="password" class="form-control" id="inputOldPassword" placeholder="..." name="oldPassword" maxlength="10" required>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="inputPassword1">Nouveau mot de passe</label>
-                                        <input type="password" class="form-control" id="inputPassword1" placeholder="New password" name="newPassword" maxlength="10" required>
+                                        <input type="password" class="form-control" id="inputPassword1" placeholder="..." name="newPassword" maxlength="10" required>
                                     </div>
                                 </div>
                             </div>
@@ -38,15 +38,15 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="inputPassword2">Confirmez votre mot de passe</label>
-                                        <input type="password" class="form-control" id="inputPassword2" placeholder="Confirm new password" name="cNewPassword" maxlength="10" required>
+                                        <input type="password" class="form-control" id="inputPassword2" placeholder="..." name="cNewPassword" maxlength="10" required>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
     
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Submit" />
-                            <input type="reset" class="btn btn-default" value="Reset" />
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            <input type="Reset" class="btn btn-default" value="Annuler" />
                         </div>
                     </form>
                 </div>

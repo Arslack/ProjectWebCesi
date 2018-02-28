@@ -1,4 +1,4 @@
-<?php defined ( 'BASEPATH' ) or exit('Pas d\'accès direct') 
+<?php defined ( 'BASEPATH' ) or exit('Pas d\'accès direct');
 
 /**
  * Class : BaseController

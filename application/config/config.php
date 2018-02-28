@@ -48,7 +48,7 @@ $config['enable_hooks'] = FALSE;
 
 $config['subclass_prefix'] = 'MY_';
 
-²
+
 // A regular expression with permitted characters within your URLs. 
 // By default only these are allowed: a-z 0-9~%.:_-
 
