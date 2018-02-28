@@ -2,8 +2,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Change Password
-        <small>Set new password for your account</small>
+        Changer de mot de passe
+        <small>Mettre un nouveau mot de passe pour votre compte</small>
       </h1>
     </section>
     <section class="content">
@@ -12,7 +12,7 @@
               <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header">
-                        <h3 class="box-title">Enter Details</h3>
+                        <h3 class="box-title">Description</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <form role="form" action="<?php echo base_url() ?>changePassword" method="post">
@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="inputPassword1">Old Password</label>
+                                        <label for="inputPassword1">Ancien mot de passe</label>
                                         <input type="password" class="form-control" id="inputOldPassword" placeholder="Old password" name="oldPassword" maxlength="10" required>
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="inputPassword1">New Password</label>
+                                        <label for="inputPassword1">Nouveau mot de passe</label>
                                         <input type="password" class="form-control" id="inputPassword1" placeholder="New password" name="newPassword" maxlength="10" required>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="inputPassword2">Confirm New Password</label>
+                                        <label for="inputPassword2">Confirmez votre mot de passe</label>
                                         <input type="password" class="form-control" id="inputPassword2" placeholder="Confirm new password" name="cNewPassword" maxlength="10" required>
                                     </div>
                                 </div>

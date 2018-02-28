@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('Pas d\'accès direct');
 /*
 | -------------------------------------------------------------------
 | DATABASE CONNECTIVITY SETTINGS
@@ -7,10 +7,6 @@
 |
 | For complete instructions please consult the 'Database Connection'
 | page of the User Guide.
-|
-| -------------------------------------------------------------------
-| EXPLANATION OF VARIABLES
-| -------------------------------------------------------------------
 |
 |	['hostname'] The hostname of your database server.
 |	['username'] The username used to connect to the database

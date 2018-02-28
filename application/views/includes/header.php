@@ -72,10 +72,10 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="<?php echo base_url(); ?>loadChangePass" class="btn btn-default btn-flat"><i class="fa fa-key"></i> Change Password</a>
+                      <a href="<?php echo base_url(); ?>loadChangePass" class="btn btn-default btn-flat"><i class="fa fa-key"></i> Changer le mot de passe</a>
                     </div>
                     <div class="pull-right">
-                      <a href="<?php echo base_url(); ?>logout" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Sign out</a>
+                      <a href="<?php echo base_url(); ?>logout" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Déconnexion</a>
                     </div>
                   </li>
                 </ul>
@@ -113,19 +113,19 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>dashboard">
-                <i class="fa fa-dashboard"></i> <span>Dashboard</span></i>
+                <i class="fa fa-dashboard"></i> <span>Tableau de bord</span></i>
               </a>
             </li>
             <li class="treeview">
               <a href="#" >
                 <i class="fa fa-plane"></i>
-                <span>New Task</span>
+                <span>Nouvelle demande</span>
               </a>
             </li>
             <li class="treeview">
               <a href="#" >
                 <i class="fa fa-ticket"></i>
-                <span>My Tasks</span>
+                <span>Mes demandes</span>
               </a>
             </li>
             <?php
@@ -135,15 +135,10 @@
             <li class="treeview">
               <a href="#" >
                 <i class="fa fa-thumb-tack"></i>
-                <span>Task Status</span>
+                <span>Avancement</span>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-upload"></i>
-                <span>Task Uploads</span>
-              </a>
-            </li>
+           
             <?php
             }
             if($role == ROLE_ADMIN)
@@ -152,13 +147,13 @@
             <li class="treeview">
               <a href="<?php echo base_url(); ?>userListing">
                 <i class="fa fa-users"></i>
-                <span>Users</span>
+                <span>Utilisateur</span>
               </a>
             </li>
             <li class="treeview">
               <a href="#" >
                 <i class="fa fa-files-o"></i>
-                <span>Reports</span>
+                <span>Rapport</span>
               </a>
             </li>
             <?php

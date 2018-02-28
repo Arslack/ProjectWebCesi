@@ -1,10 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Error</title>
+<title>Erreur</title>
 <style type="text/css">
 
 ::selection { background-color: #E13300; color: white; }

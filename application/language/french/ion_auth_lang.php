@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('Pas d\'accès direct');
 /**
 * Name:  Ion Auth Lang - French
 *
@@ -66,7 +66,7 @@ $lang['group_name_admin_not_alter'] = 'Admin group name can not be changed';
 // Activation Email
 $lang['email_activation_subject']  = 'Activation du compte';
 $lang['email_activate_heading']    = 'Activer le compte pour %s';
-$lang['email_activate_subheading'] = 'S\'il vous plaît cliquer sur ce lien pour %s.';
+$lang['email_activate_subheading'] = 'S\'il vous plaît cliquer sur ce lien .';
 $lang['email_activate_link']       = 'Activez votre compte';
 
 // Forgot Password Email

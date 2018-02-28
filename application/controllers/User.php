@@ -26,7 +26,7 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'CodeInsect : Dashboard';
+        $this->global['pageTitle'] = 'Tableau de bord';
         
         $this->loadViews("dashboard", $this->global, NULL , NULL);
     }
@@ -55,7 +55,7 @@ class User extends BaseController
             
             $data['userRecords'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : User Listing';
+            $this->global['pageTitle'] = 'Liste des utilisateurs';
             
             $this->loadViews("users", $this->global, $data, NULL);
         }
@@ -75,7 +75,7 @@ class User extends BaseController
             $this->load->model('user_model');
             $data['roles'] = $this->user_model->getUserRoles();
             
-            $this->global['pageTitle'] = 'CodeInsect : Add New User';
+            $this->global['pageTitle'] = 'Nouvel utilisateur';
 
             $this->loadViews("addNew", $this->global, $data, NULL);
         }
@@ -139,11 +139,11 @@ class User extends BaseController
                 
                 if($result > 0)
                 {
-                    $this->session->set_flashdata('success', 'New User created successfully');
+                    $this->session->set_flashdata('success', 'Création de l\'utilisateur réussie');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'User creation failed');
+                    $this->session->set_flashdata('error', 'La création de l\'utilisateur a échouée');
                 }
                 
                 redirect('addNew');
@@ -172,7 +172,7 @@ class User extends BaseController
             $data['roles'] = $this->user_model->getUserRoles();
             $data['userInfo'] = $this->user_model->getUserInfo($userId);
             
-            $this->global['pageTitle'] = 'CodeInsect : Edit User';
+            $this->global['pageTitle'] = 'Profil utilisateur';
             
             $this->loadViews("editOld", $this->global, $data, NULL);
         }
@@ -231,11 +231,11 @@ class User extends BaseController
                 
                 if($result == true)
                 {
-                    $this->session->set_flashdata('success', 'User updated successfully');
+                    $this->session->set_flashdata('success', 'Mise à jour effectuée');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'User updation failed');
+                    $this->session->set_flashdata('error', 'La mise à jour a échoué');
                 }
                 
                 redirect('userListing');
@@ -271,7 +271,7 @@ class User extends BaseController
      */
     function loadChangePass()
     {
-        $this->global['pageTitle'] = 'CodeInsect : Change Password';
+        $this->global['pageTitle'] = 'Changer de mot de passe';
         
         $this->loadViews("changePassword", $this->global, NULL, NULL);
     }
@@ -284,9 +284,9 @@ class User extends BaseController
     {
         $this->load->library('form_validation');
         
-        $this->form_validation->set_rules('oldPassword','Old password','required|max_length[20]');
-        $this->form_validation->set_rules('newPassword','New password','required|max_length[20]');
-        $this->form_validation->set_rules('cNewPassword','Confirm new password','required|matches[newPassword]|max_length[20]');
+        $this->form_validation->set_rules('oldPassword','Ancien mot de passe','required|max_length[20]');
+        $this->form_validation->set_rules('newPassword','NNouveau mot de passe','required|max_length[20]');
+        $this->form_validation->set_rules('cNewPassword','Confirmez votre mot de passe','required|matches[newPassword]|max_length[20]');
         
         if($this->form_validation->run() == FALSE)
         {
@@ -301,7 +301,7 @@ class User extends BaseController
             
             if(empty($resultPas))
             {
-                $this->session->set_flashdata('nomatch', 'Your old password not correct');
+                $this->session->set_flashdata('nomatch', 'Votre ancien mot de passe n\'est pas correct');
                 redirect('loadChangePass');
             }
             else
@@ -311,8 +311,8 @@ class User extends BaseController
                 
                 $result = $this->user_model->changePassword($this->vendorId, $usersData);
                 
-                if($result > 0) { $this->session->set_flashdata('success', 'Password updation successful'); }
-                else { $this->session->set_flashdata('error', 'Password updation failed'); }
+                if($result > 0) { $this->session->set_flashdata('success', 'Mise à jour du mot de passe effectuée'); }
+                else { $this->session->set_flashdata('error', 'La mise à jour du mot de passe a échouée'); }
                 
                 redirect('loadChangePass');
             }
@@ -321,7 +321,7 @@ class User extends BaseController
 
     function pageNotFound()
     {
-        $this->global['pageTitle'] = 'CodeInsect : 404 - Page Not Found';
+        $this->global['pageTitle'] = ' 404 - Page non trouvée';
         
         $this->loadViews("404", $this->global, NULL, NULL);
     }

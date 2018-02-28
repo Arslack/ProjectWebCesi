@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Reset Your Password</title>
+		<title>Changer votre mot de passe</title>
 	</head>
 	<body>
 		<div>
@@ -19,10 +19,10 @@
 												<tr>
 													<td style="padding:17px 3.358% 15px">
 														<cite style="text-align:center;display:block;font-style:normal">
-															<span style="font-size:1px;min-height:0;color:#fff;width:0;display:block">Just one more step.</span>
+															<span style="font-size:1px;min-height:0;color:#fff;width:0;display:block">Encore une étape.</span>
 															<dl style="list-style-type:none;padding:0;overflow:hidden;margin:0">
 																<dt style="font-size:15px;display:inline-block;width:100%;margin:0;padding:0 0 12px 0;vertical-align:top;padding-bottom:0!important">
-																	<a href="<?php echo base_url(); ?>" title="CodeInsect" style="display:inline-block" target="_blank">CodeInsect</a>
+																	<a href="<?php echo base_url(); ?>" title="CodeInsect" style="display:inline-block" target="_blank"></a>
 																</dt>
 																<div style="font-size:15px;display:inline-block;width:100%;margin:0;vertical-align:top"></div>
 															</dl>
@@ -58,7 +58,7 @@
 																				<b>Hi, <?php echo $data["name"]; ?></b>! <span class="il"><?php echo $data["message"]; ?></span>
 																				<div style="min-height:20px"></div>
 																				<div style="width:100%">
-																					<a style="display:inline-block;font-size:15px;padding:10px 18px;vertical-align:middle;color:#ffffff;background:#34a8c4;border-top:solid 1px #2c8ea6;border-right:solid 1px #2c8ea6;border-bottom:solid 1px #2c8ea6;border-left:solid 1px #2c8ea6;border-radius:3px;text-decoration:none;white-space:normal;font-weight:bold;line-height:18px" href="<?php echo $data['reset_link']; ?>" target="_blank"> <span class="il"> Reset Password Link </span></a>
+																					<a style="display:inline-block;font-size:15px;padding:10px 18px;vertical-align:middle;color:#ffffff;background:#34a8c4;border-top:solid 1px #2c8ea6;border-right:solid 1px #2c8ea6;border-bottom:solid 1px #2c8ea6;border-left:solid 1px #2c8ea6;border-radius:3px;text-decoration:none;white-space:normal;font-weight:bold;line-height:18px" href="<?php echo $data['reset_link']; ?>" target="_blank"> <span class="il"> Changer le lien mot de passe </span></a>
 																				</div>
 																				<div style="min-height:28px"></div>
 																			</div>

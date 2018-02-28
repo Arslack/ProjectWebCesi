@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('Pas d\'accès direct');
 /*
 |--------------------------------------------------------------------------
 | Enable/Disable Migrations

@@ -1,4 +1,4 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if(!defined('BASEPATH')) exit('Pas d\'accès direct');
 
 /**
  * Class : Login (LoginController)
@@ -83,7 +83,7 @@ class Login extends CI_Controller
             }
             else
             {
-                $this->session->set_flashdata('error', 'Email or password mismatch');
+                $this->session->set_flashdata('error', 'Email ou mot de passe incorrect');
                 
                 redirect('/login');
             }
@@ -145,22 +145,22 @@ class Login extends CI_Controller
 
                     if($sendStatus){
                         $status = "send";
-                        setFlashData($status, "Reset password link sent successfully, please check mails.");
+                        setFlashData($status, "Un lien pour le changement de mot de passe vous a été envoyé par email.");
                     } else {
                         $status = "notsend";
-                        setFlashData($status, "Email has been failed, try again.");
+                        setFlashData($status, "Adresse email incorrecte.");
                     }
                 }
                 else
                 {
                     $status = 'unable';
-                    setFlashData($status, "It seems an error while sending your details, try again.");
+                    setFlashData($status, "Une erreur est survenue lors de l\'envoi, merci de réessayer.");
                 }
             }
             else
             {
                 $status = 'invalid';
-                setFlashData($status, "This email is not registered with us.");
+                setFlashData($status, "Cet email n\'est pas reconnu.");
             }
             redirect('/forgotPassword');
         }
@@ -218,12 +218,12 @@ class Login extends CI_Controller
                 $this->login_model->createPasswordUser($email, $password);
                 
                 $status = 'success';
-                $message = 'Password changed successfully';
+                $message = 'Le nouveau mot de passe est enregistré';
             }
             else
             {
                 $status = 'error';
-                $message = 'Password changed failed';
+                $message = 'Le mot de passe n\'a pas pu être changé';
             }
             
             setFlashData($status, $message);

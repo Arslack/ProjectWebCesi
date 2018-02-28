@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<title>404 Page Not Found</title>
+<title>404 Page non trouvée</title>
 <style type="text/css">
 
 ::selection{ background-color: #E13300; color: white; }

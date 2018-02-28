@@ -8,7 +8,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 
 $lang['groups_name']        = 'Nom';
 $lang['groups_description'] = 'Description';

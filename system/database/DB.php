@@ -35,7 +35,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 
 /**
  * Initialize the database
@@ -57,7 +57,7 @@ function &DB($params = '', $query_builder_override = NULL)
 		if ( ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/database.php')
 			&& ! file_exists($file_path = APPPATH.'config/database.php'))
 		{
-			show_error('The configuration file database.php does not exist.');
+			show_error('Le fichier de configuration database.php n\'existe pas.');
 		}
 
 		include($file_path);

@@ -8,7 +8,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 
 $lang['actions_cancel']         = 'Annuler';
 $lang['actions_create']         = 'Créer';
@@ -23,4 +23,4 @@ $lang['actions_yes']            = 'Oui';
 $lang['actions_delete']         = 'Supprimer';
 
 $lang['actions_security_error']     = 'Erreur de sécurité';
-$lang['actions_file_install_exist'] = 'Vous devez impérativement %s les fichier d\'installation.';
+$lang['actions_file_install_exist'] = 'Des fichiers d\'installation existent';

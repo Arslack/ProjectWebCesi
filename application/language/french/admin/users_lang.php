@@ -8,7 +8,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 
 $lang['users_action']              = 'Action';
 $lang['users_active']              = 'Actif';

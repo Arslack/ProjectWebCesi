@@ -1,4 +1,4 @@
-<?php defined ( 'BASEPATH' ) or exit ( 'No direct script access allowed' ); 
+<?php defined ( 'BASEPATH' ) or exit('Pas d\'accès direct') 
 
 /**
  * Class : BaseController
@@ -73,7 +73,7 @@ class BaseController extends CI_Controller {
 	 * This function is used to load the set of views
 	 */
 	function loadThis() {
-		$this->global ['pageTitle'] = 'CodeInsect : Access Denied';
+		$this->global ['pageTitle'] = 'Accès refusé';
 		
 		$this->load->view ( 'includes/header', $this->global );
 		$this->load->view ( 'access' );

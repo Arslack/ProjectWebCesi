@@ -8,7 +8,7 @@
  * @since	Version 1.0.0
  * @filesource
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('Pas d\'accès direct');
 
 $lang['footer_copyright']           = 'Droit d\'auteur';
 $lang['footer_all_rights_reserved'] = 'Tous droits réservés';

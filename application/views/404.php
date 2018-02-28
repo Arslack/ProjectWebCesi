@@ -2,7 +2,7 @@
     <section class="content-header">
       <h1>
         404
-        <small>This is not the page you are looking for</small>
+        <small>Page non trouvée</small>
       </h1>
     </section>
     <section class="content">
