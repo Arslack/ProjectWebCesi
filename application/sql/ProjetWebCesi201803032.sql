@@ -92,12 +92,12 @@ CREATE TABLE `dossier` (
 --
 -- Structure de la table `droits`
 --
---DROP TABLE IF EXISTS `droits`;
---CREATE TABLE `droits` (
+-- DROP TABLE IF EXISTS `droits`;
+-- CREATE TABLE `droits` (
 --  `id` int(11) NOT NULL,
 --  `nom` varchar(50) NOT NULL,
 --  `descr` text NOT NULL
---) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -214,15 +214,15 @@ CREATE TABLE `service_role` (
 --
 -- Structure de la table `utilisateur`
 --
---DROP TABLE IF EXISTS `utilisateur` ;
---CREATE TABLE `utilisateur` (
+-- DROP TABLE IF EXISTS `utilisateur` ;
+-- CREATE TABLE `utilisateur` (
 -- `id` int(11) NOT NULL,
 --  `email` varchar(90) NOT NULL,
 --  `identifiant` varchar(64) NOT NULL,
 --  `mdp` varchar(64) NOT NULL,
 --  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 --  `datemaj` date NOT NULL
---) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -270,8 +270,8 @@ ALTER TABLE `dossier`
 --
 -- Index pour la table `droits`
 --
-ALTER TABLE `droits`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `droits`
+--  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `etat`
@@ -339,9 +339,9 @@ ALTER TABLE `service_role`
 --
 -- Index pour la table `utilisateur`
 --
-ALTER TABLE `utilisateur`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `utilisateur_email` (`email`);
+-- ALTER TABLE `utilisateur`
+--  ADD PRIMARY KEY (`id`),
+--  ADD UNIQUE KEY `utilisateur_email` (`email`);
 
 --
 -- Index pour la table `utilisateur_profil`
@@ -372,8 +372,8 @@ ALTER TABLE `dossier`
 --
 -- AUTO_INCREMENT pour la table `droits`
 --
-ALTER TABLE `droits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `droits`
+--  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT pour la table `etat`
 --
@@ -397,8 +397,8 @@ ALTER TABLE `service`
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
-ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `utilisateur`
+--  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Contraintes pour les tables exportées
 --
@@ -418,10 +418,9 @@ ALTER TABLE `demande_dossier`
 
 --
 -- Contraintes pour la table `profil_adresse`
---
-ALTER TABLE `profil_adresse`
-  ADD CONSTRAINT `profil_adresse_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
-  ADD CONSTRAINT `profil_adresse_ibfk_2` FOREIGN KEY (`idAdresse`) REFERENCES `adresse` (`id`);
+ ALTER TABLE `profil_adresse`
+ ADD CONSTRAINT `profil_adresse_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
+ ADD CONSTRAINT `profil_adresse_ibfk_2` FOREIGN KEY (`idAdresse`) REFERENCES `adresse` (`id`);
 
 --
 -- Contraintes pour la table `profil_role`
