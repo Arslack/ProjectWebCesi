@@ -21,7 +21,7 @@
         <a href="#"><b></b><br>Web Guyane</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Connexion</p>
+        <p class="login-box-msg">Sign In</p>
         <?php $this->load->helper('form'); ?>
         <div class="row">
             <div class="col-md-12">
@@ -67,7 +67,7 @@
               </div>  -->                       
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Suivant" />
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In" />
             </div><!-- /.col -->
           </div>
         </form>

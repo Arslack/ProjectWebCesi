@@ -28,21 +28,22 @@ SET FOREIGN_KEY_CHECKS=0;
 
 
 
---
--- Structure de la table `adresse`
---
+-- --------------------------------------------------------
+
 DROP TABLE IF EXISTS `adresse`;
 CREATE TABLE `adresse` (
   `id` int(11) NOT NULL,
+  `idprofil` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
-  `etage` int(11) ,
-  `rue` varchar(255) NOT NULL,
-  `rue2` varchar(255) ,
-  `ville` varchar(255) NOT NULL,
+  `etage` varchar(100) NOT NULL,
+  `rue` varchar(200) NOT NULL,
+  `rue2` varchar(200) ,
+  `ville` varchar(200) NOT NULL,
   `codepostal` varchar(12) NOT NULL,
-  `region` varchar(255) NOT NULL,
+  `region` varchar(100) NOT NULL,
   `pays` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -91,12 +92,12 @@ CREATE TABLE `dossier` (
 --
 -- Structure de la table `droits`
 --
-DROP TABLE IF EXISTS `droits`;
-CREATE TABLE `droits` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(50) NOT NULL,
-  `descr` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--DROP TABLE IF EXISTS `droits`;
+--CREATE TABLE `droits` (
+--  `id` int(11) NOT NULL,
+--  `nom` varchar(50) NOT NULL,
+--  `descr` text NOT NULL
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -213,15 +214,15 @@ CREATE TABLE `service_role` (
 --
 -- Structure de la table `utilisateur`
 --
-DROP TABLE IF EXISTS `utilisateur` ;
-CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL,
-  `email` varchar(90) NOT NULL,
-  `identifiant` varchar(64) NOT NULL,
-  `mdp` varchar(64) NOT NULL,
-  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `datemaj` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+--DROP TABLE IF EXISTS `utilisateur` ;
+--CREATE TABLE `utilisateur` (
+-- `id` int(11) NOT NULL,
+--  `email` varchar(90) NOT NULL,
+--  `identifiant` varchar(64) NOT NULL,
+--  `mdp` varchar(64) NOT NULL,
+--  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--  `datemaj` date NOT NULL
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -238,12 +239,13 @@ SET FOREIGN_KEY_CHECKS=1;
 --
 -- Index pour les tables exportÃ©es
 --
-
---
 -- Index pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idprofil` (`idprofil`);
+--
+
 
 --
 -- Index pour la table `demande`
@@ -461,9 +463,109 @@ ALTER TABLE `utilisateur_profil`
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
+
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--  debut des tables liées à la librairie Ion Auth 
+
+-- Dumping structure for table tbl_items
+DROP TABLE IF EXISTS `tbl_items`;
+CREATE TABLE IF NOT EXISTS `tbl_items` (
+  `itemId` int(11) NOT NULL AUTO_INCREMENT,
+  `itemHeader` varchar(512) NOT NULL COMMENT 'Heading',
+  `itemSub` varchar(1021) NOT NULL COMMENT 'sub heading',
+  `itemDesc` text COMMENT 'content or description',
+  `itemImage` varchar(80) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  `createdBy` int(11) NOT NULL,
+  `createdDtm` datetime NOT NULL,
+  `updatedDtm` datetime DEFAULT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  PRIMARY KEY (`itemId`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table tbl_items: 2 rows
+/*!40000 ALTER TABLE `tbl_items` DISABLE KEYS */;
+REPLACE INTO `tbl_items` (`itemId`, `itemHeader`, `itemSub`, `itemDesc`, `itemImage`, `isDeleted`, `createdBy`, `createdDtm`, `updatedDtm`, `updatedBy`) VALUES
+	(1, 'jquery.validation.js', 'Contribution towards jquery.validation.js', 'jquery.validation.js is the client side javascript validation library authored by Jörn Zaefferer hosted on github for us and we are trying to contribute to it. Working on localization now', 'validation.png', 0, 1, '2015-09-02 00:00:00', NULL, NULL),
+	(2, 'CodeIgniter User Management', 'Demo for user management system', 'This the demo of User Management System (Admin Panel) using CodeIgniter PHP MVC Framework and AdminLTE bootstrap theme. You can download the code from the repository or forked it to contribute. Usage and installation instructions are provided in ReadMe.MD', 'png', 0, 1, '2015-09-02 00:00:00', NULL, NULL);
+/*!40000 ALTER TABLE `tbl_items` ENABLE KEYS */;
+
+-- Dumping structure for table tbl_reset_password
+DROP TABLE IF EXISTS `tbl_reset_password`;
+CREATE TABLE IF NOT EXISTS `tbl_reset_password` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(128) NOT NULL,
+  `activation_id` varchar(32) NOT NULL,
+  `agent` varchar(512) NOT NULL,
+  `client_ip` varchar(32) NOT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  `createdBy` bigint(20) NOT NULL DEFAULT '1',
+  `createdDtm` datetime NOT NULL,
+  `updatedBy` bigint(20) DEFAULT NULL,
+  `updatedDtm` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+-- Dumping data for table tbl_reset_password: ~0 rows (approximately)
+/*!40000 ALTER TABLE `tbl_reset_password` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_reset_password` ENABLE KEYS */;
+
+-- Dumping structure for table tbl_roles
+DROP TABLE IF EXISTS `tbl_roles`;
+CREATE TABLE IF NOT EXISTS `tbl_roles` (
+  `roleId` tinyint(4) NOT NULL AUTO_INCREMENT COMMENT 'role id',
+  `role` varchar(50) NOT NULL COMMENT 'role text',
+  PRIMARY KEY (`roleId`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table tbl_roles: 3 rows
+/*!40000 ALTER TABLE `tbl_roles` DISABLE KEYS */;
+REPLACE INTO `tbl_roles` (`roleId`, `role`) VALUES
+	(1, 'Administrateur'),
+	(2, 'Demandeur'),
+	(3, 'Valideur');
+/*!40000 ALTER TABLE `tbl_roles` ENABLE KEYS */;
+
+-- Dumping structure for table tbl_users
+DROP TABLE IF EXISTS `tbl_users`;
+CREATE TABLE IF NOT EXISTS `tbl_users` (
+  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(128) NOT NULL COMMENT 'email',
+  `password` varchar(128) NOT NULL COMMENT 'Mot de passe crypté',
+  `name` varchar(128) DEFAULT NULL COMMENT 'Nom',
+  `mobile` varchar(20) DEFAULT NULL,
+  `roleId` tinyint(4) NOT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  `createdBy` int(11) NOT NULL,
+  `createdDtm` datetime NOT NULL,
+  `updatedBy` int(11) DEFAULT NULL,
+  `updatedDtm` datetime DEFAULT NULL,
+  PRIMARY KEY (`userId`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table tbl_users: 3 rows
+/*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
+REPLACE INTO `tbl_users` (`userId`, `email`, `password`, `name`, `mobile`, `roleId`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
+	(1, 'admin@test.com', '$2y$10$SAvFim22ptA9gHVORtIaru1dn9rhgerJlJCPxRNA02MjQaJnkxawq', 'Administrateur', '9890098900', 1, 0, 0, '2015-07-01 18:56:49', 1, '2017-06-19 09:22:53'),
+	(2, 'cb@test.com', '$2y$10$Gkl9ILEdGNoTIV9w/xpf3.mSKs0LB1jkvvPKK7K0PSYDsQY7GE9JK', 'Demandeur', '9890098900', 2, 0, 1, '2016-12-09 17:49:56', 1, '2017-06-19 09:22:29'),
+	(3, 'aj@test.com', '$2y$10$MB5NIu8i28XtMCnuExyFB.Ao1OXSteNpCiZSiaMSRPQx1F1WLRId2', 'Valideur', '9890098900', 3, 0, 1, '2016-12-09 17:50:22', 1, '2017-06-19 09:23:21');
+/*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
+--  fin des tables liées à la librairie Ion Auth 
+
 -- creation des user de la BDD
-
-
 drop user 'admin'@'localhost';
 flush privileges;
 create user 'admin'@'localhost' identified by 'admin';
