@@ -45,8 +45,8 @@
                         </div><!-- /.box-body -->
     
                         <div class="box-footer">
-                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
-                            <input type="Reset" class="btn btn-default" value="Annuler" />
+                            <input type="Enregistrer" class="btn btn-primary" value="submit" />
+                            <input type="Annuler" class="btn btn-default" value="Reset" />
                         </div>
                     </form>
                 </div>

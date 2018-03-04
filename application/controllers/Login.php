@@ -160,7 +160,7 @@ class Login extends CI_Controller
             else
             {
                 $status = 'invalid';
-                setFlashData($status, "Cet email n\'est pas reconnu.");
+                setFlashData($status, "Cet email est inconnu.");
             }
             redirect('/forgotPassword');
         }

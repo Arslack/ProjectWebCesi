@@ -242,8 +242,7 @@ SET FOREIGN_KEY_CHECKS=1;
 -- Index pour la table `adresse`
 --
 ALTER TABLE `adresse`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idprofil` (`idprofil`);
+  ADD PRIMARY KEY (`id`);
 --
 
 
@@ -400,63 +399,7 @@ ALTER TABLE `service`
 -- ALTER TABLE `utilisateur`
 --  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Contraintes pour les tables exportÃ©es
---
 
---
--- Contraintes pour la table `demande`
---
-ALTER TABLE `demande`
-  ADD CONSTRAINT `demande_ibfk_1` FOREIGN KEY (`idEtat`) REFERENCES `etat` (`id`);
-
---
--- Contraintes pour la table `demande_dossier`
---
-ALTER TABLE `demande_dossier`
-  ADD CONSTRAINT `demande_dossier_ibfk_1` FOREIGN KEY (`idDemande`) REFERENCES `demande` (`id`),
-  ADD CONSTRAINT `demande_dossier_ibfk_2` FOREIGN KEY (`idDossier`) REFERENCES `dossier` (`id`);
-
---
--- Contraintes pour la table `profil_adresse`
- ALTER TABLE `profil_adresse`
- ADD CONSTRAINT `profil_adresse_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
- ADD CONSTRAINT `profil_adresse_ibfk_2` FOREIGN KEY (`idAdresse`) REFERENCES `adresse` (`id`);
-
---
--- Contraintes pour la table `profil_role`
---
-ALTER TABLE `profil_role`
-  ADD CONSTRAINT `profil_role_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
-  ADD CONSTRAINT `profil_role_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`);
-
---
--- Contraintes pour la table `responsabilite`
---
-ALTER TABLE `responsabilite`
-  ADD CONSTRAINT `responsabilite_ibfk_1` FOREIGN KEY (`idDemande`) REFERENCES `demande` (`id`),
-  ADD CONSTRAINT `responsabilite_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `responsabilite_ibfk_3` FOREIGN KEY (`idService`) REFERENCES `service` (`id`);
-
---
--- Contraintes pour la table `role_droit`
---
-ALTER TABLE `role_droit`
-  ADD CONSTRAINT `role_droit_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `role_droit_ibfk_2` FOREIGN KEY (`idDroit`) REFERENCES `droits` (`id`);
-
---
--- Contraintes pour la table `service_role`
---
-ALTER TABLE `service_role`
-  ADD CONSTRAINT `service_role_ibfk_1` FOREIGN KEY (`idService`) REFERENCES `service` (`id`),
-  ADD CONSTRAINT `service_role_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`);
-
---
--- Contraintes pour la table `utilisateur_profil`
---
-ALTER TABLE `utilisateur_profil`
-  ADD CONSTRAINT `utilisateur_profil_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `utilisateur_profil_ibfk_2` FOREIGN KEY (`idProfil`) REFERENCES `etat` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -563,20 +506,4 @@ REPLACE INTO `tbl_users` (`userId`, `email`, `password`, `name`, `mobile`, `role
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
 --  fin des tables liées à la librairie Ion Auth 
-
--- creation des user de la BDD
-drop user 'admin'@'localhost';
-flush privileges;
-create user 'admin'@'localhost' identified by 'admin';
-GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
-
-drop user 'CB'@'localhost';
-CREATE USER 'CB'@'localhost' IDENTIFIED BY 'CB';
-GRANT ALL PRIVILEGES ON * . * TO 'CB'@'localhost';
-
-drop user 'AJ'@'localhost';
-CREATE USER 'AJ'@'localhost' IDENTIFIED BY 'AJ';
-GRANT ALL PRIVILEGES ON * . * TO 'CB'@'localhost';
-FLUSH PRIVILEGES;
-
 

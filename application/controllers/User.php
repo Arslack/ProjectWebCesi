@@ -285,7 +285,7 @@ class User extends BaseController
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('oldPassword','Ancien mot de passe','required|max_length[20]');
-        $this->form_validation->set_rules('newPassword','NNouveau mot de passe','required|max_length[20]');
+        $this->form_validation->set_rules('newPassword','Nouveau mot de passe','required|max_length[20]');
         $this->form_validation->set_rules('cNewPassword','Confirmez votre mot de passe','required|matches[newPassword]|max_length[20]');
         
         if($this->form_validation->run() == FALSE)

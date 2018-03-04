@@ -21,7 +21,7 @@ $config['index_page'] = 'index.php';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 //add a suffix to all URLs generated 
 //http://codeigniter.com/user_guide/general/urls.html
