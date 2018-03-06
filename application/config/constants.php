@@ -39,8 +39,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 /**** USER DEFINED CONSTANTS **********/
 
 define('ROLE_ADMIN',                            '1');
-define('ROLE_MANAGER',                         	'2');
-define('ROLE_EMPLOYEE',                         '3');
+define('ROLE_DEMANDEUR',                         	'2');
+define('ROLE_VALIDEUR',                         '3');
 
 define('SEGMENT',								2);
 

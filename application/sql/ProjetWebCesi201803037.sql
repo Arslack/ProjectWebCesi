@@ -214,16 +214,19 @@ CREATE TABLE `service_role` (
 --
 -- Structure de la table `utilisateur`
 --
--- DROP TABLE IF EXISTS `utilisateur` ;
--- CREATE TABLE `utilisateur` (
--- `id` int(11) NOT NULL,
---  `email` varchar(90) NOT NULL,
---  `identifiant` varchar(64) NOT NULL,
---  `mdp` varchar(64) NOT NULL,
---  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
---  `datemaj` date NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+ DROP TABLE IF EXISTS `utilisateur` ;
+ CREATE TABLE `utilisateur` (
+  `mdp` varchar(64) NOT NULL,
+  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datemaj` date NOT NULL
+  'id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(128) NOT NULL,
+  `mdp` varchar(128) NOT NULL,
+  `nom` varchar(128) DEFAULT NULL,
+  `roleId` tinyint(4) NOT NULL,
+  `FlagOk` tinyint(4) NOT NULL DEFAULT '1'
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 
 --
