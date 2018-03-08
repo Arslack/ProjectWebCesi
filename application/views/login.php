@@ -36,7 +36,7 @@
             ?>
             <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $error; ?>                    
+                <?php echo $error; ?>
             </div>
         <?php }
         $success = $this->session->flashdata('success');
@@ -45,10 +45,10 @@
             ?>
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <?php echo $success; ?>                    
+                <?php echo $success; ?>
             </div>
         <?php } ?>
-        
+
         <form action="<?php echo base_url(); ?>loginMe" method="post">
           <div class="form-group has-feedback">
             <input type="email" class="form-control" placeholder="Email" name="email" required />
@@ -59,12 +59,12 @@
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
-            <div class="col-xs-8">    
+            <div class="col-xs-8">
               <!-- <div class="checkbox icheck">
                 <label>
                   <input type="checkbox"> Remember Me
                 </label>
-              </div>  -->                       
+              </div>  -->
             </div><!-- /.col -->
             <div class="col-xs-4">
               <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In" />
@@ -73,7 +73,8 @@
         </form>
 
         <a href="<?php echo base_url() ?>forgotPassword">Mot de passe oublié</a><br>
-        
+        <a href="<?php echo base_url() ?>createUser">Créer un compte</a><br>
+
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 

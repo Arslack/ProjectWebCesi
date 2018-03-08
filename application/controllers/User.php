@@ -152,18 +152,6 @@ class User extends BaseController
         }
     }
 
-    /**
-     * This function is used to load the add new form
-     */
-    function addRequestUser()
-    {
-        $this->loadThis();
-
-        $this->global['pageTitle'] = 'Nouvel utilisateur';
-
-        $this->loadViews("addRequestUser", $this->global, $data, NULL);
-
-    }
 
     function addNewRequestUser()
     {
