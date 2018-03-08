@@ -20,7 +20,7 @@
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" id="addProfil" action="<?php echo base_url() ?>addProfil" method="post" role="form">
+                        <form role="form" id="addProfil" action="<?php echo base_url() ?>addNewProfil" method="post" role="form">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-6">
