@@ -72,7 +72,7 @@
                               </div>
                             <div class="row">
                               <div class="col-xs-8">
-                                  <input type="ResetA" class="btn btn-danger" value="Annuler" />
+                                  <a class="btn btn-danger" href="<?php echo base_url(); ?>" role="button">Annuler</a>
                               </div>
                               <div class="col-xs-4">
                                 <input type="submit" class="btn btn-primary btn-block btn-flat" value="Enregistrer" />

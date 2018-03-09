@@ -53,6 +53,7 @@ $route['addNew'] = "user/addNew";
 
 $route['addNewUser'] = "user/addNewUser";
 $route['createUser'] = "login/addRequestUser";
+$route['addNewRequestUser'] = "login/addNewRequestUser";
 $route['editOld'] = "user/editOld";
 $route['editOld/(:num)'] = "user/editOld/$1";
 $route['editUser'] = "user/editUser";

@@ -2,7 +2,7 @@
 
 class Login_model extends CI_Model
 {
-    
+
     /**
      * This function used to check the login credentials of the user
      * @param string $email : This is email of the user
@@ -16,9 +16,9 @@ class Login_model extends CI_Model
         $this->db->where('BaseTbl.email', $email);
         $this->db->where('BaseTbl.isDeleted', 0);
         $query = $this->db->get();
-        
+
         $user = $query->result();
-        
+
         if(!empty($user)){
             if(verifyHashedPassword($password, $user[0]->password)){
                 return $user;
@@ -104,6 +104,23 @@ class Login_model extends CI_Model
         $this->db->where('isDeleted', 0);
         $this->db->update('tbl_users', array('password'=>getHashedPassword($password)));
         $this->db->delete('tbl_reset_password', array('email'=>$email));
+    }
+
+
+    /**
+     * This function is used to add new user to system
+     * @return number $insert_id : This is last inserted id
+     */
+    function addNewUser($userInfo)
+    {
+        $this->db->trans_start();
+        $this->db->insert('tbl_users', $userInfo);
+
+        $insert_id = $this->db->insert_id();
+
+        $this->db->trans_complete();
+
+        return $insert_id;
     }
 }
 
