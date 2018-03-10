@@ -152,6 +152,7 @@ class User extends BaseController
         }
     }
 
+
     /**
      * This function is used to load the add new form
      */

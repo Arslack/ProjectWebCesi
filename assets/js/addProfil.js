@@ -23,7 +23,7 @@ $(document).ready(function(){
       cpostal : { required : true, digits : true },
       adresse :{ required : true },
       city :{ required : true },
-      pays :{ required : true }
+      country :{ required : true }
 		},
 		messages:{
 			lname :{ required : "This field is required" },
@@ -34,7 +34,7 @@ $(document).ready(function(){
       cpostal : { required : "This field is required", digits : "Please enter numbers only" },
       adresse :{ required : "This field is required" },
       city :{ required : "This field is required" },
-      pays :{ required : "This field is required" }
+      country :{ required : "This field is required" }
 		}
 	});
 });
