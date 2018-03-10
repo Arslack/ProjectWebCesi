@@ -15,17 +15,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <style>
-    	.error{
-    		color:red;
-    		font-weight: normal;
-    	}
-    </style>
-    <!-- jQuery 2.1.4 -->
-    <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
-    <script type="text/javascript">
-        var baseURL = "<?php echo base_url(); ?>";
-    </script>
+    
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,6 +25,19 @@
     <![endif]-->
   </head>
   <!-- <body class="sidebar-mini skin-black-light"> -->
+	 <script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
   <body class="skin-blue sidebar-mini">
     <div class="wrapper">
       
@@ -129,7 +132,7 @@
               </a>
             </li>
             <?php
-            if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
+            if($role == ROLE_ADMIN || $role == ROLE_VALIDEUR)
             {
             ?>
             <li class="treeview">

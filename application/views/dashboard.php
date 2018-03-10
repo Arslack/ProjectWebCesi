@@ -17,7 +17,7 @@
                   <p>Nouvelle demande</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bag"></i>
+                  <i class="ion ion-person-add"></i>
                 </div>
                 <a href="#" class="small-box-footer">Suivant <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -30,7 +30,7 @@
                   <p>Suivi demande</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-person-add"></i>
                 </div>
                 <a href="#" class="small-box-footer">Suivant <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -43,7 +43,7 @@
                   <p>Créer un compte</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-stats-bars"></i>
                 </div>
                 <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Suivant <i class="fa fa-arrow-circle-right"></i></a>
               </div>
