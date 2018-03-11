@@ -15,10 +15,12 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+	
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
         <a href="#"><b></b><br>Web Guyane</a>
+		  
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign In</p>
@@ -31,6 +33,7 @@
         <?php
         $this->load->helper('form');
         $error = $this->session->flashdata('error');
+		  print_r($error);
         if($error)
         {
             ?>

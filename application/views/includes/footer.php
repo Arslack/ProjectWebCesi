@@ -23,5 +23,41 @@
             y.addClass('active');
             y.parent().addClass('active');
     </script>
+	
+		
+		
+		
+    <style>
+    	.error{
+    		color:red;
+    		font-weight: normal;
+    	}
+    </style>
+    <!-- jQuery 2.1.4 -->
+    <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+        var baseURL = "<?php echo base_url(); ?>";
+		
+		
+		
+		
+    </script>
+		
+		
+		
+		
+		<script>
+	$(document).ready(function(){
+		var date_input=$('input[name="date"]'); //our date input has the name "date"
+		var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+		date_input.datepicker({
+			format: 'mm/dd/yyyy',
+			container: container,
+			todayHighlight: true,
+			autoclose: true,
+		})
+	})
+</script>
+
   </body>
 </html>
