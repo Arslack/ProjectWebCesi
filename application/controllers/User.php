@@ -55,7 +55,6 @@ class User extends BaseController
 
             $data['userRecords'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
 
-            $data['test'] = "test";
             $this->global['pageTitle'] = 'Liste des utilisateurs';
 
             $this->loadViews("users", $this->global, $data, NULL);

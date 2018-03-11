@@ -29,32 +29,32 @@ if(!empty($userInfo))
         <small>Ajout Edition Utilisateur</small>
       </h1>
     </section>
-    
+
     <section class="content">
-    
+
         <div class="row">
             <!-- left column -->
             <div class="col-md-8">
               <!-- general form elements -->
-                
-                
-                
+
+
+
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Modifier profil</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    
+
                     <form role="form" action="<?php echo base_url() ?>editUser" method="post" id="editUser" role="form">
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-6">                                
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="fname">Nom</label>
                                         <input type="text" class="form-control" id="fname" placeholder="Full Name" name="fname" value="<?php echo $name; ?>" maxlength="128">
-                                        <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />    
+                                        <input type="hidden" value="<?php echo $userId; ?>" name="userId" id="userId" />
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -102,13 +102,13 @@ if(!empty($userInfo))
                                             ?>
                                         </select>
                                     </div>
-                                </div>    
+                                </div>
                             </div>
                         </div><!-- /.box-body -->
-    
+
                         <div class="box-footer">
-                            <input type="Enregistrer" class="btn btn-primary" value="Submit" />
-                            <input type="Annuler" class="btn btn-default" value="Reset" />
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            <input type="reset" class="btn btn-default" value="Annuler" />
                         </div>
                     </form>
                 </div>
@@ -122,10 +122,10 @@ if(!empty($userInfo))
                 ?>
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <?php echo $this->session->flashdata('error'); ?>                    
+                    <?php echo $this->session->flashdata('error'); ?>
                 </div>
                 <?php } ?>
-                <?php  
+                <?php
                     $success = $this->session->flashdata('success');
                     if($success)
                     {
@@ -135,14 +135,14 @@ if(!empty($userInfo))
                     <?php echo $this->session->flashdata('success'); ?>
                 </div>
                 <?php } ?>
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>
                     </div>
                 </div>
             </div>
-        </div>    
+        </div>
     </section>
 </div>
 

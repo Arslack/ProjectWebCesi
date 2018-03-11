@@ -37,7 +37,6 @@ if(!empty($serviceInfo))
               <!-- general form elements -->
 
 
-
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Modifier Service</h3>
@@ -50,26 +49,25 @@ if(!empty($serviceInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="fname">Nom</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Nom du Service" name="name" value="<?php echo "test"; ?>" maxlength="128">
+                                        <input type="text" class="form-control" id="name" placeholder="Nom du Service" name="name" value="<?php echo $name; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
                                     </div>
 
                                 </div>
-                            </div>
+                              </div>
                             <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                      <label for="fname">Description</label>
+                                      <label for="name">Description</label>
                                       <input type="text" class="form-control" id="desc" placeholder="Description" name="desc" value="<?php echo $desc; ?>" maxlength="128">
-                                      <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
                                   </div>
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="Enregistrer" class="btn btn-primary" value="Submit" />
-                            <input type="Annuler" class="btn btn-default" value="Reset" />
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            <input type="reset" class="btn btn-default" value="Annuler" />
                         </div>
                     </form>
                 </div>

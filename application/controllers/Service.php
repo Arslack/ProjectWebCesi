@@ -161,42 +161,24 @@ class Service extends BaseController
         {
             $this->load->library('form_validation');
 
-            $userId = $this->input->post('userId');
+            $serviceId = $this->input->post('serviceId');
 
-            $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
+            $this->form_validation->set_rules('name','Nom du Service','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('desc','Description du Service','trim|required|max_length[256]|xss_clean');
 
             if($this->form_validation->run() == FALSE)
             {
-                $this->editOld($userId);
+                $this->editServiceOld($serviceId);
             }
             else
             {
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
+                $name = ucwords($this->input->post('name'));
+                $desc = ucwords($this->input->post('desc'));
 
-                $userInfo = array();
+                $serviceInfo = array('nom'=>$name, 'description'=>$desc);
 
-                if(empty($password))
-                {
-                    $userInfo = array('email'=>$email, 'roleId'=>$roleId, 'name'=>$name,
-                                    'mobile'=>$mobile, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
-                else
-                {
-                    $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId,
-                        'name'=>ucwords($name), 'mobile'=>$mobile, 'updatedBy'=>$this->vendorId,
-                        'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
 
-                $result = $this->user_model->editUser($userInfo, $userId);
+                $result = $this->service_model->editService($serviceInfo, $serviceId);
 
                 if($result == true)
                 {
@@ -207,7 +189,7 @@ class Service extends BaseController
                     $this->session->set_flashdata('error', 'La mise à jour a échoué');
                 }
 
-                redirect('userListing');
+                redirect('serviceListing');
             }
         }
     }
@@ -217,7 +199,7 @@ class Service extends BaseController
      * This function is used to delete the user using userId
      * @return boolean $result : TRUE / FALSE
      */
-    function deleteUser()
+    function deleteService()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -225,10 +207,9 @@ class Service extends BaseController
         }
         else
         {
-            $userId = $this->input->post('userId');
-            $userInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
+            $serviceId = $this->input->post('serviceId');
 
-            $result = $this->user_model->deleteUser($userId, $userInfo);
+            $result = $this->service_model->deleteService($serviceId);
 
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }
