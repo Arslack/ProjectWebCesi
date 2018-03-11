@@ -24,7 +24,7 @@
                     <div class="box-tools">
                         <form action="<?php echo base_url() ?>serviceListing" method="POST" id="searchList">
                             <div class="input-group">
-                              <input type="text" name="searchText" value="Recherche..." class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                              <input type="text" name="searchText" value="" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Recherche .."/>
                               <div class="input-group-btn">
                                 <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
                               </div>

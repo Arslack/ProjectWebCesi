@@ -24,7 +24,7 @@
                     <div class="box-tools">
                         <form action="<?php echo base_url() ?>demandeListing" method="POST" id="searchList">
                             <div class="input-group">
-                              <input type="text" name="searchText" value="Recherche..." class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                              <input type="text" name="searchText" value="" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Recherche..."/>
                               <div class="input-group-btn">
                                 <button class="btn btn-sm btn-default searchList"><i class="fa fa-search"></i></button>
                               </div>
@@ -35,33 +35,31 @@
                 <div class="box-body table-responsive no-padding">
                   <table class="table table-hover">
                     <tr>
-                      <th>Id</th>
-                      <th>UtilisateurId</th>
+                      <th>Titre</th>
+                      <th>Description</th>
+                      <th>Etat</th>
+                      <th>Date mise à jour</th>
                       <th>Date création</th>
-					  <th>Date mise à jour</th>
-					  <th>Date de fin prévue</th>
-					  <th>Etat</th>
-					  <th>Description</th>
-					  <th>Titre</th>
+          					  <th>Date de fin prévue</th>
+
                       <th class="text-center">Actions</th>
                     </tr>
                     <?php
-                    if(!empty($serviceRecords))
+
+                    if(!empty($demandeRecords))
                     {
-                        foreach($serviceRecords as $record)
+                        foreach($demandeRecords as $record)
                         {
                     ?>
                     <tr>
-					  <th><?php echo $record->id ?></th>
-					  <th><?php echo $record->utilisateurid ?></th>
-                      <td><?php echo $record->dateorigine ?></td>
-                      <td><?php echo $record->datemaj ?></td>
-                      <td><?php echo $record->datefinprevue ?></td>
-					  <td><?php echo $record->idEtat ?></td>
-                      <td><?php echo $record->description ?></td>
                       <td><?php echo $record->titre ?></td>
+                      <td><?php echo $record->description ?></td>
+                      <td><?php echo $record->idEtat ?></td>
+                      <td><?php echo $record->datemaj ?></td>
+                      <td><?php echo $record->dateorigine ?></td>
+                      <td><?php echo $record->datefinprevue ?></td>
                       <td class="text-center">
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editServiceOld/'.$record->id; ?>"><i class="fa fa-pencil"></i></a>
+                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editDemandeOld/'.$record->id; ?>"><i class="fa fa-pencil"></i></a>
                           <a class="btn btn-sm btn-danger deleteUser" href="#" data-id="<?php echo $record->id; ?>"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
@@ -80,7 +78,7 @@
         </div>
     </section>
 </div>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/commonDemande.js" charset="utf-8"></script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('ul.pagination li a').click(function (e) {
@@ -91,10 +89,3 @@
             jQuery("#searchList").submit();
         });
     });
-</script>
-<script src=”<?php echo base_url();?>/assets/plugins/datepicker/bootstrap-datepicker.js”></script>
-<script>
-$(document).ready(function(){
-$(‘.datepicker’).datepicker();
-});
-</script>

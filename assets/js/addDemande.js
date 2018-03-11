@@ -11,31 +11,17 @@
 
 $(document).ready(function(){
 
-	var addUserForm = $("#addProfil");
+	var addUserForm = $("#addDemande");
 
 	var validator = addUserForm.validate({
 
 		rules:{
-			lname :{ required : true },
-      fname :{ required : true },
-			email : { required : true, email : true, remote : { url : baseURL + "checkEmailExists", type :"post"} },
-			mobile : { required : true, digits : true },
-      fixe : { required : true, digits : true },
-      cpostal : { required : true, digits : true },
-      adresse :{ required : true },
-      city :{ required : true },
-      country :{ required : true }
+			title :{ required : true },
+      desc :{ required : true }
 		},
 		messages:{
-			lname :{ required : "This field is required" },
-      fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-      fixe : { required : "This field is required", digits : "Please enter numbers only" },
-      cpostal : { required : "This field is required", digits : "Please enter numbers only" },
-      adresse :{ required : "This field is required" },
-      city :{ required : "This field is required" },
-      country :{ required : "This field is required" }
+			title :{ required : "This field is required" },
+      desc :{ required : "This field is required" }
 		}
 	});
 });

@@ -51,8 +51,10 @@ $route['userListing'] = 'user/userListing';
 $route['userListing/(:num)'] = "user/userListing/$1";
 $route['addNew'] = "user/addNew";
 
-$route['addNewDemande'] = "demande/addNewDemande";
+$route['addDemande'] = "demande/addDemande";
 $route['demande'] = "demande/demandeListing";
+$route['demande/:num'] = "demande/demandeListing/$1";
+$route['createDemande'] = "demande/addNewDemande";
 
 $route['addNewUser'] = "user/addNewUser";
 $route['createUser'] = "login/addRequestUser";

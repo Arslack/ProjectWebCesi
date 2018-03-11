@@ -36,7 +36,7 @@ class Demande extends BaseController
      */
     function demandeListing()
     {
-       
+
             $this->load->model('demande_model');
 
             $searchText = $this->input->post('searchText');
@@ -44,45 +44,45 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-            $count = $this->demande_model->nbDemandeparUser($searchText);
+            $userId = $this->session->userdata('userId');
+            $count = $this->demande_model->nbDemandeparUser($userId, $searchText);
 
 			$returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['userRecords'] = $this->demande_model->listeDemandeparUser($searchText, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparUser($userId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
             $this->loadViews("demande", $this->global, $data, NULL);
-        
+
     }
 
     /**
      * This function is used to load the add new form
      */
-    function addNew()
+    function addDemande()
     {
-       
+
             $this->load->model('demande_model');
-           // $data['roles'] = $this->demande_model->//getUserRoles();
 
-            $this->global['pageTitle'] = 'Nouvel utilisateur';
+            $this->global['pageTitle'] = 'Nouvel Demande';
 
-            $this->loadViews("addNewDemande", $this->global, $data, NULL);
-       
+            $this->loadViews("addDemande", $this->global, NULL, NULL);
+
     }
 
-   
+
 
     /**
      * This function is used to add new user to the system
      */
     function addNewDemande()
     {
-        
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-			$this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
+			      $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
             $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
             $this->form_validation->set_rules('password','Password','required|max_length[20]');
             $this->form_validation->set_rules('cpassword','Confirm Password','trim|required|matches[password]|max_length[20]');
@@ -91,7 +91,7 @@ class Demande extends BaseController
 
             if($this->form_validation->run() == FALSE)
             {
-                $this->addNew();
+                $this->addDemande();
             }
             else
             {
@@ -100,7 +100,7 @@ class Demande extends BaseController
                 $password = $this->input->post('password');
                 $roleId = $this->input->post('role');
                 $mobile = $this->input->post('mobile');
-           
+
                 $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId, 'name'=> $name,
                                     'mobile'=>$mobile, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
 
@@ -116,9 +116,9 @@ class Demande extends BaseController
                     $this->session->set_flashdata('error', 'La création de l\'utilisateur a échouée');
                 }
 
-                redirect('addNew');
+                redirect('addDemande');
             }
-        
+
     }
 
 
