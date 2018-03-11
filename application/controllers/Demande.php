@@ -34,7 +34,7 @@ class Demande extends BaseController
     /**
      * This function is used to load the user list
      */
-    function userListing()
+    function demandeListing()
     {
         if($this->isAdmin() == TRUE)
         {
