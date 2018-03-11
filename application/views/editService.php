@@ -17,7 +17,6 @@ if(!empty($serviceInfo))
 
 ?>
 
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -37,6 +36,7 @@ if(!empty($serviceInfo))
               <!-- general form elements -->
 
 
+
                 <div class="box box-primary">
                     <div class="box-header">
                         <h3 class="box-title">Modifier Service</h3>
@@ -48,22 +48,21 @@ if(!empty($serviceInfo))
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">Nom</label>
+                                        <label for="name">Nom</label>
                                         <input type="text" class="form-control" id="name" placeholder="Nom du Service" name="name" value="<?php echo $name; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
                                     </div>
-
-                                </div>
-                              </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                      <label for="name">Description</label>
-                                      <input type="text" class="form-control" id="desc" placeholder="Description" name="desc" value="<?php echo $desc; ?>" maxlength="128">
-                                  </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="desc">Description</label>
+                                        <input type="text" class="form-control" id="desc" placeholder="Description du Service" name="desc" value="<?php echo $desc; ?>" maxlength="256">
+                                    </div>
+                                </div>
                         </div><!-- /.box-body -->
+
 
                         <div class="box-footer">
                             <input type="submit" class="btn btn-primary" value="Enregistrer" />

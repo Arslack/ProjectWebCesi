@@ -63,7 +63,7 @@
 
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <?php //echo $this->pagination->create_links(); ?>
+                    <?php echo $this->pagination->create_links(); ?>
                 </div>
               </div><!-- /.box -->
             </div>
