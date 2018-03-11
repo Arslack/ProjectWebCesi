@@ -1,9 +1,9 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 26 Février 2018 à 09:25
+-- GÃ©nÃ©rÃ© le :  Lun 26 FÃ©vrier 2018 Ã  09:25
 -- Version du serveur :  5.7.21-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.22-0ubuntu0.16.04.1
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de donnees :  `ProjetWebCesi`
 --
--- SCRIPT de cr�ation de la base de donn�es ProjetWebCesi
+-- SCRIPT de création de la base de données ProjetWebCesi
 
 CREATE DATABASE IF NOT EXISTS `PROJETWEBCESI` DEFAULT CHARACTER SET utf8;
 USE `PROJETWEBCESI` ;
@@ -44,12 +44,7 @@ CREATE TABLE `adresse` (
   `pays` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*!40000 ALTER TABLE `Adresse` DISABLE KEYS */;
-REPLACE INTO `Adresse` ( `id`,`idprofil`,`numero` ,`etage` ,`rue` ,`rue2` ,`ville`,`codepostal` , `region` ,`pays` ) VALUES
-	(2, 1,1,'', 'Rue Duchesne ','','Kourou','97310', 'Guyane', 'France'),
-	(3, 1,3,'', 'Angle Rue Becker et Boulevard Mandela','','Cayenne','97300', 'Guyane', 'France'),
-	(4, 1,180,'', 'Route de Montabo','','Cayenne','97300', 'Guyane', 'France');
-/*!40000 ALTER TABLE `Adresse` ENABLE KEYS */;
+
 -- --------------------------------------------------------
 
 --
@@ -58,7 +53,6 @@ REPLACE INTO `Adresse` ( `id`,`idprofil`,`numero` ,`etage` ,`rue` ,`rue2` ,`vill
 DROP TABLE IF EXISTS `demande`;
 CREATE TABLE `demande` (
   `id` int(11) NOT NULL,
-  `utilisateurid` int(11) NOT NULL,
   `dateorigine` date NOT NULL,
   `datemaj` date NOT NULL,
   `datefinprevue` date ,
@@ -67,18 +61,7 @@ CREATE TABLE `demande` (
   `titre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*!40000 ALTER TABLE `Demande` DISABLE KEYS */;
-REPLACE INTO `Demande` (`id` ,`utilisateurId`, `dateorigine`, `datemaj`, `datefinprevue` ,`idEtat`,`description`,`titre`) VALUES
-	(1,2, '2018-02-19','2018-02-19','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
-	(2,2, '2018-02-19','2018-02-19','2018-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
-	(3,3, '2018-01-11','2018-01-19','2019-02-19',1,'Demande suvention','Demande subvention creation entreprise'),
-	(4,3, '2018-01-19','2018-01-19','2019-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
-	(5,2, '2018-02-10','2018-02-11','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
-	(6,2, '2018-02-10','2018-03-01','2018-12-01',1,'Demande aide ville Kourou','Demande amenagement'),
-	(7,3, '2018-02-09','2018-02-19','2019-02-19',1,'Demande suvention quartier','Demande amenagement'),
-	(8,3, '2018-02-09','2018-01-11','2019-02-19',1,'Demande aide entreprise ','Demande projet entreprise'),
-	(9,3, '2018-02-22','2018-03-01','2019-02-19',1,'Demande aide entreprise','Demande projet  entreprise');
-/*!40000 ALTER TABLE `Demande` ENABLE KEYS */;-- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Structure de la table `demande_dossier`
@@ -231,19 +214,16 @@ CREATE TABLE `service_role` (
 --
 -- Structure de la table `utilisateur`
 --
- DROP TABLE IF EXISTS `utilisateur` ;
- CREATE TABLE `utilisateur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mdp` varchar(64) NOT NULL,
-  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `datemaj` date NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `nom` varchar(128) DEFAULT NULL,
-  `roleId` tinyint(4) NOT NULL,
-  `FlagOk` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+-- DROP TABLE IF EXISTS `utilisateur` ;
+-- CREATE TABLE `utilisateur` (
+-- `id` int(11) NOT NULL,
+--  `email` varchar(90) NOT NULL,
+--  `identifiant` varchar(64) NOT NULL,
+--  `mdp` varchar(64) NOT NULL,
+--  `dateorigine` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--  `datemaj` date NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 -- --------------------------------------------------------
 
 --
@@ -257,7 +237,7 @@ CREATE TABLE `utilisateur_profil` (
 
 SET FOREIGN_KEY_CHECKS=1;
 --
--- Index pour les tables exportées
+-- Index pour les tables exportÃ©es
 --
 -- Index pour la table `adresse`
 --
@@ -370,7 +350,7 @@ ALTER TABLE `utilisateur_profil`
   ADD KEY `idProfil` (`idProfil`);
 
 --
--- AUTO_INCREMENT pour les tables exportées
+-- AUTO_INCREMENT pour les tables exportÃ©es
 --
 
 --
@@ -419,7 +399,63 @@ ALTER TABLE `service`
 -- ALTER TABLE `utilisateur`
 --  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- Contraintes pour les tables exportÃ©es
+--
 
+--
+-- Contraintes pour la table `demande`
+--
+ALTER TABLE `demande`
+  ADD CONSTRAINT `demande_ibfk_1` FOREIGN KEY (`idEtat`) REFERENCES `etat` (`id`);
+
+--
+-- Contraintes pour la table `demande_dossier`
+--
+ALTER TABLE `demande_dossier`
+  ADD CONSTRAINT `demande_dossier_ibfk_1` FOREIGN KEY (`idDemande`) REFERENCES `demande` (`id`),
+  ADD CONSTRAINT `demande_dossier_ibfk_2` FOREIGN KEY (`idDossier`) REFERENCES `dossier` (`id`);
+
+--
+-- Contraintes pour la table `profil_adresse`
+ ALTER TABLE `profil_adresse`
+ ADD CONSTRAINT `profil_adresse_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
+ ADD CONSTRAINT `profil_adresse_ibfk_2` FOREIGN KEY (`idAdresse`) REFERENCES `adresse` (`id`);
+
+--
+-- Contraintes pour la table `profil_role`
+--
+ALTER TABLE `profil_role`
+  ADD CONSTRAINT `profil_role_ibfk_1` FOREIGN KEY (`idProfil`) REFERENCES `profil` (`id`),
+  ADD CONSTRAINT `profil_role_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`);
+
+--
+-- Contraintes pour la table `responsabilite`
+--
+ALTER TABLE `responsabilite`
+  ADD CONSTRAINT `responsabilite_ibfk_1` FOREIGN KEY (`idDemande`) REFERENCES `demande` (`id`),
+  ADD CONSTRAINT `responsabilite_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`),
+  ADD CONSTRAINT `responsabilite_ibfk_3` FOREIGN KEY (`idService`) REFERENCES `service` (`id`);
+
+--
+-- Contraintes pour la table `role_droit`
+--
+ALTER TABLE `role_droit`
+  ADD CONSTRAINT `role_droit_ibfk_1` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`),
+  ADD CONSTRAINT `role_droit_ibfk_2` FOREIGN KEY (`idDroit`) REFERENCES `droits` (`id`);
+
+--
+-- Contraintes pour la table `service_role`
+--
+ALTER TABLE `service_role`
+  ADD CONSTRAINT `service_role_ibfk_1` FOREIGN KEY (`idService`) REFERENCES `service` (`id`),
+  ADD CONSTRAINT `service_role_ibfk_2` FOREIGN KEY (`idRole`) REFERENCES `role` (`id`);
+
+--
+-- Contraintes pour la table `utilisateur_profil`
+--
+-- ALTER TABLE `utilisateur_profil`
+--  ADD CONSTRAINT `utilisateur_profil_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`id`),
+--  ADD CONSTRAINT `utilisateur_profil_ibfk_2` FOREIGN KEY (`idProfil`) REFERENCES `etat` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -435,7 +471,7 @@ ALTER TABLE `service`
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
---  debut des tables li�es � la librairie Ion Auth 
+--  debut des tables liées à la librairie Ion Auth 
 
 -- Dumping structure for table tbl_items
 DROP TABLE IF EXISTS `tbl_items`;
@@ -456,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `tbl_items` (
 -- Dumping data for table tbl_items: 2 rows
 /*!40000 ALTER TABLE `tbl_items` DISABLE KEYS */;
 REPLACE INTO `tbl_items` (`itemId`, `itemHeader`, `itemSub`, `itemDesc`, `itemImage`, `isDeleted`, `createdBy`, `createdDtm`, `updatedDtm`, `updatedBy`) VALUES
-	(1, 'jquery.validation.js', 'Contribution towards jquery.validation.js', 'jquery.validation.js is the client side javascript validation library authored by J�rn Zaefferer hosted on github for us and we are trying to contribute to it. Working on localization now', 'validation.png', 0, 1, '2015-09-02 00:00:00', NULL, NULL),
+	(1, 'jquery.validation.js', 'Contribution towards jquery.validation.js', 'jquery.validation.js is the client side javascript validation library authored by Jörn Zaefferer hosted on github for us and we are trying to contribute to it. Working on localization now', 'validation.png', 0, 1, '2015-09-02 00:00:00', NULL, NULL),
 	(2, 'CodeIgniter User Management', 'Demo for user management system', 'This the demo of User Management System (Admin Panel) using CodeIgniter PHP MVC Framework and AdminLTE bootstrap theme. You can download the code from the repository or forked it to contribute. Usage and installation instructions are provided in ReadMe.MD', 'png', 0, 1, '2015-09-02 00:00:00', NULL, NULL);
 /*!40000 ALTER TABLE `tbl_items` ENABLE KEYS */;
 
@@ -501,7 +537,7 @@ DROP TABLE IF EXISTS `tbl_users`;
 CREATE TABLE IF NOT EXISTS `tbl_users` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(128) NOT NULL COMMENT 'email',
-  `password` varchar(128) NOT NULL COMMENT 'Mot de passe crypt�',
+  `password` varchar(128) NOT NULL COMMENT 'Mot de passe crypté',
   `name` varchar(128) DEFAULT NULL COMMENT 'Nom',
   `mobile` varchar(20) DEFAULT NULL,
   `roleId` tinyint(4) NOT NULL,
@@ -525,5 +561,4 @@ REPLACE INTO `tbl_users` (`userId`, `email`, `password`, `name`, `mobile`, `role
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 
---  fin des tables li�es � la librairie Ion Auth 
-
+--  fin des tables liées à la librairie Ion Auth 

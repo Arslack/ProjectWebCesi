@@ -123,6 +123,7 @@
               <a href="#" >
                 <i class="fa fa-plane"></i>
                 <span>Nouvelle demande</span>
+				<a href="<?php echo base_url(); ?>addNewDemande" class="small-box-footer">Suivant2 <i class="fa fa-arrow-circle-right"></i></a>
               </a>
             </li>
             <li class="treeview">
