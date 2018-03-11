@@ -3,13 +3,11 @@
 require APPPATH . '/libraries/BaseController.php';
 
 /**
- * Class : User (UserController)
- * User Class to control all user related operations.
- * @author : Kishor Mali
- * @version : 1.1
- * @since : 15 November 2016
+ * Class : Service
+ * Fonction liée aux Services
+ * @author :
  */
-class User extends BaseController
+class Service extends BaseController
 {
     /**
      * This is default constructor of the class
@@ -17,7 +15,7 @@ class User extends BaseController
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');
+        $this->load->model('service_model');
         $this->isLoggedIn();
     }
 
@@ -26,15 +24,15 @@ class User extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'Tableau de bord';
+        $this->global['pageTitle'] = 'Liste des Service';
 
-        $this->loadViews("dashboard", $this->global, NULL , NULL);
+        $this->loadViews("service", $this->global, NULL , NULL);
     }
 
     /**
      * This function is used to load the user list
      */
-    function userListing()
+    function ServiceListing()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -42,29 +40,29 @@ class User extends BaseController
         }
         else
         {
-            $this->load->model('user_model');
+            $this->load->model('service_model');
 
             $searchText = $this->input->post('searchText');
             $data['searchText'] = $searchText;
 
             $this->load->library('pagination');
 
-            $count = $this->user_model->userListingCount($searchText);
+            $count = $this->service_model->serviceListingCount($searchText);
 
-			$returns = $this->paginationCompress ( "userListing/", $count, 5 );
+			$returns = $this->paginationCompress ( "serviceListing/", $count, 5 );
 
-            $data['userRecords'] = $this->user_model->userListing($searchText, $returns["page"], $returns["segment"]);
+            $data['serviceRecords'] = $this->service_model->serviceListing($searchText, $returns["page"], $returns["segment"]);
 
-            $this->global['pageTitle'] = 'Liste des utilisateurs';
+            $this->global['pageTitle'] = 'Liste des Services';
 
-            $this->loadViews("users", $this->global, $data, NULL);
+            $this->loadViews("service", $this->global, $data, NULL);
         }
     }
 
     /**
      * This function is used to load the add new form
      */
-    function addNew()
+    function addService()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -72,12 +70,11 @@ class User extends BaseController
         }
         else
         {
-            $this->load->model('user_model');
-            $data['roles'] = $this->user_model->getUserRoles();
+            $this->load->model('service_model');
 
-            $this->global['pageTitle'] = 'Nouvel utilisateur';
+            $this->global['pageTitle'] = 'Nouveau Service';
 
-            $this->loadViews("addNew", $this->global, $data, NULL);
+            $this->loadViews("addService", $this->global, NULL, NULL);
         }
     }
 
@@ -103,7 +100,7 @@ class User extends BaseController
     /**
      * This function is used to add new user to the system
      */
-    function addNewUser()
+    function addNewService()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -113,41 +110,33 @@ class User extends BaseController
         {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('password','Password','required|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','trim|required|matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
+            $this->form_validation->set_rules('name','Nom du service','trim|required|max_length[128]|xss_clean');
+            $this->form_validation->set_rules('desc','Description du service','trim|required|max_length[256]|xss_clean');
 
             if($this->form_validation->run() == FALSE)
             {
-                $this->addNew();
+                $this->addService();
             }
             else
             {
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
+                $name = ucwords(strtolower($this->input->post('name')));
+                $desc = ucwords(strtolower($this->input->post('desc')));
 
-                $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId, 'name'=> $name,
-                                    'mobile'=>$mobile, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
+                $serviceInfo = array('nom'=>$name, 'description'=> $desc);
 
-                $this->load->model('user_model');
-                $result = $this->user_model->addNewUser($userInfo);
+                $this->load->model('service_model');
+                $result = $this->service_model->addNewService($serviceInfo);
 
                 if($result > 0)
                 {
-                    $this->session->set_flashdata('success', 'Création de l\'utilisateur réussie');
+                    $this->session->set_flashdata('success', 'Création du Service réussie');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'La création de l\'utilisateur a échouée');
+                    $this->session->set_flashdata('error', 'La création du Service a échouée');
                 }
 
-                redirect('addNew');
+                redirect('addService');
             }
         }
     }
@@ -237,7 +226,7 @@ class User extends BaseController
      * This function is used load user edit information
      * @param number $userId : Optional : This is user id
      */
-    function editOld($userId = NULL)
+    function editServiceOld($userId = NULL)
     {
         if($this->isAdmin() == TRUE || $userId == 1)
         {
@@ -247,15 +236,15 @@ class User extends BaseController
         {
             if($userId == null)
             {
-                redirect('userListing');
+                redirect('serviceListing');
             }
 
-            $data['roles'] = $this->user_model->getUserRoles();
-            $data['userInfo'] = $this->user_model->getUserInfo($userId);
+            $data['service'] = $this->service_model->getService();
+          //  $data['userInfo'] = $this->user_model->getUserInfo($userId);
 
-            $this->global['pageTitle'] = 'Profil utilisateur';
+            $this->global['pageTitle'] = 'Profil Service';
 
-            $this->loadViews("editOld", $this->global, $data, NULL);
+            $this->loadViews("editService", $this->global, $data, NULL);
         }
     }
 

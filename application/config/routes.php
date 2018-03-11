@@ -53,6 +53,8 @@ $route['addNew'] = "user/addNew";
 $route['addNewDemande'] = "demande/addNewDemande";
 $route['demande'] = "demande";
 $route['addNewUser'] = "user/addNewUser";
+$route['createUser'] = "login/addRequestUser";
+$route['addNewRequestUser'] = "login/addNewRequestUser";
 $route['editOld'] = "user/editOld";
 $route['editOld/(:num)'] = "user/editOld/$1";
 $route['editUser'] = "user/editUser";
@@ -69,5 +71,13 @@ $route['resetPasswordConfirmUser/(:any)'] = "login/resetPasswordConfirmUser/$1";
 $route['resetPasswordConfirmUser/(:any)/(:any)'] = "login/resetPasswordConfirmUser/$1/$2";
 $route['createPasswordUser'] = "login/createPasswordUser";
 
+$route['service'] = 'service';
+$route['addService'] = 'service/addService';
+$route['createService'] = 'service/addNewService';
+$route['editServiceOld'] = "service/editServiceOld";
+$route['editServiceOld/(:num)'] = "service/editServiceOld/$1";
+$route['serviceListing'] = 'service/serviceListing';
+$route['serviceListing/(:num)'] = "service/serviceListing/$1";
+$route['editService'] = "user/editService";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

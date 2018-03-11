@@ -6,8 +6,8 @@
 
 $base  = "http://".$_SERVER['HTTP_HOST'];
 $base .= str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-$config['base_url'] = $base;
-//$config['base_url'] ='http://localhost:8082/';
+//$config['base_url'] = $base;
+$config['base_url'] =$base;
 // index.php, unless you've renamed it 
 //  blank with mod_rewrite  
 
@@ -21,8 +21,7 @@ $config['index_page'] = 'index.php';
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-
-$config['uri_protocol'] = "AUTO";
+$config['uri_protocol']	= 'AUTO';
 
 //add a suffix to all URLs generated 
 //http://codeigniter.com/user_guide/general/urls.html

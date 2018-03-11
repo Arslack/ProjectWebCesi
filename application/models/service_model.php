@@ -1,6 +1,6 @@
 <?php if(!defined('BASEPATH')) exit('Pas d\'accès direct');
 
-class User_model extends CI_Model
+class Service_model extends CI_Model
 {
     /**
      * This function is used to get the user listing count
@@ -9,17 +9,18 @@ class User_model extends CI_Model
      */
     function userListingCount($searchText = '')
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.name, BaseTbl.mobile, Role.role');
-        $this->db->from('tbl_users as BaseTbl');
-        $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
+        $this->db->select('BaseTbl.id, BaseTbl.nom, BaseTbl.description');
+        $this->db->from('service as BaseTbl');
+/*       $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
-            $likeCriteria = "(BaseTbl.email  LIKE '%".$searchText."%'
-                            OR  BaseTbl.name  LIKE '%".$searchText."%'
+            $likeCriteria = "(BaseTbl.nom  LIKE '%".$searchText."%'
+                            OR  BaseTbl.description  LIKE '%".$searchText."%'
                             OR  BaseTbl.mobile  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roleId !=', 1);
+*/
         $query = $this->db->get();
 
         return count($query->result());
@@ -32,11 +33,12 @@ class User_model extends CI_Model
      * @param number $segment : This is pagination limit
      * @return array $result : This is result
      */
-    function userListing($searchText = '', $page, $segment)
+    function serviceListing($searchText = '', $page, $segment)
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.name, BaseTbl.mobile, Role.role');
-        $this->db->from('tbl_users as BaseTbl');
+        $this->db->select('BaseTbl.id, BaseTbl.nom, BaseTbl.description');
+        $this->db->from('service as BaseTbl');
         $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
+/*
         if(!empty($searchText)) {
             $likeCriteria = "(BaseTbl.email  LIKE '%".$searchText."%'
                             OR  BaseTbl.name  LIKE '%".$searchText."%'
@@ -46,6 +48,7 @@ class User_model extends CI_Model
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roleId !=', 1);
         $this->db->limit($page, $segment);
+*/
         $query = $this->db->get();
 
         $result = $query->result();
@@ -91,10 +94,10 @@ class User_model extends CI_Model
      * This function is used to add new user to system
      * @return number $insert_id : This is last inserted id
      */
-    function addNewUser($userInfo)
+    function addNewService($serviceInfo)
     {
         $this->db->trans_start();
-        $this->db->insert('tbl_users', $userInfo);
+        $this->db->insert('service', $serviceInfo);
 
         $insert_id = $this->db->insert_id();
 
