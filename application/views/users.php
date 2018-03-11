@@ -5,34 +5,9 @@
         <i class="fa fa-users"></i> Profil utilisateur
         <small>Ajouter, Modifier, Supprimer</small>
       </h1>
-		
-		
-		
-		
-	<div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
-    </div>
-</div>
-
-		
-		
-  
     </section>
+
+
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-right">
@@ -67,17 +42,7 @@
                       <th>Fonction</th>
                       <th class="text-center">Actions</th>
                     </tr>
-					 
-					  <div class="col-sm-10">
-       <div class="input-group">
-        <div class="input-group-addon">
-         <i class="fa fa-calendar">
-         </i>
-        </div>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-       </div>
-      </div>
-     </div>
+
                     <?php
                     if(!empty($userRecords))
                     {
@@ -100,7 +65,7 @@
                     }
                     ?>
                   </table>
-                  
+
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
                     <?php echo $this->pagination->create_links(); ?>
@@ -114,8 +79,8 @@
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('ul.pagination li a').click(function (e) {
-            e.preventDefault();            
-            var link = jQuery(this).get(0).href;            
+            e.preventDefault();
+            var link = jQuery(this).get(0).href;
             var value = link.substring(link.lastIndexOf('/') + 1);
             jQuery("#searchList").attr("action", baseURL + "userListing/" + value);
             jQuery("#searchList").submit();
