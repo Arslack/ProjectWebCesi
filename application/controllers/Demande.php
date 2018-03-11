@@ -36,12 +36,7 @@ class Demande extends BaseController
      */
     function demandeListing()
     {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
+       
             $this->load->model('demande_model');
 
             $searchText = $this->input->post('searchText');
@@ -51,14 +46,14 @@ class Demande extends BaseController
 
             $count = $this->demande_model->nbDemandeparUser($searchText);
 
-			$returns = $this->paginationCompress ( "demandes/", $count, 5 );
+			$returns = $this->paginationCompress ( "demande/", $count, 5 );
 
             $data['userRecords'] = $this->demande_model->listeDemandeparUser($searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
             $this->loadViews("demande", $this->global, $data, NULL);
-        }
+        
     }
 
     /**
@@ -66,19 +61,14 @@ class Demande extends BaseController
      */
     function addNew()
     {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
+       
             $this->load->model('demande_model');
            // $data['roles'] = $this->demande_model->//getUserRoles();
 
             $this->global['pageTitle'] = 'Nouvel utilisateur';
 
             $this->loadViews("addNewDemande", $this->global, $data, NULL);
-        }
+       
     }
 
    
@@ -88,12 +78,7 @@ class Demande extends BaseController
      */
     function addNewDemande()
     {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
+        
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
@@ -133,7 +118,7 @@ class Demande extends BaseController
 
                 redirect('addNew');
             }
-        }
+        
     }
 
 

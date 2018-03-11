@@ -10,6 +10,18 @@
     <section class="content">
         <div class="row">
             <div class="col-lg-3 col-xs-6">
+				 <?php
+            if($role == ROLE_ADMIN)
+            {
+            ?>
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>service" >
+                <i class="fa fa-thumb-tack"></i>
+                <span>Service</span>
+              </a>
+            </li>
+
+            
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
@@ -48,7 +60,10 @@
                 <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Suivant <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
-            
+            <?php
+            }
+           
+            ?>
           </div>
     </section>
 </div>

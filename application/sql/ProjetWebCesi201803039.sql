@@ -75,7 +75,7 @@ REPLACE INTO `Demande` (`id` ,`utilisateurId`, `dateorigine`, `datemaj`, `datefi
 	(4,3, '2018-01-19','2018-01-19','2019-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
 	(5,2, '2018-02-10','2018-02-11','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
 	(6,2, '2018-02-10','2018-03-01','2018-12-01',1,'Demande aide ville Kourou','Demande amenagement'),
-	(7,3, '2018-02-09','2018-02-19','2019-02-19',1,'Demande suvention quartier','Demande amenagement'),
+	(7,3, '2018-02-09','2018-02-19','2019-02-19',1,'Demande subvention quartier','Demande amenagement'),
 	(8,3, '2018-02-09','2018-01-11','2019-02-19',1,'Demande aide entreprise ','Demande projet entreprise'),
 	(9,3, '2018-02-22','2018-03-01','2019-02-19',1,'Demande aide entreprise','Demande projet  entreprise');
 /*!40000 ALTER TABLE `Demande` ENABLE KEYS */;-- --------------------------------------------------------

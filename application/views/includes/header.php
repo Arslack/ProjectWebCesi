@@ -120,11 +120,11 @@
               <a href="#" >
                 <i class="fa fa-plane"></i>
                 <span>Nouvelle demande</span>
-				<a href="<?php echo base_url(); ?>addNewDemande" class="small-box-footer">Suivant2 <i class="fa fa-arrow-circle-right"></i></a>
+				<a href="<?php echo base_url(); ?>addNewDemande" class="small-box-footer"></a>
               </a>
             </li>
             <li class="treeview">
-              <a href="#" >
+              <a href="<?php echo base_url(); ?>demande">
                 <i class="fa fa-ticket"></i>
                 <span>Mes demandes</span>
               </a>

@@ -3,7 +3,7 @@
     <section class="content-header">
       <h1>
         <i class="fa fa-users"></i> Demande
-        <small>Ajout / Modification d'une Demande'</small>
+        <small>Ajout / Modification d'une Demande</small>
       </h1>
     </section>
         <section class="content">
@@ -12,22 +12,20 @@
                   <div class="col-md-8">
                     <!-- general form elements -->
 
-
-
                     <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title">Description</h3>
                         </div><!-- /.box-header -->
                         <!-- form start -->
 
-                        <form role="form" id="addProfil" action="<?php echo base_url() ?>addNewProfil" method="post" role="form">
+                        <form role="form" id="addProfil" action="<?php echo base_url() ?>addNewDemande" method="post" role="form">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="lname">Date</label>
+                                            <label for="lname">Date création</label>
 											<div class="form-group">
-												<label class="col-md-2 control-label" for="Date">Date</label>
+												<label class="col-md-2 control-label" for="Date1">Date création</label>
 												<div class="col-md-10">
 													<div class="input-group">
 														<div class="input-group-addon">
@@ -37,7 +35,49 @@
 													</div>
 												</div>
 											</div>
-                                            <input type="text" class="form-control required" id="lname" name="lname" maxlength="128">
+                                            <input type="text" class="form-control required" id="lname" name="lname" maxlength="10">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lname">Date mise à jour</label>
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="Date2">Date mise à jour</label>
+												<div class="col-md-10">
+													<div class="input-group">
+														<div class="input-group-addon">
+															<i class="fa fa-calendar"></i>
+														</div>
+														<input type="text" class="form-control" id="Date"/>
+													</div>
+												</div>
+											</div>
+                                            <input type="text" class="form-control required" id="lname" name="lname" maxlength="10">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lname">Date fin prévue</label>
+											<div class="form-group">
+												<label class="col-md-2 control-label" for="Date3">Date fin prévue</label>
+												<div class="col-md-10">
+													<div class="input-group">
+														<div class="input-group-addon">
+															<i class="fa fa-calendar"></i>
+														</div>
+														<input type="text" class="form-control" id="Date"/>
+													</div>
+												</div>
+											</div>
+                                            <input type="text" class="form-control required" id="lname" name="lname" maxlength="10">
                                         </div>
                                     </div>
                                 </div>
@@ -45,8 +85,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="fname">Prenom</label>
-                                            <input type="text" class="form-control required" id="fname" name="fname" maxlength="128">
+                                          <label for="mobile">Etat</label>
+                                          <input type="text" class="form-control required digits" id="etat" name="etat" maxlength="10">
                                         </div>
                                     </div>
                                 </div>
@@ -54,8 +94,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="text" class="form-control required" id="email" name="email" maxlength="128">
+                                          <label for="fixe">Description</label>
+                                          <input type="text" class="form-control required digits" id="description" name="description" maxlength="10">
                                         </div>
                                     </div>
                                 </div>
@@ -63,56 +103,13 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                          <label for="mobile">Téléphone Portable</label>
-                                          <input type="text" class="form-control required digits" id="mobile" name="mobile" maxlength="10">
+                                          <label for="adresse">Titre</label>
+                                          <input type="text" class="form-control required" id="titre" name="titre" maxlength="256">
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="fixe">Téléphone Fixe</label>
-                                          <input type="text" class="form-control required digits" id="fixe" name="fixe" maxlength="10">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="adresse">Adresse</label>
-                                          <input type="text" class="form-control required" id="adresse" name="adresse" maxlength="256">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="cpostal">Code Postal</label>
-                                          <input type="text" class="form-control required digits" id="cpostal" name="cpostal" maxlength="5">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="city">Ville </label>
-                                          <input type="text" class="form-control required" id="city" name="city" maxlength="128">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="country">Pays </label>
-                                          <input type="text" class="form-control required" id="country" name="country" maxlength="128">
-                                        </div>
-                                    </div>
-                                </div>
+                               
                         </div>
 
                         <div class="box-footer">
@@ -155,4 +152,7 @@
     </section>
 
 </div>
-<script src="<?php echo base_url(); ?>assets/js/addProfil.js" type="text/javascript"></script>
+<script src="<?php echo base_url(); ?>assets/js/addDemande.js" type="text/javascript">
+	</script>
+<script src="<?php echo base_url(); ?>assets/js/datepicker.js" type="text/javascript">
+</script>
