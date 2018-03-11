@@ -4,18 +4,19 @@ $serviceId = '';
 $name = '';
 $desc = '';
 
-if(!empty($data))
+if(!empty($serviceInfo))
 {
-    foreach ($data as $d)
+    foreach ($serviceInfo as $sf)
     {
-        $serviceId = $d->id;
-        $name = $d->nom;
-        $desc = $d->description;
+        $serviceId = $sf->id;
+        $name = $sf->nom;
+        $desc = $sf->description;
     }
 }
 
 
 ?>
+
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -25,6 +26,8 @@ if(!empty($data))
         <small>Ajout Edition Service</small>
       </h1>
     </section>
+
+
 
     <section class="content">
 
@@ -41,19 +44,19 @@ if(!empty($data))
                     </div><!-- /.box-header -->
                     <!-- form start -->
 
-                    <form role="form" action="<?php echo base_url() ?>editService" method="post" id="editUser" role="form">
+                    <form role="form" action="<?php echo base_url() ?>editService" method="post" id="editService" role="form">
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="fname">Nom</label>
-                                        <input type="text" class="form-control" id="fname" placeholder="Nom du Service" name="fname" value="<?php echo $name; ?>" maxlength="128">
-                                        <input type="hidden" value="<?php echo $serviceId; ?>" name="userId" id="userId" />
+                                        <input type="text" class="form-control" id="name" placeholder="Nom du Service" name="name" value="<?php echo "test"; ?>" maxlength="128">
+                                        <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
                                     </div>
 
                                 </div>
-                              </div>
-                              <div class="row">
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="fname">Description</label>

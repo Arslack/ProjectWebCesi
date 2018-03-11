@@ -6,6 +6,8 @@
         <small>Ajouter, Modifier, Supprimer</small>
       </h1>
     </section>
+
+
     <section class="content">
         <div class="row">
             <div class="col-xs-12 text-right">
@@ -18,7 +20,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Liste des Servies</h3>
+                    <h3 class="box-title">Liste des Services</h3>
                     <div class="box-tools">
                         <form action="<?php echo base_url() ?>serviceListing" method="POST" id="searchList">
                             <div class="input-group">
@@ -50,7 +52,7 @@
                       <td><?php echo $record->description ?></td>
                       <td class="text-center">
                           <a class="btn btn-sm btn-info" href="<?php echo base_url().'editServiceOld/'.$record->id; ?>"><i class="fa fa-pencil"></i></a>
-                          <a class="btn btn-sm btn-danger deleteUser" href="#" data-userid="<?php echo $record->id; ?>"><i class="fa fa-trash"></i></a>
+                          <a class="btn btn-sm btn-danger deleteUser" href="#" data-id="<?php echo $record->id; ?>"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                     <?php
@@ -61,7 +63,7 @@
 
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <?php echo $this->pagination->create_links(); ?>
+                    <?php //echo $this->pagination->create_links(); ?>
                 </div>
               </div><!-- /.box -->
             </div>
@@ -75,7 +77,7 @@
             e.preventDefault();
             var link = jQuery(this).get(0).href;
             var value = link.substring(link.lastIndexOf('/') + 1);
-            jQuery("#searchList").attr("action", baseURL + "userListing/" + value);
+            jQuery("#searchList").attr("action", baseURL + "serviceListing/" + value);
             jQuery("#searchList").submit();
         });
     });

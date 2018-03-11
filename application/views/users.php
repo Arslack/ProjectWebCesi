@@ -44,6 +44,7 @@
                     </tr>
 
                     <?php
+                    var_dump($test);
                     if(!empty($userRecords))
                     {
                         foreach($userRecords as $record)
