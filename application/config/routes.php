@@ -71,7 +71,7 @@ $route['resetPasswordConfirmUser/(:any)'] = "login/resetPasswordConfirmUser/$1";
 $route['resetPasswordConfirmUser/(:any)/(:any)'] = "login/resetPasswordConfirmUser/$1/$2";
 $route['createPasswordUser'] = "login/createPasswordUser";
 
-$route['service'] = 'service';
+$route['service'] ='service/serviceListing';
 $route['addService'] = 'service/addService';
 $route['createService'] = 'service/addNewService';
 $route['editServiceOld'] = "service/editServiceOld";

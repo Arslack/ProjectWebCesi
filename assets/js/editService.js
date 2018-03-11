@@ -12,12 +12,12 @@ $(document).ready(function(){
 	var validator = editServiceForm.validate({
 
 		rules:{
-			fname :{ required : true },
+			name :{ required : true },
 			desc :{ required : true }
 
 		},
 		messages:{
-			fname :{ required : "This field is required" },
+			name :{ required : "This field is required" },
 			desc :{ required : "This field is required" },
 		}
 	});

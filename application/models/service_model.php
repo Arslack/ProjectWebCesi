@@ -7,20 +7,16 @@ class Service_model extends CI_Model
      * @param string $searchText : This is optional search text
      * @return number $count : This is row count
      */
-    function userListingCount($searchText = '')
+    function serviceListingCount($searchText = '')
     {
         $this->db->select('BaseTbl.id, BaseTbl.nom, BaseTbl.description');
         $this->db->from('service as BaseTbl');
-/*       $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
             $likeCriteria = "(BaseTbl.nom  LIKE '%".$searchText."%'
-                            OR  BaseTbl.description  LIKE '%".$searchText."%'
-                            OR  BaseTbl.mobile  LIKE '%".$searchText."%')";
+                            OR  BaseTbl.description  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $this->db->where('BaseTbl.isDeleted', 0);
-        $this->db->where('BaseTbl.roleId !=', 1);
-*/
+
         $query = $this->db->get();
 
         return count($query->result());
@@ -37,18 +33,13 @@ class Service_model extends CI_Model
     {
         $this->db->select('BaseTbl.id, BaseTbl.nom, BaseTbl.description');
         $this->db->from('service as BaseTbl');
-        $this->db->join('tbl_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
-/*
         if(!empty($searchText)) {
-            $likeCriteria = "(BaseTbl.email  LIKE '%".$searchText."%'
-                            OR  BaseTbl.name  LIKE '%".$searchText."%'
-                            OR  BaseTbl.mobile  LIKE '%".$searchText."%')";
+            $likeCriteria = "(BaseTbl.nom  LIKE '%".$searchText."%'
+                            OR  BaseTbl.description  LIKE '%".$searchText."%')";
             $this->db->where($likeCriteria);
         }
-        $this->db->where('BaseTbl.isDeleted', 0);
-        $this->db->where('BaseTbl.roleId !=', 1);
         $this->db->limit($page, $segment);
-*/
+
         $query = $this->db->get();
 
         $result = $query->result();
@@ -107,17 +98,15 @@ class Service_model extends CI_Model
     }
 
     /**
-     * This function used to get user information by id
-     * @param number $userId : This is user id
-     * @return array $result : This is user information
+     * This function used to get service information by id
+     * @param number $serviceId : This is service id
+     * @return array $result : This is service information
      */
-    function getUserInfo($userId)
+    function getServiceInfo($serviceId)
     {
-        $this->db->select('userId, name, email, mobile, roleId');
-        $this->db->from('tbl_users');
-        $this->db->where('isDeleted', 0);
-		$this->db->where('roleId !=', 1);
-        $this->db->where('userId', $userId);
+        $this->db->select('id, nom, description');
+        $this->db->from('service');
+        $this->db->where('id', $serviceId);
         $query = $this->db->get();
 
         return $query->result();

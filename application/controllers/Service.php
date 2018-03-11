@@ -24,40 +24,40 @@ class Service extends BaseController
      */
     public function index()
     {
-        $this->global['pageTitle'] = 'Liste des Service';
+        $this->global['pageTitle'] = 'Liste des Services';
 
         $this->loadViews("service", $this->global, NULL , NULL);
     }
 
     /**
-     * This function is used to load the user list
+     * This function is used to load the Service list
      */
-    function ServiceListing()
-    {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
-            $this->load->model('service_model');
+     function serviceListing()
+     {
+         if($this->isAdmin() == TRUE)
+         {
+             $this->loadThis();
+         }
+         else
+         {
+             $this->load->model('service_model');
 
-            $searchText = $this->input->post('searchText');
-            $data['searchText'] = $searchText;
+             $searchText = $this->input->post('searchText');
+             $data['searchText'] = $searchText;
 
-            $this->load->library('pagination');
+             $this->load->library('pagination');
 
-            $count = $this->service_model->serviceListingCount($searchText);
+             $count = $this->service_model->serviceListingCount($searchText);
 
-			$returns = $this->paginationCompress ( "serviceListing/", $count, 5 );
+ 			$returns = $this->paginationCompress ( "serviceListing/", $count, 5 );
 
-            $data['serviceRecords'] = $this->service_model->serviceListing($searchText, $returns["page"], $returns["segment"]);
+             $data['serviceRecords'] = $this->service_model->serviceListing($searchText, $returns["page"], $returns["segment"]);
 
-            $this->global['pageTitle'] = 'Liste des Services';
+             $this->global['pageTitle'] = 'Liste des Services';
 
-            $this->loadViews("service", $this->global, $data, NULL);
-        }
-    }
+             $this->loadViews("service", $this->global, $data, NULL);
+         }
+     }
 
     /**
      * This function is used to load the add new form
@@ -77,25 +77,6 @@ class Service extends BaseController
             $this->loadViews("addService", $this->global, NULL, NULL);
         }
     }
-
-    /**
-     * This function is used to check whether email already exist or not
-     */
-    function checkEmailExists()
-    {
-        $userId = $this->input->post("userId");
-        $email = $this->input->post("email");
-
-        if(empty($userId)){
-            $result = $this->user_model->checkEmailExists($email);
-        } else {
-            $result = $this->user_model->checkEmailExists($email, $userId);
-        }
-
-        if(empty($result)){ echo("true"); }
-        else { echo("false"); }
-    }
-
 
     /**
      * This function is used to add new user to the system
@@ -141,106 +122,24 @@ class Service extends BaseController
         }
     }
 
-
-    /**
-     * This function is used to load the add new form
-     */
-    function addProfil()
-    {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
-            $this->load->model('user_model');
-            $data['roles'] = $this->user_model->getUserRoles();
-
-            $this->global['pageTitle'] = 'Nouveau Profil';
-
-            $this->loadViews("addProfil", $this->global, $data, NULL);
-        }
-    }
-
-    /**
-     * This function is used to add new user profil to the system
-     */
-    function addNewProfil()
-    {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
-            $this->load->library('form_validation');
-
-            $this->form_validation->set_rules('fname','First Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('lname','Last Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
-            $this->form_validation->set_rules('fixe','Mobile Number','required|min_length[10]|xss_clean');
-            $this->form_validation->set_rules('cpostal','Code Postal','required|min_length[5]|xss_clean');
-            $this->form_validation->set_rules('adresse','Adresse','trim|required|max_length[256]|xss_clean');
-            $this->form_validation->set_rules('city','Ville','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('country','Pay','trim|required|max_length[128]|xss_clean');
-
-
-            if($this->form_validation->run() == FALSE)
-            {
-                $this->addProfil();
-            }
-            else
-            {
-              /*
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
-
-                $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId, 'name'=> $name,
-                                    'mobile'=>$mobile, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
-
-                $this->load->model('user_model');
-                */
-                $result = 1;//$this->user_model->addNewUser($userInfo);
-
-
-                if($result > 0)
-                {
-                    $this->session->set_flashdata('success', 'Création du profil réussie');
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'La création du profil a échouée');
-                }
-
-                redirect('addProfil');
-            }
-        }
-    }
-
-
     /**
      * This function is used load user edit information
      * @param number $userId : Optional : This is user id
      */
-    function editServiceOld($userId = NULL)
+    function editServiceOld($serviceId = NULL)
     {
-        if($this->isAdmin() == TRUE || $userId == 1)
+        if($this->isAdmin() == TRUE)
         {
             $this->loadThis();
         }
         else
         {
-            if($userId == null)
+            if($serviceId == null)
             {
                 redirect('serviceListing');
             }
 
-            $data['service'] = $this->service_model->getService();
-          //  $data['userInfo'] = $this->user_model->getUserInfo($userId);
+            $data['serviceInfo'] = $this->service_model->getServiceInfo($serviceId);
 
             $this->global['pageTitle'] = 'Profil Service';
 
@@ -252,7 +151,7 @@ class Service extends BaseController
     /**
      * This function is used to edit the user information
      */
-    function editUser()
+    function editService()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -335,17 +234,6 @@ class Service extends BaseController
             else { echo(json_encode(array('status'=>FALSE))); }
         }
     }
-
-    /**
-     * This function is used to load the change password screen
-     */
-    function loadChangePass()
-    {
-        $this->global['pageTitle'] = 'Changer de mot de passe';
-
-        $this->loadViews("changePassword", $this->global, NULL, NULL);
-    }
-
 
     /**
      * This function is used to change the password of the user
