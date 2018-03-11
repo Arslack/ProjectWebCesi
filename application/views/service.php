@@ -63,14 +63,14 @@
 
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <?php //echo $this->pagination->create_links(); ?>
+                    <?php echo $this->pagination->create_links(); ?>
                 </div>
               </div><!-- /.box -->
             </div>
         </div>
     </section>
 </div>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/common.js" charset="utf-8"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/commonService.js" charset="utf-8"></script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('ul.pagination li a').click(function (e) {

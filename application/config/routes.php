@@ -80,6 +80,7 @@ $route['editServiceOld'] = "service/editServiceOld";
 $route['editServiceOld/(:num)'] = "service/editServiceOld/$1";
 $route['serviceListing'] = 'service/serviceListing';
 $route['serviceListing/(:num)'] = "service/serviceListing/$1";
-$route['editService'] = "user/editService";
+$route['editService'] = "service/editService";
+$route['deleteService'] = "service/deleteService";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

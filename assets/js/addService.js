@@ -10,7 +10,7 @@
 
 $(document).ready(function(){
 
-	var addUserForm = $("#addProfil");
+	var addUserForm = $("#addService");
 
 	var validator = addUserForm.validate({
 

@@ -118,10 +118,10 @@ class Service_model extends CI_Model
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
      */
-    function editUser($userInfo, $userId)
+    function editService($serviceInfo, $serviceId)
     {
-        $this->db->where('userId', $userId);
-        $this->db->update('tbl_users', $userInfo);
+        $this->db->where('id', $serviceId);
+        $this->db->update('service', $serviceInfo);
 
         return TRUE;
     }
@@ -133,12 +133,11 @@ class Service_model extends CI_Model
      * @param number $userId : This is user id
      * @return boolean $result : TRUE / FALSE
      */
-    function deleteUser($userId, $userInfo)
+    function deleteService($serviceId)
     {
-        $this->db->where('userId', $userId);
-        $this->db->update('tbl_users', $userInfo);
-
-        return $this->db->affected_rows();
+        $this->db->where('id', $serviceId);
+        $this->db->delete('service');
+        return TRUE;
     }
 
 
