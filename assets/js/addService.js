@@ -19,8 +19,8 @@ $(document).ready(function(){
       desc :{ required : true }
 		},
 		messages:{
-			name :{ required : "This field is required" },
-      desc :{ required : "This field is required" }
+			name :{ required : "Ce champ est obligatoire" },
+      desc :{ required : "Ce champ est obligatoire" }
 		}
 	});
 });

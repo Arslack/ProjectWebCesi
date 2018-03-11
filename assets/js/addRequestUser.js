@@ -22,11 +22,11 @@ $(document).ready(function(){
 			mobile : { required : true, digits : true }
 		},
 		messages:{
-			fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			password : { required : "This field is required" },
-			cpassword : {required : "This field is required", equalTo: "Please enter same password" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" }
+			fname :{ required : "Ce champ est obligatoire" },
+			email : { required : "Ce champ est obligatoire", email :  "Votre adresse email doit être valide", remote : "Email déjà pris" },
+			password : { required : "Ce champ est obligatoire" },
+			cpassword : {required : "Ce champ est obligatoire", equalTo: "Des nombres uniquement" },
+			mobile : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" }
 		}
 	});
 });

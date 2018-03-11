@@ -2,8 +2,7 @@
  * File : editUser.js 
  * 
  * This file contain the validation of edit user form
- * 
- * @author Kishor Mali
+ *
  */
 $(document).ready(function(){
 	
@@ -19,11 +18,11 @@ $(document).ready(function(){
 			role : { required : true, selected : true}
 		},
 		messages:{
-			fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
+			fname :{ required : "Ce champ est obligatoire" },
+			email : { required : "Ce champ est obligatoire", email : "Votre adresse email doit être valide", remote : "Email déjà pris" },
 			cpassword : {equalTo: "Please enter same password" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-			role : { required : "This field is required", selected : "Please select atleast one option" }			
+			mobile : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" },
+			role : { required : "Ce champ est obligatoire", selected : "Sélectionnez au moins une option" }
 		}
 	});
 });

@@ -5,7 +5,7 @@
  * 
  * Using validation plugin : jquery.validate.js
  * 
- * @author Kishor Mali
+ * @ Jantet Alain  
  */
 
 $(document).ready(function(){
@@ -23,12 +23,12 @@ $(document).ready(function(){
 			role : { required : true, selected : true}
 		},
 		messages:{
-			fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			password : { required : "This field is required" },
-			cpassword : {required : "This field is required", equalTo: "Please enter same password" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-			role : { required : "This field is required", selected : "Please select atleast one option" }			
+			fname :{ required : "Ce champ est obligatoire" },
+			email : { required : "Ce champ est obligatoire",  "Votre adresse email doit être valide", remote : "Email déjà pris" },
+			password : { required : "Ce champ est obligatoire" },
+			cpassword : {required : "Ce champ est obligatoire", equalTo: "Saisir le même mot de passe" },
+			mobile : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" },
+			role : { required : "Ce champ est obligatoire", selected : "Sélectionner au moins une option" }			
 		}
 	});
 });

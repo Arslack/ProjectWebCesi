@@ -27,15 +27,15 @@ $(document).ready(function(){
       country :{ required : true }
 		},
 		messages:{
-			lname :{ required : "This field is required" },
-      fname :{ required : "This field is required" },
-			email : { required : "This field is required", email : "Please enter valid email address", remote : "Email already taken" },
-			mobile : { required : "This field is required", digits : "Please enter numbers only" },
-      fixe : { required : "This field is required", digits : "Please enter numbers only" },
-      cpostal : { required : "This field is required", digits : "Please enter numbers only" },
-      adresse :{ required : "This field is required" },
-      city :{ required : "This field is required" },
-      country :{ required : "This field is required" }
+			lname :{ required : "Ce champ est obligatoire" },
+      fname :{ required : "Ce champ est obligatoire" },
+			email : { required : "Ce champ est obligatoire", email : "Votre adresse email doit être valide", remote : "Email déjà pris" },
+			mobile : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" },
+      fixe : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" },
+      cpostal : { required : "Ce champ est obligatoire", digits : "Des nombres uniquement" },
+      adresse :{ required : "Ce champ est obligatoire" },
+      city :{ required : "Ce champ est obligatoire" },
+      country :{ required : "Ce champ est obligatoire" }
 		}
 	});
 });

@@ -17,11 +17,13 @@ $(document).ready(function(){
 
 		rules:{
 			title :{ required : true },
-      desc :{ required : true }
+            desc :{ required : true },
+            file:{ required : true }
 		},
 		messages:{
-			title :{ required : "This field is required" },
-      desc :{ required : "This field is required" }
+			title :{ required : "Ce champ est obligatoire" },
+            desc :{ required : "Ce champ est obligatoire" },
+            file:{ required : "Ce champ est obligatoire" }
 		}
 	});
 });
