@@ -6,12 +6,7 @@
         <small>Ajouter, Modifier, Supprimer</small>
       </h1>
     </section>
-<?php 
-var_dump($this->_ci_cached_vars);
 
- 
-   
-   ?>
 
     <section class="content">
         <div class="row">
