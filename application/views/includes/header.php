@@ -133,7 +133,7 @@
               </a>
             </li>
 	        <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">
+              <a href="<?php echo base_url(); ?>demandeListing">
                 <i class="fa fa-plane"></i> <span>Demandes</span></i>
               </a>
             </li>
@@ -159,12 +159,12 @@
             </li>
             
             <?php
-            }
+            }   
 		     if($role == ROLE_DEMANDEUR)
 			 {
             ?>  
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">
+              <a href="<?php echo base_url(); ?>demandeListing">
                 <i class="fa fa-users"></i> <span>Mes Demandes</span></i>
               </a>
             </li>

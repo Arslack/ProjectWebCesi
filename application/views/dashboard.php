@@ -22,7 +22,7 @@
                   <p>Utilisateurs</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-person-stalker"></i>
                 </div>
 				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -35,11 +35,9 @@
                   <p>Demandes</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                  <i class="ion ion-chatboxes"></i>
                 </div>
-				  <span class="hidden-xs"><?php echo $vendorId; ?></span>
-			
-                <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+		        <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -50,7 +48,7 @@
                   <p>Services</p>
                 </div>
                 <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
+                  <i class="ion ion-cube"></i>
                 </div>
                 <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
