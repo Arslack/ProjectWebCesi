@@ -70,14 +70,23 @@ CREATE TABLE `demande` (
 /*!40000 ALTER TABLE `Demande` DISABLE KEYS */;
 REPLACE INTO `Demande` (`id` ,`utilisateurId`, `dateorigine`, `datemaj`, `datefinprevue` ,`idEtat`,`description`,`titre`) VALUES
 	(1,2, '2018-02-19','2018-02-19','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
-	(2,2, '2018-02-19','2018-02-19','2018-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
+	(2,2, '2018-02-19','2018-02-19','2018-02-19',0,'Demande aide PME','Demande subvention creation entreprise'),
 	(3,3, '2018-01-11','2018-01-19','2019-02-19',1,'Demande suvention','Demande subvention creation entreprise'),
-	(4,3, '2018-01-19','2018-01-19','2019-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
+	(4,3, '2018-01-19','2018-01-19','2019-02-19',0,'Demande aide PME','Demande subvention creation entreprise'),
 	(5,2, '2018-02-10','2018-02-11','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
-	(6,2, '2018-02-10','2018-03-01','2018-12-01',1,'Demande aide ville Kourou','Demande amenagement'),
+	(6,2, '2018-02-10','2018-03-01','2018-12-01',0,'Demande aide ville Kourou','Demande amenagement'),
 	(7,3, '2018-02-09','2018-02-19','2019-02-19',1,'Demande subvention quartier','Demande amenagement'),
 	(8,3, '2018-02-09','2018-01-11','2019-02-19',1,'Demande aide entreprise ','Demande projet entreprise'),
-	(9,3, '2018-02-22','2018-03-01','2019-02-19',1,'Demande aide entreprise','Demande projet  entreprise');
+	(9,3, '2018-02-22','2018-03-01','2019-02-19',1,'Demande aide entreprise','Demande projet  entreprise'),
+	(10,2, '2018-02-01','2018-02-19','2019-02-19',1,'Demande aide gracieuse','Demande subvention creation entreprise'),
+	(11,2, '2018-02-02','2018-02-19','2018-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
+	(12,3, '2018-02-11','2018-01-19','2019-02-19',1,'Demande suvention','Demande subvention creation entreprise'),
+	(13,3, '2018-01-19','2018-01-19','2019-02-19',1,'Demande aide PME','Demande subvention creation entreprise'),
+	(14,2, '2018-03-01','2018-03-11','2019-02-19',1,'Demande travaux ville Kourou','Demande amenagement'),
+	(15,2, '2018-03-01','2018-03-11','2018-12-01',1,'Demande travaux ville Kourou','Demande amenagement'),
+	(16,3, '2018-03-01','2018-03-11','2019-02-19',1,'Demande subvention quartier','Demande amenagement'),
+	(17,3, '2018-03-01','2018-03-11','2019-02-19',1,'Demande aide capital initial ','Demande projet entreprise'),
+	(18,3, '2018-03-01','2018-03-11','2019-02-19',1,'Demande subvention fête de la musique','Demande projet  entreprise');
 /*!40000 ALTER TABLE `Demande` ENABLE KEYS */;-- --------------------------------------------------------
 
 --
@@ -437,28 +446,7 @@ ALTER TABLE `service`
 
 --  debut des tables liées à la librairie Ion Auth 
 
--- Dumping structure for table tbl_items
-DROP TABLE IF EXISTS `tbl_items`;
-CREATE TABLE IF NOT EXISTS `tbl_items` (
-  `itemId` int(11) NOT NULL AUTO_INCREMENT,
-  `itemHeader` varchar(512) NOT NULL COMMENT 'Heading',
-  `itemSub` varchar(1021) NOT NULL COMMENT 'sub heading',
-  `itemDesc` text COMMENT 'content or description',
-  `itemImage` varchar(80) DEFAULT NULL,
-  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-  `createdBy` int(11) NOT NULL,
-  `createdDtm` datetime NOT NULL,
-  `updatedDtm` datetime DEFAULT NULL,
-  `updatedBy` int(11) DEFAULT NULL,
-  PRIMARY KEY (`itemId`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table tbl_items: 2 rows
-/*!40000 ALTER TABLE `tbl_items` DISABLE KEYS */;
-REPLACE INTO `tbl_items` (`itemId`, `itemHeader`, `itemSub`, `itemDesc`, `itemImage`, `isDeleted`, `createdBy`, `createdDtm`, `updatedDtm`, `updatedBy`) VALUES
-	(1, 'jquery.validation.js', 'Contribution towards jquery.validation.js', 'jquery.validation.js is the client side javascript validation library authored by Jörn Zaefferer hosted on github for us and we are trying to contribute to it. Working on localization now', 'validation.png', 0, 1, '2015-09-02 00:00:00', NULL, NULL),
-	(2, 'CodeIgniter User Management', 'Demo for user management system', 'This the demo of User Management System (Admin Panel) using CodeIgniter PHP MVC Framework and AdminLTE bootstrap theme. You can download the code from the repository or forked it to contribute. Usage and installation instructions are provided in ReadMe.MD', 'png', 0, 1, '2015-09-02 00:00:00', NULL, NULL);
-/*!40000 ALTER TABLE `tbl_items` ENABLE KEYS */;
 
 -- Dumping structure for table tbl_reset_password
 DROP TABLE IF EXISTS `tbl_reset_password`;
@@ -503,6 +491,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `email` varchar(128) NOT NULL COMMENT 'email',
   `password` varchar(128) NOT NULL COMMENT 'Mot de passe crypté',
   `name` varchar(128) DEFAULT NULL COMMENT 'Nom',
+  `roleText` varchar(128) DEFAULT NULL,
   `mobile` varchar(20) DEFAULT NULL,
   `roleId` tinyint(4) NOT NULL,
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
@@ -515,10 +504,10 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 
 -- Dumping data for table tbl_users: 3 rows
 /*!40000 ALTER TABLE `tbl_users` DISABLE KEYS */;
-REPLACE INTO `tbl_users` (`userId`, `email`, `password`, `name`, `mobile`, `roleId`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
-	(1, 'admin@test.com', '$2y$10$SAvFim22ptA9gHVORtIaru1dn9rhgerJlJCPxRNA02MjQaJnkxawq', 'Administrateur', '9890098900', 1, 0, 0, '2015-07-01 18:56:49', 1, '2017-06-19 09:22:53'),
-	(2, 'cb@test.com', '$2y$10$Gkl9ILEdGNoTIV9w/xpf3.mSKs0LB1jkvvPKK7K0PSYDsQY7GE9JK', 'Demandeur', '9890098900', 2, 0, 1, '2016-12-09 17:49:56', 1, '2017-06-19 09:22:29'),
-	(3, 'aj@test.com', '$2y$10$MB5NIu8i28XtMCnuExyFB.Ao1OXSteNpCiZSiaMSRPQx1F1WLRId2', 'Valideur', '9890098900', 3, 0, 1, '2016-12-09 17:50:22', 1, '2017-06-19 09:23:21');
+REPLACE INTO `tbl_users` (`userId`, `email`, `password`, `name`, `roleText` , `mobile`, `roleId`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
+	(1, 'admin@test.com', '$2y$10$SAvFim22ptA9gHVORtIaru1dn9rhgerJlJCPxRNA02MjQaJnkxawq', 'Admin','Administrateur', '9890098900', 1, 0, 0, '2015-07-01 18:56:49', 1, '2017-06-19 09:22:53'),
+	(2, 'cb@test.com', '$2y$10$Gkl9ILEdGNoTIV9w/xpf3.mSKs0LB1jkvvPKK7K0PSYDsQY7GE9JK', 'Clement Burger','Demandeur', '9890098900', 2, 0, 1, '2016-12-09 17:49:56', 1, '2017-06-19 09:22:29'),
+	(3, 'aj@test.com', '$2y$10$MB5NIu8i28XtMCnuExyFB.Ao1OXSteNpCiZSiaMSRPQx1F1WLRId2', 'Alain Jantet','Valideur', '9890098900', 3, 0, 1, '2016-12-09 17:50:22', 1, '2017-06-19 09:23:21');
 /*!40000 ALTER TABLE `tbl_users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

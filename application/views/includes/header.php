@@ -45,6 +45,8 @@
           <span class="logo-mini"><b></b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Web Guyane</b></span>
+			
+			
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -59,14 +61,16 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="user-image" alt="User Image"/>
                   <span class="hidden-xs"><?php echo $name; ?></span>
+				  <span class="hidden-xs"><?php echo $role_text; ?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="img-circle" alt="User Image" />
+					<span class="hiddens"><?php echo $name; ?></span>
+					<span class="hidden"><?php echo $role_text; ?></span>
                     <p>
-                      <?php echo $name; ?>
-                      <small><?php echo $role_text; ?></small>
+                   
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -90,10 +94,11 @@
         <section class="sidebar">
           <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <!-- <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg"--> class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Nom prenom</p>
+			<p><span class="hidden-xs"><?php echo $role_text; ?></span></p>
+		  
           <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
         </div>
       </div>
@@ -120,13 +125,14 @@
               <a href="#" >
                 <i class="fa fa-plane"></i>
                 <span>Nouvelle demande</span>
-				<a href="<?php echo base_url(); ?>addNewDemande" class="small-box-footer"></a>
+				<a href="<?php echo base_url(); ?>addNewDemande"></a>
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>demande">
                 <i class="fa fa-ticket"></i>
                 <span>Mes demandes</span>
+				<a href="<?php echo base_url(); ?>Demande"></a>
               </a>
             </li>
             <?php
