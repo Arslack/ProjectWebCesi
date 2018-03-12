@@ -37,7 +37,9 @@
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+				  <span class="hidden-xs"><?php echo $vendorId; ?></span>
+			
+                <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">

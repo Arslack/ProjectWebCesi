@@ -40,7 +40,7 @@ class BaseController extends CI_Controller {
 			$this->vendorId = $this->session->userdata ( 'userId' );
 			$this->name = $this->session->userdata ( 'name' );
 			$this->roleText = $this->session->userdata ( 'roleText' );
-			
+			$this->global ['vendorId'] = $this->vendorId;
 			$this->global ['name'] = $this->name;
 			$this->global ['role'] = $this->role;
 			$this->global ['role_text'] = $this->roleText;
@@ -111,7 +111,7 @@ class BaseController extends CI_Controller {
 	 * @param {number} $perPage : This is records per page limit
 	 * @return {mixed} $result : This is array of records and pagination data
 	 */
-	function paginationCompress($link, $count, $perPage = 10) {
+	function paginationCompress($link, $count, $perPage = 20) {
 		$this->load->library ( 'pagination' );
 	
 		$config ['base_url'] = base_url () . $link;

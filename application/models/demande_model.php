@@ -22,14 +22,14 @@ class Demande_model extends CI_Model
      * function listeDemandeparUser
 	 * param $userid
      */
-    function listeDemandeparUser($userId, $searchText = '')
+    function listeDemandeparUser($userId, $searchText = '', $page, $segment)
     {
         $this->db->select('TB.id, TB.dateorigine, TB.datemaj, TB.datefinprevue,TB.idEtat, TB.description,TB.titre');
         $this->db->from('demande as TB');
         $this->db->join('tbl_users as U', 'U.userId = TB.Id','left');
         $this->db->where('TB.utilisateurid', $userId);
         $this->db->where('U.isDeleted', 0);
-
+        $this->db->limit($page, $segment);
         $query = $this->db->get();
 
         return ($query->result());
@@ -96,7 +96,7 @@ class Demande_model extends CI_Model
         return ($query->result());
     }
 	/**
-     * function nbDemandeValide
+     * function nbDemandeaValider
 	 * param $userid
      */
     function nbDemandenonValide()
@@ -111,10 +111,10 @@ class Demande_model extends CI_Model
         return count($query->result());
     }
 	/**
-     * function listeDemandeValide
+     * function listeDemandenonValide
 	 * param $userid
      */
-    function listeDemandeValide()
+    function listeDemandenonValide()
     {
         $this->db->select('TB.id, TB.dateorigine, TB.datemaj, TB.datefinprevue,TB.idEtat, TB.description,TB.titre');
         $this->db->from('demande as TB');

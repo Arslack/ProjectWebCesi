@@ -34,7 +34,7 @@ class Demande extends BaseController
     /**
      * This function is used to load the user list
      */
-    function demandeListing()
+    function demandeListingparUser()
     {
 
             $this->load->model('demande_model');
@@ -44,7 +44,8 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-            $userId = $this->session->userdata('userId');
+           // $userId = $this->session->userdata('userId');
+		    $userId=$this->global ['vendorId'];
             $count = $this->demande_model->nbDemandeparUser($userId, $searchText);
 
 			$returns = $this->paginationCompress ( "demande/", $count, 5 );
