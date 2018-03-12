@@ -116,47 +116,59 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
+			  
             <li class="treeview">
               <a href="<?php echo base_url(); ?>dashboard">
                 <i class="fa fa-dashboard"></i> <span>Tableau de bord</span></i>
               </a>
             </li>
-            <li class="treeview">
-              <a href="#" >
-                <i class="fa fa-plane"></i>
-                <span>Nouvelle demande</span>
-				<a href="<?php echo base_url(); ?>addNewDemande"></a>
-              </a>
-            </li>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">
-                <i class="fa fa-ticket"></i>
-                <span>Mes demandes</span>
-				<a href="<?php echo base_url(); ?>Demande"></a>
-              </a>
-            </li>
-            <?php
-            if($role == ROLE_ADMIN)
-            {
-            ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>service" >
-                <i class="fa fa-thumb-tack"></i>
-                <span>Service</span>
-              </a>
-            </li>
-
-            <?php
-            }
+		  <?php
+            
             if($role == ROLE_ADMIN)
             {
             ?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>userListing">
-                <i class="fa fa-users"></i>
-                <span>Utilisateur</span>
+                <i class="fa fa-users"></i> <span>Utilisateurs</span></i>
               </a>
             </li>
+	        <li class="treeview">
+              <a href="<?php echo base_url(); ?>demande">
+                <i class="fa fa-plane"></i> <span>Demandes</span></i>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>service">
+                <i class="fa fa-shield"></i> <span>Services</span></i>
+              </a>
+            </li>
+            <?php
+            }
+            if($role == ROLE_VALIDEUR)
+            {
+            ?>
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>demande">
+                <i class="fa fa-users"></i> <span>Demandes a Valider</span></i>
+              </a>
+            </li>
+	        <li class="treeview">
+              <a href="<?php echo base_url(); ?>demande">
+                <i class="fa fa-plane"></i> <span>Demandes validées</span></i>
+              </a>
+            </li>
+            
+            <?php
+            }
+		     if($role == ROLE_DEMANDEUR)
+			 {
+            ?>  
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>demande">
+                <i class="fa fa-users"></i> <span>Mes Demandes</span></i>
+              </a>
+            </li>
+	        
             <?php
             }
             ?>

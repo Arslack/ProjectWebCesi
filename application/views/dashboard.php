@@ -14,55 +14,78 @@
             if($role == ROLE_ADMIN)
             {
             ?>
-            <li class="treeview">
-              <a href="<?php echo base_url(); ?>service" >
-                <i class="fa fa-thumb-tack"></i>
-                <span>Service</span>
-              </a>
-            </li>
-
-            
+                      
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>150</h3>
-                  <p>Nouvelle demande</p>
+                  <h3>3</h3>
+                  <p>Utilisateurs</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?php echo base_url(); ?>addNewDemande" class="small-box-footer">Suivant2 <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
+				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
-                  <p>Suivi demande</p>
+                  <h3>18</h3>
+                  <p>Demandes</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="<?php echo base_url(); ?>Demande" class="small-box-footer">Suivant2 <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>44</h3>
-                  <p>Créer un compte</p>
+                  <h3>3</h3>
+                  <p>Services</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Suivant <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <?php
             }
-           
+           if($role == ROLE_VALIDEUR)
+            {
+            ?>
+			  <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>12</h3>
+                  <p>Demandes à valider</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>18</h3>
+                  <p>Demandes validées</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+			<?php
+			}
+			
             ?>
           </div>
     </section>
