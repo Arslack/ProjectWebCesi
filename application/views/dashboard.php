@@ -58,6 +58,36 @@
            if($role == ROLE_VALIDEUR)
             {
             ?>
+<<<<<<< HEAD
+			  <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3>12</h3>
+                  <p>Demandes à valider</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-chatboxes"></i>
+                </div>
+				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3>18</h3>
+                  <p>Demandes validées</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-chatboxes"></i>
+                </div>
+                <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+			<?php
+			}
+			
+=======
     			  <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
@@ -131,6 +161,7 @@
                 </div><!-- ./col -->
                <?php
              }
+>>>>>>> 97680e7ff7d889726e9f7aec2c1d2ed95a715688
             ?>
           </div>
     </section>

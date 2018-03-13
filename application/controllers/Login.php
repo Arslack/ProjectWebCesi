@@ -138,7 +138,7 @@ class Login extends CI_Controller
                     if(!empty($userInfo)){
                         $data1["name"] = $userInfo[0]->name;
                         $data1["email"] = $userInfo[0]->email;
-                        $data1["message"] = "Reset Your Password";
+                        $data1["message"] = "Modification de votre mot de passe";
                     }
 
                     $sendStatus = resetPasswordEmail($data1);

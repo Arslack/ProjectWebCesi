@@ -21,7 +21,7 @@
           <a href="#"><b></b><br>Web Guyane</a>
       </div>
       <div class="login-box-body">
-        <p class="login-box-msg">Sign Out</p>
+        <p class="login-box-msg">S'inscrire</p>
         <?php $this->load->helper('form'); ?>
         <div class="row">
             <div class="col-md-12">
@@ -51,7 +51,7 @@
             <?php } ?>
                         <form role="form" id="addRequestUser" action="<?php echo base_url() ?>addNewRequestUser" method="post" role="form">
                               <div class="form-group has-feedback">
-                                  <input type="text" class="form-control"  placeholder="Name" id="fname" name="fname" maxlength="128">
+                                  <input type="text" class="form-control"  placeholder="Nom" id="fname" name="fname" maxlength="128">
                                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                               </div>
                               <div class="form-group has-feedback">
@@ -59,15 +59,15 @@
                                   <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                               </div>
                               <div class="form-group has-feedback">
-                                  <input type="password" class="form-control required" placeholder="Password" id="password"  name="password" maxlength="10">
+                                  <input type="password" class="form-control required" placeholder="Mot de passe" id="password"  name="password" maxlength="10">
                                   <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                               </div>
                               <div class="form-group has-feedback">
-                                  <input type="password" class="form-control required equalTo" placeholder="Password Confirm" id="cpassword" name="cpassword" maxlength="10">
+                                  <input type="password" class="form-control required equalTo" placeholder="Confirmer mot de passe" id="cpassword" name="cpassword" maxlength="10">
                                   <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                               </div>
                               <div class="form-group has-feedback">
-                                  <input type="text" class="form-control required digits" placeholder="Phone number" id="mobile" name="mobile" maxlength="10">
+                                  <input type="text" class="form-control required digits" placeholder="Telephone" id="mobile" name="mobile" maxlength="10">
                                   <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                               </div>
                             <div class="row">

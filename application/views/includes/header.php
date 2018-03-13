@@ -14,7 +14,7 @@
     <link href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
     <style>
     	.error{
     		color:red;
@@ -128,17 +128,17 @@
             ?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>userListing">
-                <i class="fa fa-users"></i> <span>Utilisateurs</span></i>
+                <i class="ion ion-person-stalker"></i> <span>Utilisateurs</span></i>
               </a>
             </li>
 	        <li class="treeview">
               <a href="<?php echo base_url(); ?>demandeListing">
-                <i class="fa fa-plane"></i> <span>Demandes</span></i>
+                <i class="ion ion-chatboxes"></i> <span>Demandes</span></i>
               </a>
             </li>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>service">
-                <i class="fa fa-shield"></i> <span>Services</span></i>
+                <i class="ion ion-cube"></i> <span>Services</span></i>
               </a>
             </li>
             <?php
@@ -147,13 +147,13 @@
             {
             ?>
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">
-                <i class="fa fa-users"></i> <span>Demandes a Valider</span></i>
+              <a href="<?php echo base_url(); ?>demande">  
+                <i class="ion ion-chatboxes"></i> <span>Demandes à valider</span></i>
               </a>
             </li>
 	        <li class="treeview">
               <a href="<?php echo base_url(); ?>demande">
-                <i class="fa fa-plane"></i> <span>Demandes validées</span></i>
+                <i class="ion ion-chatboxes"></i> <span>Demandes validées</span></i>
               </a>
             </li>
 
@@ -164,7 +164,7 @@
             ?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>demandeListing">
-                <i class="fa fa-users"></i> <span>Mes Demandes</span></i>
+                <i class="ion ion-chatboxes"></i> <span>Mes Demandes</span></i>
               </a>
             </li>
 
