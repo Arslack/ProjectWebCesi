@@ -85,11 +85,11 @@ class Demande extends BaseController
 
             $this->form_validation->set_rules('title','Sujet de la demande','trim|required|max_length[128]|xss_clean');
 			      $this->form_validation->set_rules('desc','Description de la demande','trim|required|max_length[256]|xss_clean');
-            $this->form_validation->set_rules('role','Service','trim|required|numeric');
+            $this->form_validation->set_rules('service','Service','trim|required|numeric');
 
 
-            $config['upload_path']          = './files/';
-            $config['allowed_types']        = 'zip|pdf';
+            $config['upload_path'] = './files/';
+            $config['allowed_types'] = 'zip|pdf';
 
             $this->load->library('upload', $config);
 
@@ -112,17 +112,13 @@ class Demande extends BaseController
             else
             {
                 $nom = $this->input->post('title');
-                $description = $this->input->post('title');
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
+                $description = $this->input->post('description');
+                $service = $this->input->post('service');
 
-                $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId, 'name'=> $name,
-                                    'mobile'=>$mobile, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
+                $demandeInfo = array('nom'=>$nom, 'description'=>$description, 'service'=>$service, 'filename'=> $data->file_name, 'filepath'=> $data->file_path);
 
-                $this->load->model('user_model');
-                $result = $this->user_model->addNewUser($userInfo);
+                $this->load->model('demande_model');
+                $result = $this->user_model->addNewDemande($demandeInfo);
 
                 if($result > 0)
                 {
