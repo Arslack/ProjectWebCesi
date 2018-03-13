@@ -34,7 +34,7 @@ class User extends BaseController
 
         if($this->isAdmin() == TRUE)
         {
-          if($this->session->userdata('roleText') == 2) {
+          if($this->session->userdata('role') == 3) {
               $data['countNewDemande'] = $this->demande_model->nbDemandenonValide();
               $data['countvalideDemande'] = $this->demande_model->nbDemandeValide();
               $data['countrefuseDemande'] = $this->demande_model->nbDemandeValide();

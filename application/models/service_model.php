@@ -104,11 +104,10 @@ class Service_model extends CI_Model
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
      */
-    function getUserRoles()
+    function getService()
     {
-        $this->db->select('roleId, role');
-        $this->db->from('tbl_roles');
-        $this->db->where('roleId !=', 1);
+        $this->db->select('id, nom');
+        $this->db->from('service');
         $query = $this->db->get();
 
         return $query->result();
@@ -203,7 +202,7 @@ class Service_model extends CI_Model
         $idService = array('idService' => $serviceId);
         $this->db->where('userId', $userId);
         $this->db->update('tbl_users', $idService);
-        
+
         return TRUE;
     }
 

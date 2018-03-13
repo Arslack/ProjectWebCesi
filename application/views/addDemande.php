@@ -23,7 +23,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="title">Titre de la demande</label>
+                                          <label for="title">Sujet de la demande</label>
                                           <input type="text" class="form-control required" id="title" name="title" maxlength="128">
                                       </div>
                                     </div>
@@ -32,7 +32,7 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="desc">Description de la demande</label>
-                                          <input type="text" class="form-control required" id="desc" name="desc" maxlength="128">
+                                          <textarea class="form-control required" id="exampleFormControlTextarea2" id="desc" name="desc" rows="3" maxlength="256"></textarea>
                                       </div>
                                     </div>
                                 </div>
@@ -43,6 +43,27 @@
                                           <input type="file" class="form-control required" id="file" name="file">
                                       </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="form-group">
+                                          <label for="role">Secteur concerner par la demande</label>
+                                          <select class="form-control required" id="service" name="service">
+                                              <option value="0">Choisir le secteur</option>
+                                              <?php
+                                              if(!empty($services))
+                                              {
+                                                  foreach ($services as $rl)
+                                                  {
+                                                      ?>
+                                                      <option value="<?php echo $rl->id ?>"><?php echo $rl->nom ?></option>
+                                                      <?php
+                                                  }
+                                              }
+                                              ?>
+                                          </select>
+                                      </div>
+                                  </div>
                                 </div>
                             </div><!-- /.box-body -->
 

@@ -64,11 +64,12 @@ class Demande extends BaseController
     function addDemande()
     {
 
-            $this->load->model('demande_model');
+            $this->load->model('service_model');
+            $data['services'] = $this->service_model->getService();
 
             $this->global['pageTitle'] = 'Nouvel Demande';
 
-            $this->loadViews("addDemande", $this->global, NULL, NULL);
+            $this->loadViews("addDemande", $this->global, $data, NULL);
 
     }
 
@@ -82,13 +83,27 @@ class Demande extends BaseController
 
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-			      $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('password','Password','required|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','trim|required|matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
+            $this->form_validation->set_rules('title','Sujet de la demande','trim|required|max_length[128]|xss_clean');
+			      $this->form_validation->set_rules('desc','Description de la demande','trim|required|max_length[256]|xss_clean');
+            $this->form_validation->set_rules('role','Service','trim|required|numeric');
+
+
+            $config['upload_path']          = './files/';
+            $config['allowed_types']        = 'zip|pdf';
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('file'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->session->set_flashdata('error', 'L\'import du fichier a échoué');
+                    $this->addDemande();
+            }
+            else
+            {
+                    $data = array('upload_data' => $this->upload->data());
+
+            }
 
             if($this->form_validation->run() == FALSE)
             {
@@ -96,7 +111,8 @@ class Demande extends BaseController
             }
             else
             {
-                $name = ucwords(strtolower($this->input->post('fname')));
+                $nom = $this->input->post('title');
+                $description = $this->input->post('title');
                 $email = $this->input->post('email');
                 $password = $this->input->post('password');
                 $roleId = $this->input->post('role');
