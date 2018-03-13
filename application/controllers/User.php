@@ -27,18 +27,26 @@ class User extends BaseController
     public function index()
     {
         $this->global['pageTitle'] = 'Tableau de bord';
-
+        $this->load->model('user_model');
+        $this->load->model('service_model');
+        $this->load->model('demande_model');
 
 
         if($this->isAdmin() == TRUE)
         {
-            $this->loadViews("dashboard", $this->global, NULL, NULL);
+          if($this->session->userdata('roleText') == 2) {
+              $data['countNewDemande'] = $this->demande_model->nbDemandenonValide();
+              $data['countvalideDemande'] = $this->demande_model->nbDemandeValide();
+              $data['countrefuseDemande'] = $this->demande_model->nbDemandeValide();
+
+          }else {
+              $data['countDemande'] = $this->demande_model->nbDemandeparUser($this->session->userdata('userId'));
+          }
+            $this->loadViews("dashboard", $this->global, $data, NULL);
         }
         else
         {
-            $this->load->model('user_model');
-            $this->load->model('service_model');
-            $this->load->model('demande_model');
+
 
             $data['countService'] = $this->service_model->serviceListingCount();
             $data['countUser'] = $this->user_model->userListingCount();

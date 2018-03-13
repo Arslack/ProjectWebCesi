@@ -58,34 +58,79 @@
            if($role == ROLE_VALIDEUR)
             {
             ?>
-			  <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>12</h3>
-                  <p>Nouvelle demandes</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>18</h3>
-                  <p>Demandes validés</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-			<?php
-			}
+    			  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3><?php echo $countNewDemande;?></h3>
+                      <p>Nouvelle demande</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+    				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-green">
+                    <div class="inner">
+                      <h3><?php echo $countvalideDemande;?></h3>
+                      <p>Demandes validés</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-red">
+                    <div class="inner">
+                      <h3><?php echo $countrefuseDemande;?></h3>
+                      <p>Demandes Rejetés</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+			         <?php
+			       }
+            ?>
 
+            <?php
+           if($role == ROLE_DEMANDEUR)
+            {
+            ?>
+            <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h2>Nouvelle demande</h2>
+                      <p> Creer une demande <p>
+                    </div>
+                    <div class="icon">
+                      <i class="fa fa-file-text-o"></i>
+                    </div>
+                   <a href="<?php echo base_url(); ?>addDemande" class="small-box-footer">Créer <i class="fa fa-arrow-circle-right"></i></a>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-green">
+                    <div class="inner">
+                      <h3><?php echo $countDemande;?></h3>
+                      <p>Mes demandes</p>
+                    </div>
+                    <div class="icon">
+                      <i class="fa fa-list-ul"></i>
+                    </div>
+                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+               <?php
+             }
             ?>
           </div>
     </section>
