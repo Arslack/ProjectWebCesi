@@ -106,7 +106,10 @@ if(!empty($serviceInfo))
         <div class="row">
             <div class="col-xs-12 text-right">
                 <div class="form-group">
-                    <a class="btn btn-primary" href="<?php echo base_url(); ?>addUserService"><i class="fa fa-plus"></i> Ajouter</a>
+                    <form role="form" action="<?php echo base_url() ?>addUserService" method="post" id="addUserService" role="form">
+                      <input type="submit" class="btn btn-primary" value="Ajouter" />
+                      <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
+                    </form>
                 </div>
             </div>
         </div>

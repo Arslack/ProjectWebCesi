@@ -18,7 +18,7 @@
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>3</h3>
+                  <h3><?php echo $countUser;?></h3>
                   <p>Utilisateurs</p>
                 </div>
                 <div class="icon">
@@ -31,7 +31,7 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>18</h3>
+                  <h3><?php echo $countDemande;?></h3>
                   <p>Demandes</p>
                 </div>
                 <div class="icon">
@@ -44,7 +44,7 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>3</h3>
+                  <h3><?php echo $countService;?></h3>
                   <p>Services</p>
                 </div>
                 <div class="icon">
@@ -62,7 +62,7 @@
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <h3>12</h3>
-                  <p>Demandes à valider</p>
+                  <p>Nouvelle demandes</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
@@ -75,7 +75,7 @@
               <div class="small-box bg-green">
                 <div class="inner">
                   <h3>18</h3>
-                  <p>Demandes validées</p>
+                  <p>Demandes validés</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-person-add"></i>

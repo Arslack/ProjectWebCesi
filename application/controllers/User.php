@@ -28,7 +28,24 @@ class User extends BaseController
     {
         $this->global['pageTitle'] = 'Tableau de bord';
 
-        $this->loadViews("dashboard", $this->global, NULL , NULL);
+
+
+        if($this->isAdmin() == TRUE)
+        {
+            $this->loadViews("dashboard", $this->global, NULL, NULL);
+        }
+        else
+        {
+            $this->load->model('user_model');
+            $this->load->model('service_model');
+            $this->load->model('demande_model');
+
+            $data['countService'] = $this->service_model->serviceListingCount();
+            $data['countUser'] = $this->user_model->userListingCount();
+            $data['countDemande'] = $this->demande_model->nbDemandeTous();
+
+            $this->loadViews("dashboard", $this->global, $data, NULL);
+        }
     }
 
     /**

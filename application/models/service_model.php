@@ -46,6 +46,60 @@ class Service_model extends CI_Model
         return $result;
     }
 
+
+    /**
+     * This function is used to get the user add Service listing count
+     * @param string $searchText : This is optional search text
+     * @return number $count : This is row count
+     */
+    function userAddListingCount($searchText = '')
+    {
+        $this->db->select('TU.userId, TU.name, TU.email, TU.mobile');
+        $this->db->from('tbl_users as TU');
+        $this->db->join('tbl_roles as TR', 'TU.roleId = TR.roleId', 'left');
+        $this->db->where('TU.roleId', 3);
+        $this->db->where('TU.idService', NULL);
+        if(!empty($searchText)) {
+            $likeCriteria = "(TU.name  LIKE '%".$searchText."%'
+                            OR  TU.email  LIKE '%".$searchText."%'
+                            OR  TU.mobile LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
+
+        $query = $this->db->get();
+
+        return count($query->result());
+    }
+
+    /**
+     * This function is used to get the user possible to into Services
+     * @param string $searchText : This is optional search text
+     * @param number $page : This is pagination offset
+     * @param number $segment : This is pagination limit
+     * @return array $result : This is result
+     */
+    function userAddListing($searchText = '', $page, $segment)
+    {
+      $this->db->select('TU.userId, TU.name, TU.email, TU.mobile');
+      $this->db->from('tbl_users as TU');
+      $this->db->join('tbl_roles as TR', 'TU.roleId = TR.roleId', 'left');
+      $this->db->where('TU.roleId', 3);
+      $this->db->where('TU.idService', NULL);
+      if(!empty($searchText)) {
+          $likeCriteria = "(TU.name  LIKE '%".$searchText."%'
+                          OR  TU.email  LIKE '%".$searchText."%'
+                          OR  TU.mobile LIKE '%".$searchText."%')";
+          $this->db->where($likeCriteria);
+      }
+
+      $this->db->limit($page, $segment);
+      $query = $this->db->get();
+
+        $result = $query->result();
+        return $result;
+    }
+
+
     /**
      * This function is used to get the user roles information
      * @return array $result : This is result of the query
@@ -55,26 +109,6 @@ class Service_model extends CI_Model
         $this->db->select('roleId, role');
         $this->db->from('tbl_roles');
         $this->db->where('roleId !=', 1);
-        $query = $this->db->get();
-
-        return $query->result();
-    }
-
-    /**
-     * This function is used to check whether email id is already exist or not
-     * @param {string} $email : This is email id
-     * @param {number} $userId : This is user id
-     * @return {mixed} $result : This is searched result
-     */
-    function checkEmailExists($email, $userId = 0)
-    {
-        $this->db->select("email");
-        $this->db->from("tbl_users");
-        $this->db->where("email", $email);
-        $this->db->where("isDeleted", 0);
-        if($userId != 0){
-            $this->db->where("userId !=", $userId);
-        }
         $query = $this->db->get();
 
         return $query->result();
@@ -154,9 +188,25 @@ class Service_model extends CI_Model
     {
         $idService = array('idService' => NULL);
         $this->db->where('userId', $userId);
-        $this->db->delete('tbl_users', $idService);
-        return $this->db->affected_rows();
+        $this->db->update('tbl_users', $idService);
+
+        return TRUE;
     }
+
+    /**
+     * This function is used to add the user service information
+     * @param number $userId : This is user id
+     * @return boolean $result : TRUE / FALSE
+     */
+    function addUserService($userId, $serviceId)
+    {
+        $idService = array('idService' => $serviceId);
+        $this->db->where('userId', $userId);
+        $this->db->update('tbl_users', $idService);
+        
+        return TRUE;
+    }
+
 
 
      /**
@@ -172,42 +222,4 @@ class Service_model extends CI_Model
     }
 
 
-
-    /**
-     * This function is used to match users password for change password
-     * @param number $userId : This is user id
-     */
-    function matchOldPassword($userId, $oldPassword)
-    {
-        $this->db->select('userId, password');
-        $this->db->where('userId', $userId);
-        $this->db->where('isDeleted', 0);
-        $query = $this->db->get('tbl_users');
-
-        $user = $query->result();
-
-        if(!empty($user)){
-            if(verifyHashedPassword($oldPassword, $user[0]->password)){
-                return $user;
-            } else {
-                return array();
-            }
-        } else {
-            return array();
-        }
-    }
-
-    /**
-     * This function is used to change users password
-     * @param number $userId : This is user id
-     * @param array $userInfo : This is user updation info
-     */
-    function changePassword($userId, $userInfo)
-    {
-        $this->db->where('userId', $userId);
-        $this->db->where('isDeleted', 0);
-        $this->db->update('tbl_users', $userInfo);
-
-        return $this->db->affected_rows();
-    }
 }

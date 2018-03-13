@@ -79,6 +79,64 @@ class Service extends BaseController
     }
 
     /**
+     * This function is used to load the add user to a service
+     */
+    function addUserService()
+    {
+        if($this->isAdmin() == TRUE)
+        {
+            $this->loadThis();
+        }
+        else
+        {
+
+            $this->load->model('service_model');
+
+
+            $searchText = $this->input->post('searchText');
+
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->service_model->userAddListingCount($searchText);
+
+     $returns = $this->paginationCompress ( "addUserService/", $count, 5 );
+
+            $data['userRecords'] = $this->service_model->userAddListing($searchText, $returns["page"], $returns["segment"]);
+            $data['serviceId'] =  $this->input->post('serviceId');
+            $this->global['pageTitle'] = 'Ajouter Utilisateur au Service';
+
+            $this->loadViews("addUserService", $this->global, $data, NULL);
+        }
+    }
+
+
+    /**
+     * This function is used to delete the user using userId
+     * @return boolean $result : TRUE / FALSE
+     */
+    function addNewUserService()
+    {
+        if($this->isAdmin() == TRUE)
+        {
+            echo(json_encode(array('status'=>'access')));
+        }
+        else
+        {
+            $serviceId = $this->input->post('serviceId');
+            $userId = $this->input->post('userId');
+            $result = $this->service_model->addUserService($userId, $serviceId);
+
+            if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
+            else { echo(json_encode(array('status'=>FALSE))); }
+        }
+    }
+
+
+
+
+    /**
      * This function is used to add new user to the system
      */
     function addNewService()

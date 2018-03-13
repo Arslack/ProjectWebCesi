@@ -43,10 +43,10 @@
                                 </div>
                             </div>
                         </div><!-- /.box-body -->
-    
+
                         <div class="box-footer">
-                            <input type="Enregistrer" class="btn btn-primary" value="submit" />
-                            <input type="Annuler" class="btn btn-default" value="Reset" />
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            <input type="reset" class="btn btn-default" value="Annuler" />
                         </div>
                     </form>
                 </div>
@@ -60,10 +60,10 @@
                 ?>
                 <div class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <?php echo $this->session->flashdata('error'); ?>                    
+                    <?php echo $this->session->flashdata('error'); ?>
                 </div>
                 <?php } ?>
-                <?php  
+                <?php
                     $success = $this->session->flashdata('success');
                     if($success)
                     {
@@ -73,8 +73,8 @@
                     <?php echo $this->session->flashdata('success'); ?>
                 </div>
                 <?php } ?>
-                
-                <?php  
+
+                <?php
                     $noMatch = $this->session->flashdata('nomatch');
                     if($noMatch)
                     {
@@ -84,7 +84,7 @@
                     <?php echo $this->session->flashdata('nomatch'); ?>
                 </div>
                 <?php } ?>
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <?php echo validation_errors('<div class="alert alert-danger alert-dismissable">', ' <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>'); ?>

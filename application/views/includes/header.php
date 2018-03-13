@@ -45,8 +45,8 @@
           <span class="logo-mini"><b></b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Web Guyane</b></span>
-			
-			
+
+
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -61,16 +61,15 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="user-image" alt="User Image"/>
                   <span class="hidden-xs"><?php echo $name; ?></span>
-					<span class="hidden-xs"><?php echo $role_text; ?></span>
+
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="img-circle" alt="User Image" />
-					<span class="hiddens"><?php echo $name; ?></span>
-					<span class="hidden"><?php echo $role_text; ?></span>
+					          <span class="hiddens"><?php echo $name; ?></span>
                     <p>
-                   
+
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -98,7 +97,7 @@
         </div>
         <div class="pull-left info">
 			<p><span class="hidden-xs"><?php echo $role_text; ?></span></p>
-		  
+
           <a href="#"><i class="fa fa-circle text-success"></i> En ligne</a>
         </div>
       </div>
@@ -116,14 +115,14 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MENU</li>
-			  
+
             <li class="treeview">
               <a href="<?php echo base_url(); ?>dashboard">
                 <i class="fa fa-dashboard"></i> <span>Tableau de bord</span></i>
               </a>
             </li>
 		  <?php
-            
+
             if($role == ROLE_ADMIN)
             {
             ?>
@@ -157,18 +156,18 @@
                 <i class="fa fa-plane"></i> <span>Demandes validées</span></i>
               </a>
             </li>
-            
+
             <?php
-            }   
+            }
 		     if($role == ROLE_DEMANDEUR)
 			 {
-            ?>  
+            ?>
             <li class="treeview">
               <a href="<?php echo base_url(); ?>demandeListing">
                 <i class="fa fa-users"></i> <span>Mes Demandes</span></i>
               </a>
             </li>
-	        
+
             <?php
             }
             ?>

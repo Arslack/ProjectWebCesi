@@ -7,9 +7,9 @@
  */
 $(document).ready(function(){
 
-	var editUserForm = $("#editService");
+	var editServiceform = $("#editService");
 
-	var validator = editServiceForm.validate({
+	var validator = editServiceform.validate({
 
 		rules:{
 			name :{ required : true },

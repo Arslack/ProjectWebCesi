@@ -7,10 +7,11 @@
 
  	jQuery(document).on("click", ".deleteUser", function(){
  		var userId = $(this).data("userid"),
- 			hitURL = baseURL + "deleteUserService",
+      serviceId = $(this).data("serviceId"),
+ 			hitURL = baseURL + "addNewUserService",
  			currentRow = $(this);
 
- 		var confirmation = confirm("Are you sure to delete this user ?");
+ 		var confirmation = confirm("Etes vous sur de vouloir ajouter cet utilisateur ?");
 
  		if(confirmation)
  		{
@@ -18,13 +19,13 @@
  			type : "POST",
  			dataType : "json",
  			url : hitURL,
- 			data : { userId : userId }
+ 			data : { userId : userId, serviceId : serviceId }
  			}).done(function(data){
  				console.log(data);
  				currentRow.parents('tr').remove();
- 				if(data.status = true) { alert("User successfully deleted"); }
- 				else if(data.status = false) { alert("User deletion failed"); }
- 				else { alert("Access denied..!"); }
+ 				if(data.status = true) { alert("Affection d'utilisateur réussie"); }
+ 				else if(data.status = false) { alert("Affection d'utilisateur raté"); }
+ 				else { alert("Acces refusé..!"); }
  			});
  		}
  	});

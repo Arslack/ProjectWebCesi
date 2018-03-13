@@ -317,58 +317,6 @@ class Demande extends BaseController
         }
     }
 
-    /**
-     * This function is used to load the change password screen
-     */
-    function loadChangePass()
-    {
-        $this->global['pageTitle'] = 'Changer de mot de passe';
-
-        $this->loadViews("changePassword", $this->global, NULL, NULL);
-    }
-
-
-    /**
-     * This function is used to change the password of the user
-     */
-    function changePassword()
-    {
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('oldPassword','Ancien mot de passe','required|max_length[20]');
-        $this->form_validation->set_rules('newPassword','Nouveau mot de passe','required|max_length[20]');
-        $this->form_validation->set_rules('cNewPassword','Confirmez votre mot de passe','required|matches[newPassword]|max_length[20]');
-
-        if($this->form_validation->run() == FALSE)
-        {
-            $this->loadChangePass();
-        }
-        else
-        {
-            $oldPassword = $this->input->post('oldPassword');
-            $newPassword = $this->input->post('newPassword');
-
-            $resultPas = $this->user_model->matchOldPassword($this->vendorId, $oldPassword);
-
-            if(empty($resultPas))
-            {
-                $this->session->set_flashdata('nomatch', 'Votre ancien mot de passe n\'est pas correct');
-                redirect('loadChangePass');
-            }
-            else
-            {
-                $usersData = array('password'=>getHashedPassword($newPassword), 'updatedBy'=>$this->vendorId,
-                                'updatedDtm'=>date('Y-m-d H:i:s'));
-
-                $result = $this->user_model->changePassword($this->vendorId, $usersData);
-
-                if($result > 0) { $this->session->set_flashdata('success', 'Mise à jour du mot de passe effectuée'); }
-                else { $this->session->set_flashdata('error', 'La mise à jour du mot de passe a échouée'); }
-
-                redirect('loadChangePass');
-            }
-        }
-    }
 
     function pageNotFound()
     {
