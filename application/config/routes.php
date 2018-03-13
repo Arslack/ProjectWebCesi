@@ -78,11 +78,13 @@ $route['createPasswordUser'] = "login/createPasswordUser";
 $route['service'] ='service/serviceListing';
 $route['addService'] = 'service/addService';
 $route['createService'] = 'service/addNewService';
+$route['addUserService'] = 'service/addUserService';
 $route['editServiceOld'] = "service/editServiceOld";
 $route['editServiceOld/(:num)'] = "service/editServiceOld/$1";
 $route['serviceListing'] = 'service/serviceListing';
 $route['serviceListing/(:num)'] = "service/serviceListing/$1";
 $route['editService'] = "service/editService";
 $route['deleteService'] = "service/deleteService";
+$route['deleteUserService'] = "service/deleteUserService";
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

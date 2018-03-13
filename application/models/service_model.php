@@ -114,6 +114,23 @@ class Service_model extends CI_Model
 
 
     /**
+     * This function used to get UserMemberService information by id
+     * @param number $serviceId : This is service id
+     * @return array $result : This is user list of service
+     */
+    function getServiceUserInfo($serviceId)
+    {
+        $this->db->select('BaseTbl.userId, BaseTbl.email, BaseTbl.name, BaseTbl.mobile');
+        $this->db->from('tbl_users as BaseTbl');
+        $this->db->where('idService', $serviceId);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
+
+    /**
      * This function is used to update the user information
      * @param array $userInfo : This is users updated information
      * @param number $userId : This is user id
@@ -129,16 +146,31 @@ class Service_model extends CI_Model
 
 
     /**
-     * This function is used to delete the user information
+     * This function is used to delete the user service information
      * @param number $userId : This is user id
      * @return boolean $result : TRUE / FALSE
      */
+    function deleteUserService($userId)
+    {
+        $idService = array('idService' => NULL);
+        $this->db->where('userId', $userId);
+        $this->db->delete('tbl_users', $idService);
+        return $this->db->affected_rows();
+    }
+
+
+     /**
+      * This function is used to delete the user information
+      * @param number $userId : This is user id
+      * @return boolean $result : TRUE / FALSE
+      */
     function deleteService($serviceId)
     {
         $this->db->where('id', $serviceId);
         $this->db->delete('service');
         return TRUE;
     }
+
 
 
     /**

@@ -140,6 +140,7 @@ class Service extends BaseController
             }
 
             $data['serviceInfo'] = $this->service_model->getServiceInfo($serviceId);
+            $data['userRecords'] = $this->service_model->getServiceUserInfo($serviceId);
 
             $this->global['pageTitle'] = 'Profil Service';
 
@@ -210,6 +211,23 @@ class Service extends BaseController
             $serviceId = $this->input->post('serviceId');
 
             $result = $this->service_model->deleteService($serviceId);
+
+            if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
+            else { echo(json_encode(array('status'=>FALSE))); }
+        }
+    }
+
+    function deleteUserService()
+    {
+        if($this->isAdmin() == TRUE)
+        {
+            echo(json_encode(array('status'=>'access')));
+        }
+        else
+        {
+            $userId = $this->input->post('userId');
+
+            $result = $this->service_model->deleteUserService($userId);
 
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }

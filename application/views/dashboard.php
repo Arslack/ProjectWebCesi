@@ -6,7 +6,7 @@
         <small>Actions</small>
       </h1>
     </section>
-    
+
     <section class="content">
         <div class="row">
             <div class="col-lg-3 col-xs-6">
@@ -14,7 +14,7 @@
             if($role == ROLE_ADMIN)
             {
             ?>
-                      
+
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
@@ -50,7 +50,7 @@
                 <div class="icon">
                   <i class="ion ion-cube"></i>
                 </div>
-                <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="<?php echo base_url(); ?>service" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <?php
@@ -85,7 +85,7 @@
             </div><!-- ./col -->
 			<?php
 			}
-			
+
             ?>
           </div>
     </section>
