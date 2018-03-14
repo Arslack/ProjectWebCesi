@@ -16,9 +16,9 @@
                         <div class="box-header">
                             <h3 class="box-title">Description</h3>
                         </div><!-- /.box-header -->
-                        <!-- form start -->
+                        <!-- form start                         <form role="form" id="addDemande" action="<?php //echo base_url() ?>createDemande" method="post" role="form"> -->
+                        <?php echo form_open_multipart('createDemande'); ?>
 
-                        <form role="form" id="addDemande" action="<?php echo base_url() ?>createDemande" method="post" role="form">
                             <div class="box-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -39,8 +39,8 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="file">Fichier au format pdfo ou zip</label>
-                                          <input type="file" class="form-control required" id="file" name="userfile">
+                                          <label for="file">Fichier au format pdf ou zip</label>
+                                          <input type="file" class="form-control required" id="file" name="file">
                                       </div>
                                     </div>
                                 </div>
