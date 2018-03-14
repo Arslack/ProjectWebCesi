@@ -65,7 +65,7 @@
                       <p>Nouvelle demande</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
     				   <a href="<?php echo base_url(); ?>newDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -76,7 +76,7 @@
                         <p>Demandes en traitement</p>
                       </div>
                       <div class="icon">
-                        <i class="ion ion-person-add"></i>
+                        <i class="ion ion-chatboxes"></i>
                       </div>
                  <a href="<?php echo base_url(); ?>actualDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                       </div>
@@ -89,7 +89,7 @@
                       <p>Demandes validés</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
                     <a href="<?php echo base_url(); ?>validDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
@@ -99,10 +99,10 @@
                   <div class="small-box bg-red">
                     <div class="inner">
                       <h3><?php echo $countrefuseDemande;?></h3>
-                      <p>Demandes Rejetés</p>
+                      <p>Demandes refusées</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
                     <a href="<?php echo base_url(); ?>refusDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
@@ -135,7 +135,7 @@
                       <p>Mes demandes</p>
                     </div>
                     <div class="icon">
-                      <i class="fa fa-list-ul"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
                     <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
