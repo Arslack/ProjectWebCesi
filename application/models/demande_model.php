@@ -240,7 +240,7 @@ class Demande_model extends CI_Model
 
        $query = $this->db->get();
 
-       return ($query->result());
+       return count($query->result());
    }
 
      /**
@@ -249,7 +249,7 @@ class Demande_model extends CI_Model
      */
     function listeDemandeparEtatService($etatid, $serviceId,  $searchText = '', $page, $segment)
     {
-        $this->db->select('TB.id, TB.dateorigine, TB.datemaj, TB.datefinprevue,TE.titre as Etat, TB.description,TB.titre');
+        $this->db->select('TB.id, TB.dateorigine, TB.datemaj, TB.datefinprevue,TB.idEtat,TE.titre as Etat, TB.description,TB.titre');
         $this->db->from('demande as TB');
         $this->db->join('responsabilite as U', 'U.idDemande = TB.id','left');
         $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
@@ -271,7 +271,6 @@ class Demande_model extends CI_Model
         $this->db->limit($page, $segment);
         $query = $this->db->get();
 
-        return ($query->result());
 
         return ($query->result());
     }

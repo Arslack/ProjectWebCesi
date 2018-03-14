@@ -39,7 +39,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="file">Fichier au format pdf</label>
+                                          <label for="file">Fichier au format pdfo ou zip</label>
                                           <input type="file" class="form-control required" id="file" name="userfile">
                                       </div>
                                     </div>

@@ -59,7 +59,7 @@ class Demande extends BaseController
 
 			$returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(1, $serviceId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
@@ -91,7 +91,7 @@ class Demande extends BaseController
 
       $returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(2, $serviceId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
@@ -122,7 +122,7 @@ class Demande extends BaseController
 
       $returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(3, $serviceId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
@@ -154,7 +154,7 @@ class Demande extends BaseController
 
       $returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0,$serviceId, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(4,$serviceId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
@@ -255,14 +255,14 @@ class Demande extends BaseController
 
 
             $config['upload_path'] = './files/';
-            $config['allowed_types'] = 'pdf';
+            $config['allowed_types'] = 'pdf|zip';
 
             $this->load->library('upload', $config);
 
-            if($this->form_validation->run() == FALSE || ! $this->upload->do_upload('file'))
+            if($this->form_validation->run() == FALSE || !$this->upload->do_upload('file'))
             {
               if(! $this->upload->do_upload('file')) {
-                  $this->session->set_flashdata('error', 'L\'import du .zip de la demande a échouée');
+                  $this->session->set_flashdata('error', $this->upload->display_errors());
               }
                 $this->addDemande();
             }

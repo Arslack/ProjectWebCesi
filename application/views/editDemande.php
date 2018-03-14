@@ -1,11 +1,11 @@
 <?php
 
-$Id = '';
-$date1 = '';
-$date2 = '';
-$date3 = '';
-$etat='';
-$sdescription='';
+$demandeId = '';
+$datefin = '';
+$titre = '';
+$desc = '';
+$file='';
+$idEtat='';
 $titre='';
 
 if(!empty($serviceInfo))
@@ -19,7 +19,7 @@ if(!empty($serviceInfo))
 		$etat=$sf->etat;
 		$description=$sf->description;
 		$titre=$sf->titre;
-       
+
     }
 }
 
@@ -44,7 +44,7 @@ if(!empty($serviceInfo))
             <!-- left column -->
             <div class="col-md-8">
               <!-- general form elements -->
-  
+
 
                 <div class="box box-primary">
                     <div class="box-header">
@@ -61,11 +61,11 @@ if(!empty($serviceInfo))
                                         <input type="text" class="form-control" id="name" placeholder="Date de création" name="name" value="<?php echo "test"; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
 										<input type="hidden" name="datemaj" value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
-										
+
                                     </div>
 
                                 </div>
-                            
+
 							 <div class="row">
                                <div class="col-md-6">
                                     <div class="form-group">
@@ -73,18 +73,18 @@ if(!empty($serviceInfo))
                                         <input type="text" class="form-control" id="name" placeholder="Date de création" name="name" value="<?php echo "test"; ?>" maxlength="128">
                                         <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
 										<input type="hidden" name="datemaj" value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
-										
+
                                     </div>
 
                                 </div>
-                            
+
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="fname">Description</label>
                                       <input type="text" class="form-control" id="desc" placeholder="Description" name="desc" value="<?php echo $desc; ?>" maxlength="128">
-                                     
+
                                 </div>
                             </div>
 							<div class="row">
@@ -92,7 +92,7 @@ if(!empty($serviceInfo))
                                   <div class="form-group">
                                       <label for="fname">Titre</label>
                                       <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" value="<?php echo $titre; ?>" maxlength="128">
-                                    
+
                                   </div>
                                 </div>
                             </div>

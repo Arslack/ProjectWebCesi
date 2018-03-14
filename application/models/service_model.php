@@ -189,7 +189,7 @@ class Service_model extends CI_Model
         $this->db->where('userId', $userId);
         $this->db->update('tbl_users', $idService);
 
-        return TRUE;
+        return $this->db->affected_rows();
     }
 
     /**
@@ -199,11 +199,14 @@ class Service_model extends CI_Model
      */
     function addUserService($userId, $serviceId)
     {
+      if(empty($serviceId)) {
+        $serviceId = 6;
+      }
         $idService = array('idService' => $serviceId);
         $this->db->where('userId', $userId);
         $this->db->update('tbl_users', $idService);
 
-        return TRUE;
+        return $this->db->affected_rows();
     }
 
 
@@ -217,7 +220,7 @@ class Service_model extends CI_Model
     {
         $this->db->where('id', $serviceId);
         $this->db->delete('service');
-        return TRUE;
+        return $this->db->affected_rows();
     }
 
 
