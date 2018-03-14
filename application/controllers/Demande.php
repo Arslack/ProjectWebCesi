@@ -46,13 +46,12 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-           // $userId = $this->session->userdata('userId');
-		         $userId=$this->global ['vendorId'];
-             $userInfo = $this->user_model->getUserInfo($userId);
-             if(empty($userInfo->idService)) {
-               $serviceId = 0;
-             } else {
-               $serviceId = $userInfo->idService;
+             $userId = $this->session->userdata('userId');
+             $data['userInfo'] = $this->user_model->getUserInfo($userId);
+             $serviceId = $data['userInfo'][0]->idService;
+
+             if(empty($serviceId)) {
+               $serviceId = -1;
              }
 
             $count = $this->demande_model->nbDemandeparEtatService(1,$serviceId, $searchText);
@@ -77,13 +76,12 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-           // $userId = $this->session->userdata('userId');
-             $userId=$this->global ['vendorId'];
-             $userInfo = $this->user_model->getUserInfo($userId);
-             if(empty($userInfo->idService)) {
+             $userId = $this->session->userdata('userId');
+             $data['userInfo'] = $this->user_model->getUserInfo($userId);
+             $serviceId = $data['userInfo'][0]->idService;
+
+             if(empty($serviceId)) {
                $serviceId = -1;
-             } else {
-               $serviceId = $userInfo->idService;
              }
 
 
@@ -109,13 +107,12 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-           // $userId = $this->session->userdata('userId');
-             $userId=$this->global ['vendorId'];
-             $userInfo = $this->user_model->getUserInfo($userId);
-             if(empty($userInfo->idService)) {
+             $userId = $this->session->userdata('userId');
+             $data['userInfo'] = $this->user_model->getUserInfo($userId);
+             $serviceId = $data['userInfo'][0]->idService;
+
+             if(empty($serviceId)) {
                $serviceId = -1;
-             } else {
-               $serviceId = $userInfo->idService;
              }
 
             $count = $this->demande_model->nbDemandeparEtatService(3,$serviceId, $searchText);
@@ -140,15 +137,13 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-            if(empty($userInfo->idService)) {
-              $serviceId = -1;
-            } else {
-              $serviceId = $userInfo->idService;
-            }
+            $userId = $this->session->userdata('userId');
+            $data['userInfo'] = $this->user_model->getUserInfo($userId);
+            $serviceId = $data['userInfo'][0]->idService;
 
-           // $userId = $this->session->userdata('userId');
-             $userId=$this->global ['vendorId'];
-             $userInfo = $this->user_model->getUserInfo($userId);
+            if(empty($serviceId)) {
+              $serviceId = -1;
+            }
 
             $count = $this->demande_model->nbDemandeparEtatService(4,$serviceId, $searchText);
 
@@ -321,7 +316,7 @@ class Demande extends BaseController
      */
     function editDemandeOld($demandeId = NULL)
     {
-        if($this->isAdmin() == TRUE)
+        if($this->isAdmin() == TRUE && $this->session->userdata('role') != 3)
         {
             $this->loadThis();
         }
@@ -352,7 +347,7 @@ class Demande extends BaseController
      */
     function editDemande()
     {
-        if($this->isAdmin() == TRUE)
+        if($this->isAdmin() == TRUE && $this->session->userdata('role') != 3)
         {
             $this->loadThis();
         }
@@ -381,7 +376,9 @@ class Demande extends BaseController
                 {
                     $this->session->set_flashdata('error', 'La mise à jour a échoué');
                 }
-
+                if ($this->session->userdata('role') == 3) {
+                  redirect('dashboard');
+                }
                 redirect('demande');
             }
         }
