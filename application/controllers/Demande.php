@@ -177,8 +177,7 @@ class Demande extends BaseController
 
             $this->load->library('pagination');
 
-           // $userId = $this->session->userdata('userId');
-		    $userId=$this->global ['vendorId'];
+            $userId = $this->session->userdata('userId');
             $count = $this->demande_model->nbDemandeparUser($userId, $searchText);
 
 			$returns = $this->paginationCompress ( "demande/", $count, 5 );

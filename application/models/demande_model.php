@@ -110,7 +110,6 @@ class Demande_model extends CI_Model
         $this->db->join('tbl_users as U', 'U.userId = TB.id','left');
         $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
         $this->db->where('TB.utilisateurid', $userId);
-        $this->db->where('U.isDeleted', 0);
         if(!empty($searchText)) {
             $likeCriteria = "(TB.id LIKE '%".$searchText."%'
                             OR  TB.dateorigine  LIKE '%".$searchText."%'
@@ -139,7 +138,6 @@ class Demande_model extends CI_Model
         $this->db->join('tbl_users as U', 'U.userId = TB.id','left');
         $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
         $this->db->where('TB.utilisateurid', $userId);
-        $this->db->where('U.isDeleted', 0);
         if(!empty($searchText)) {
             $likeCriteria = "(TB.id LIKE '%".$searchText."%'
                             OR  TB.dateorigine  LIKE '%".$searchText."%'
