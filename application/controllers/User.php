@@ -35,10 +35,22 @@ class User extends BaseController
         if($this->isAdmin() == TRUE)
         {
           if($this->session->userdata('role') == 3) {
-              $data['countNewDemande'] = $this->demande_model->nbDemandenonValide();
-              $data['countvalideDemande'] = $this->demande_model->nbDemandeValide();
-              $data['countrefuseDemande'] = $this->demande_model->nbDemandeValide();
 
+            $userId=$this->global ['vendorId'];
+            $userInfo = $this->user_model->getUserInfo($userId);
+
+            if(!empty($userInfo->idService))
+            {
+              $data['countNewDemande'] = $this->demande_model->nbDemandeparEtatService(1,$userInfo->idService);
+              $data['countActualDemande'] = $this->demande_model->nbDemandenonValide(2,$userInfo->idService);
+              $data['countvalideDemande'] = $this->demande_model->nbDemandeValide(3,$userInfo->idService);
+              $data['countrefuseDemande'] = $this->demande_model->nbDemandeValide(4,$userInfo->idService);
+            } else {
+              $data['countNewDemande'] = 0;
+              $data['countActualDemande'] = 0;
+              $data['countvalideDemande'] = 0;
+              $data['countrefuseDemande'] = 0;
+            }
           }else {
               $data['countDemande'] = $this->demande_model->nbDemandeparUser($this->session->userdata('userId'));
           }

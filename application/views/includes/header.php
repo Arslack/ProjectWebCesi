@@ -132,7 +132,7 @@
               </a>
             </li>
 	        <li class="treeview">
-              <a href="<?php echo base_url(); ?>demandeListing">
+              <a href="<?php echo base_url(); ?>demande">
                 <i class="ion ion-chatboxes"></i> <span>Demandes</span></i>
               </a>
             </li>
@@ -147,15 +147,25 @@
             {
             ?>
             <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">  
+              <a href="<?php echo base_url(); ?>newDemande">
                 <i class="ion ion-chatboxes"></i> <span>Demandes à valider</span></i>
               </a>
             </li>
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>actualDemande">
+                  <i class="ion ion-chatboxes"></i> <span>Demandes en traitement</span></i>
+                </a>
+              </li>
 	        <li class="treeview">
-              <a href="<?php echo base_url(); ?>demande">
+              <a href="<?php echo base_url(); ?>validDemande">
                 <i class="ion ion-chatboxes"></i> <span>Demandes validées</span></i>
               </a>
             </li>
+            <li class="treeview">
+                <a href="<?php echo base_url(); ?>refusDemande">
+                  <i class="ion ion-chatboxes"></i> <span>Demandes refusées</span></i>
+                </a>
+              </li>
 
             <?php
             }

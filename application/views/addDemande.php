@@ -32,7 +32,7 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="desc">Description de la demande</label>
-                                          <textarea class="form-control required" id="exampleFormControlTextarea2" id="desc" name="desc" rows="3" maxlength="256"></textarea>
+                                          <input type="text" class="form-control required" id="desc" name="desc" maxlength="256">
                                       </div>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                     <div class="col-md-6">
                                       <div class="form-group">
                                           <label for="file">Fichier au format pdf</label>
-                                          <input type="file" class="form-control required" id="file" name="file">
+                                          <input type="file" class="form-control required" id="file" name="userfile">
                                       </div>
                                     </div>
                                 </div>
