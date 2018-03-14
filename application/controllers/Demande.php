@@ -260,7 +260,7 @@ class Demande extends BaseController
 
             $this->load->library('upload', $config);
 
-            if($this->form_validation->run() == FALSE || !$this->upload->do_upload())
+            if($this->form_validation->run() == FALSE || !$this->upload->do_upload('file'))
             {
               if(!$this->upload->do_upload()) {
                   $this->session->set_flashdata('error', $this->upload->display_errors());
