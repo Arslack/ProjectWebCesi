@@ -39,7 +39,52 @@ class Demande_model extends CI_Model
         return $demandeid;
     }
 
+    /**
+     * This function used to get demande information by id
+     * @param number $demandeId : This is demande id
+     * @return array $result : This is demande information
+     */
+    function getDemandeInfo($demandeId)
+    {
+        $this->db->select('TB.id, TB.utilisateurid, U.idService, TB.dateorigine, TB.datemaj, TB.datefinprevue,TB.idEtat,TE.titre as Etat, TB.description,TB.titre');
+        $this->db->from('demande as TB');
+        $this->db->join('responsabilite as U', 'U.idDemande = TB.id','left');
+        $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
+        $this->db->where('TB.id', $demandeId);
 
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    /**
+     * This function is used to get the user roles information
+     * @return array $result : This is result of the query
+     */
+    function getEtat()
+    {
+        $this->db->select('id, titre');
+        $this->db->from('etat');
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
+
+    /**
+     * This function used to get dossier information by demande id
+     * @param number $demandeId : This is demande id
+     * @return array $result : This is demande dossier information
+     */
+    function getDossierInfo($demandeId)
+    {
+        $this->db->select('TD.id, TD.datemaj, TD.nomfichier,TD.cheminfichier');
+        $this->db->from('dossier as TD');
+        $this->db->join('demande_dossier as U', 'U.idDossier = TD.id','left');
+        $this->db->where('U.idDemande', $demandeId);
+
+        $query = $this->db->get();
+        return $query->result();
+    }
     /**
      * function nbDemandeparUser
 	 * param $userid
@@ -51,7 +96,6 @@ class Demande_model extends CI_Model
         $this->db->join('responsabilite as U', 'U.idDemande = TB.id','left');
         $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
         $this->db->where('U.idService', $serviceId);
-        $this->db->where('U.isDeleted', 0);
         if(!empty($searchText)) {
             $likeCriteria = "(TB.id LIKE '%".$searchText."%'
                             OR  TB.dateorigine  LIKE '%".$searchText."%'
@@ -273,6 +317,20 @@ class Demande_model extends CI_Model
         return ($query->result());
     }
 
+    /**
+     * This function is used to update the etat demande
+     * @param number $idDemande : This is demande id
+     * @param number $idEtat : This is etat id
+     * @return boolean $result : TRUE / FALSE
+     */
+    function editEtatDemande($idDemande,$idEtat)
+    {
+        $idEtat = array('idEtat' => $idEtat);
+        $this->db->where('id', $idDemande);
+        $this->db->update('demande', $idEtat);
+
+        return $this->db->affected_rows();
+    }
 
 
 

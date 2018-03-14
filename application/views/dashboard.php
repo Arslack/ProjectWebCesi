@@ -58,12 +58,6 @@
            if($role == ROLE_VALIDEUR)
             {
             ?>
-<<<<<<< HEAD
-
-			
-
-=======
->>>>>>> 71e67cbc418be3d0c4c64cdf08321f9e37de9561
     			  <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
@@ -148,10 +142,6 @@
                 </div><!-- ./col -->
                <?php
              }
-<<<<<<< HEAD
-
-=======
->>>>>>> 71e67cbc418be3d0c4c64cdf08321f9e37de9561
             ?>
           </div>
     </section>

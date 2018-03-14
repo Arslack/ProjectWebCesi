@@ -1,25 +1,47 @@
 <?php
 
 $demandeId = '';
+$filename= '';
 $datefin = '';
 $titre = '';
 $desc = '';
 $file='';
 $idEtat='';
 $titre='';
-
-if(!empty($serviceInfo))
+$idEtat='';
+$auteur='';
+$email='';
+$mobile='';
+if(!empty($demande))
 {
-    foreach ($serviceInfo as $sf)
+  var_dump($demande);
+    foreach ($demande as $d)
     {
-		$Id = $sf->Id;
-		$date1 = $sf->date1;
-		$date2 = $sf->date1;
-		$date3 = $sf->date1;
-		$etat=$sf->etat;
-		$description=$sf->description;
-		$titre=$sf->titre;
+    $demandeId = $d->id;
 
+    $idEtat=$d->idEtat;
+    $desc=$d->description;
+    $titre=$d->titre;
+    $serviceId = $d->idService;
+    $titre=$d->titre;
+    }
+}
+
+if(!empty($dossier))
+{
+    foreach ($dossier as $d)
+    {
+      $filename = $d->nomfichier;
+    }
+}
+
+if(!empty($user))
+{
+    foreach ($user as $d)
+    {
+      $auteur = $d->name;
+      $email = $d->email;
+      $mobile = $d->mobile;
     }
 }
 
@@ -32,11 +54,9 @@ if(!empty($serviceInfo))
     <section class="content-header">
       <h1>
         <i class="fa fa-users"></i> Demandes
-        <small>Ajout Edition Demande</small>
+        <small>Avancement de la demande</small>
       </h1>
     </section>
-
-
 
     <section class="content">
 
@@ -54,53 +74,75 @@ if(!empty($serviceInfo))
 
                     <form role="form" action="<?php echo base_url() ?>editDemande" method="post" id="editService" role="form">
                         <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="fname">Date d'origine</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Date de création" name="name" value="<?php echo "test"; ?>" maxlength="128">
-                                        <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
-										<input type="hidden" name="datemaj" value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
-
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="title">Sujet de la demande</label>
+                                              <input type="text" class="form-control required" value="<?php echo $titre; ?>" id="title" name="title" maxlength="128" readonly>
+                                              <input type="hidden" value="<?php echo $demandeId; ?>" name="demandeId" id="demandeId" />
+                                          </div>
+                                        </div>
                                     </div>
-
-                                </div>
-
-							 <div class="row">
-                               <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="fname">Date de fin prévue</label>
-                                        <input type="text" class="form-control" id="name" placeholder="Date de création" name="name" value="<?php echo "test"; ?>" maxlength="128">
-                                        <input type="hidden" value="<?php echo $serviceId; ?>" name="serviceId" id="serviceId" />
-										<input type="hidden" name="datemaj" value="<?php echo date('Y-m-d'); ?>" readonly="readonly">
-
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="desc">Description de la demande</label>
+                                              <input type="text" class="form-control required" value="<?php echo $desc; ?>"id="desc" name="desc" maxlength="256" readonly>
+                                          </div>
+                                        </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="file">Fichier au format pdf ou zip</label>
 
-                                </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="title">Auteur de la demande</label>
+                                              <input type="text" class="form-control required" value="<?php echo $auteur; ?>" id="title" name="title" maxlength="128" readonly>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="title">Email de l'auteur</label>
+                                              <input type="text" class="form-control required" value="<?php echo $email; ?>" id="title" name="title" maxlength="128" readonly>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-md-6">
+                                          <div class="form-group">
+                                              <label for="role">Etat de la demande</label>
+                                              <select class="form-control required" id="etat" name="etat">
+                                                  <option value="<?php echo $idEtat ?>">Choisisser un Etat</option>
+                                                  <?php
+                                                  if(!empty($etat))
+                                                  {
+                                                      foreach ($etat as $rl)
+                                                      {
+                                                          ?>
+                                                          <option value="<?php echo $rl->id ?>"><?php echo $rl->titre ?></option>
+                                                          <?php
+                                                      }
+                                                  }
+                                                  ?>
+                                              </select>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div><!-- /.box-body -->
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                      <label for="fname">Description</label>
-                                      <input type="text" class="form-control" id="desc" placeholder="Description" name="desc" value="<?php echo $desc; ?>" maxlength="128">
-
-                                </div>
-                            </div>
-							<div class="row">
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                      <label for="fname">Titre</label>
-                                      <input type="text" class="form-control" id="titre" placeholder="Titre" name="titre" value="<?php echo $titre; ?>" maxlength="128">
-
-                                  </div>
-                                </div>
-                            </div>
-                        </div><!-- /.box-body -->
 
                         <div class="box-footer">
-                            <input type="Submit" class="btn btn-primary" value="Submit" />
-                            <input type="Reset" class="btn btn-default" value="Reset" />
+                            <input type="submit" class="btn btn-primary" value="Enregistrer" />
+                            <input type="reset" class="btn btn-default" value="Annuler" />
                         </div>
                     </form>
                 </div>

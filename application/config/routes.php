@@ -68,6 +68,7 @@ $route['refusDemande/(:num)'] = "demande/refusDemande/$1";
 $route['createDemande'] = "demande/addNewDemande";
 $route['editDemandeOld'] = "demande/editDemandeOld";
 $route['editDemandeOld/(:num)'] = "demande/editDemandeOld/$1";
+$route['editDemande']= "demande/editDemande";
 
 $route['addNewUser'] = "user/addNewUser";
 $route['createUser'] = "login/addRequestUser";

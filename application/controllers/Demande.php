@@ -319,25 +319,30 @@ class Demande extends BaseController
      * This function is used load user edit information
      * @param number $userId : Optional : This is user id
      */
-    function editDemandeOld($userId = NULL)
+    function editDemandeOld($demandeId = NULL)
     {
-        if($this->isAdmin() == TRUE || $userId == 1)
+        if($this->isAdmin() == TRUE)
         {
             $this->loadThis();
         }
         else
         {
-            if($userId == null)
+            if($demandeId == null)
             {
-                redirect('userListing');
+                redirect('dashboard');
             }
 
-            $data['roles'] = $this->user_model->getUserRoles();
-            $data['userInfo'] = $this->user_model->getUserInfo($userId);
+            $data['demande'] = $this->demande_model->getDemandeInfo($demandeId);
+            $data['dossier'] = $this->demande_model->getDossierInfo($demandeId);
+            $data['etat'] = $this->demande_model->getEtat();
+            $this->load->model('service_model');
+            $data['service'] = $this->service_model->getService();
+            $this->load->model('user_model');
+            $data['user'] = $this->user_model->getUserInfo($data['demande'][0]->utilisateurid);
 
-            $this->global['pageTitle'] = 'Profil utilisateur';
+            $this->global['pageTitle'] = 'Edit demande';
 
-            $this->loadViews("editOld", $this->global, $data, NULL);
+            $this->loadViews("editDemande", $this->global, $data, NULL);
         }
     }
 
@@ -345,7 +350,7 @@ class Demande extends BaseController
     /**
      * This function is used to edit the user information
      */
-    function editUser()
+    function editDemande()
     {
         if($this->isAdmin() == TRUE)
         {
@@ -355,42 +360,18 @@ class Demande extends BaseController
         {
             $this->load->library('form_validation');
 
-            $userId = $this->input->post('userId');
-
-            $this->form_validation->set_rules('fname','Full Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('password','Password','matches[cpassword]|max_length[20]');
-            $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
-
+            $this->form_validation->set_rules('demandeId','numero de la demande','trim|required|numeric');
+            $this->form_validation->set_rules('demandeId','numero de la demande','trim|required|numeric');
             if($this->form_validation->run() == FALSE)
             {
-                $this->editOld($userId);
+                $this->editDemandeOld($this->input->post('demandeId'));
             }
             else
             {
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
+                $idDemande = $this->input->post('demandeId');
+                $idEtat = $this->input->post('etat');
 
-                $userInfo = array();
-
-                if(empty($password))
-                {
-                    $userInfo = array('email'=>$email, 'roleId'=>$roleId, 'name'=>$name,
-                                    'mobile'=>$mobile, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
-                else
-                {
-                    $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId,
-                        'name'=>ucwords($name), 'mobile'=>$mobile, 'updatedBy'=>$this->vendorId,
-                        'updatedDtm'=>date('Y-m-d H:i:s'));
-                }
-
-                $result = $this->user_model->editUser($userInfo, $userId);
+                $result = $this->demande_model->editEtatDemande($idDemande, $idEtat);
 
                 if($result == true)
                 {
@@ -401,7 +382,7 @@ class Demande extends BaseController
                     $this->session->set_flashdata('error', 'La mise à jour a échoué');
                 }
 
-                redirect('userListing');
+                redirect('demande');
             }
         }
     }
@@ -411,7 +392,7 @@ class Demande extends BaseController
      * This function is used to delete the user using userId
      * @return boolean $result : TRUE / FALSE
      */
-    function deleteUser()
+    function deleteDemande()
     {
         if($this->isAdmin() == TRUE)
         {
