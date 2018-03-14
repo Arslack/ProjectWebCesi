@@ -18,13 +18,11 @@ $(document).ready(function(){
 		rules:{
 			title :{ required : true },
             desc :{ required : true },
-            file:{ required : true },
 						service : { required : true, selected : true}
 		},
 		messages:{
 			title :{ required : "Ce champ est obligatoire" },
       desc :{ required : "Ce champ est obligatoire" },
-      file:{ required : "Ce champ est obligatoire" },
 			service : { required : "Ce champ est obligatoire", selected : "Sélectionner au moins une option" }
 		}
 	});

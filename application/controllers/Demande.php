@@ -270,7 +270,7 @@ class Demande extends BaseController
             else
             {
                 $nom = $this->input->post('title');
-                $description = $this->input->post('description');
+                $description = $this->input->post('desc');
                 $service = $this->input->post('service');
 
                 $data = $this->upload->data();
