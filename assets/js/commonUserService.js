@@ -19,12 +19,12 @@
  			type : "POST",
  			dataType : "json",
  			url : hitURL,
- 			data : { userId : userId, serviceId : serviceId }
+ 			data : { userId : userId; serviceId : serviceId }
  			}).done(function(data){
  				console.log(data);
  				currentRow.parents('tr').remove();
- 				if(data.status = true) { alert("Affection d'utilisateur réussie"); }
- 				else if(data.status = false) { alert("Affection d'utilisateur raté"); }
+ 				if(data.status = TRUE) { alert("Affection d'utilisateur réussie"); }
+ 				else if(data.status = FALSE) { alert("Affection d'utilisateur raté"); }
  				else { alert("Acces refusé..!"); }
  			});
  		}

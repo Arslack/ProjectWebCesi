@@ -126,10 +126,11 @@ class Service extends BaseController
         {
             $serviceId = $this->input->post('serviceId');
             $userId = $this->input->post('userId');
-            $result = $this->service_model->addUserService($userId, $serviceId);
 
+            $result = $this->service_model->addUserService($userId, $serviceId);
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }
+
         }
     }
 

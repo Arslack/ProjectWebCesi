@@ -199,9 +199,6 @@ class Service_model extends CI_Model
      */
     function addUserService($userId, $serviceId)
     {
-      if(empty($serviceId)) {
-        $serviceId = 6;
-      }
         $idService = array('idService' => $serviceId);
         $this->db->where('userId', $userId);
         $this->db->update('tbl_users', $idService);
