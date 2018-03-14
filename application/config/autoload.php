@@ -4,7 +4,7 @@
 | AUTO-LOADER
 | -------------------------------------------------------------------
 |
-| only the absolute minimal resources are loaded by default. 
+| only the absolute minimal resources are loaded by default.
 | (the database is not connected by default)
 |
 | 1. Packages
@@ -21,10 +21,10 @@
 $autoload['packages'] = array();
 
 
-// Classes located in the system/libraries or application/libraries 
+// Classes located in the system/libraries or application/libraries
 //$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 
-$autoload['libraries'] = array('database', 'session');
+$autoload['libraries'] = array('database', 'session','form_validation');
 
 
 //	$autoload['helper'] = array('url', 'file');
@@ -32,7 +32,7 @@ $autoload['libraries'] = array('database', 'session');
 $autoload['helper'] = array('url', 'file','Mon_helper','security');
 
 //	$autoload['config'] = array('config1', 'config2');
-// ONLY if you have created custom  config files.  
+// ONLY if you have created custom  config files.
 
 $autoload['config'] = array();
 

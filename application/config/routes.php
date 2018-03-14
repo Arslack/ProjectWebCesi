@@ -53,8 +53,21 @@ $route['addNew'] = "user/addNew";
 
 $route['addDemande'] = "demande/addDemande";
 $route['demandeListing'] = "demande/demandeListingparUser";
+$route['demandeListing/(:num)'] = "demande/demandeListingparUser/$1";
+$route['demande'] = "demande/demandeListing";
 $route['demande/(:num)'] = "demande/demandeListing/$1";
+$route['newDemande'] = "demande/newDemande";
+$route['newDemande/(:num)'] = "demande/newDemande/$1";
+$route['actualDemande'] = "demande/actualDemande";
+$route['actualDemande/(:num)'] = "demande/actualDemande/$1";
+$route['validDemande'] = "demande/validDemande";
+$route['validDemande/(:num)'] = "demande/validDemande/$1";
+$route['refusDemande'] = "demande/refusDemande";
+$route['refusDemande/(:num)'] = "demande/refusDemande/$1";
+
 $route['createDemande'] = "demande/addNewDemande";
+$route['editDemandeOld'] = "demande/editDemandeOld";
+$route['editDemandeOld/(:num)'] = "demande/editDemandeOld/$1";
 
 $route['addNewUser'] = "user/addNewUser";
 $route['createUser'] = "login/addRequestUser";

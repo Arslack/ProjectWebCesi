@@ -1,4 +1,4 @@
-<?php if(!defined('BASEPATH')) exit('No direct script access allowed');
+ <?php if(!defined('BASEPATH')) exit('No direct script access allowed');
 
 require APPPATH . '/libraries/BaseController.php';
 
@@ -31,6 +31,139 @@ class Demande extends BaseController
         $this->loadViews("demande", $this->global, NULL , NULL);
     }
 
+
+    /**
+     * This function is used to load the user list
+     */
+    function newDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+           // $userId = $this->session->userdata('userId');
+		         $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = 0;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
+
+            $count = $this->demande_model->nbDemandeparEtatService(1,$serviceId, $searchText);
+
+			$returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(1, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function actualDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = -1;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
+
+
+            $count = $this->demande_model->nbDemandeparEtatService(2,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(2, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function validDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = -1;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
+
+            $count = $this->demande_model->nbDemandeparEtatService(3,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(3, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function refusDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            if(empty($userInfo->idService)) {
+              $serviceId = -1;
+            } else {
+              $serviceId = $userInfo->idService;
+            }
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+
+            $count = $this->demande_model->nbDemandeparEtatService(4,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(4,$serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+
+
+
     /**
      * This function is used to load the user list
      */
@@ -54,7 +187,40 @@ class Demande extends BaseController
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
+            $this->loadViews("demandeview", $this->global, $data, NULL);
+
+    }
+
+
+
+    /**
+     * This function is used to load the user list
+     */
+    function demandeListing()
+    {
+      if($this->isAdmin() == TRUE)
+      {
+          $this->loadThis();
+      }
+      else
+      {
+            $this->load->model('demande_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            $count = $this->demande_model->nbDemandeTous($searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparTous( $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
             $this->loadViews("demande", $this->global, $data, NULL);
+      }
 
     }
 
@@ -84,49 +250,43 @@ class Demande extends BaseController
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('title','Sujet de la demande','trim|required|max_length[128]|xss_clean');
-			      $this->form_validation->set_rules('desc','Description de la demande','trim|required|max_length[256]|xss_clean');
+			      $this->form_validation->set_rules('desc','Description de la demande','max_length[256]|xss_clean');
             $this->form_validation->set_rules('service','Service','trim|required|numeric');
 
 
             $config['upload_path'] = './files/';
-            $config['allowed_types'] = 'zip|pdf';
+            $config['allowed_types'] = 'pdf|zip';
+
 
             $this->load->library('upload', $config);
 
-            if ( ! $this->upload->do_upload('file'))
+            if($this->form_validation->run() == FALSE || !$this->upload->do_upload('file'))
             {
-                    $error = array('error' => $this->upload->display_errors());
-                    $this->session->set_flashdata('error', 'L\'import du fichier a échoué');
-                    $this->addDemande();
-            }
-            else
-            {
-                    $data = array('upload_data' => $this->upload->data());
-
-            }
-
-            if($this->form_validation->run() == FALSE)
-            {
+              if(!$this->upload->do_upload()) {
+                  $this->session->set_flashdata('error', $this->upload->display_errors());
+              }
                 $this->addDemande();
             }
             else
             {
                 $nom = $this->input->post('title');
-                $description = $this->input->post('description');
+                $description = $this->input->post('desc');
                 $service = $this->input->post('service');
 
-                $demandeInfo = array('nom'=>$nom, 'description'=>$description, 'service'=>$service, 'filename'=> $data->file_name, 'filepath'=> $data->file_path);
+                $data = $this->upload->data();
+
+                $demandeInfo = array('serviceId'=>$service,'userId'=>$this->global['vendorId'],'titre'=>$nom, 'description'=>$description, 'service'=>$service, 'filename'=> $data['file_name'], 'filepath'=> $data['file_path']);
 
                 $this->load->model('demande_model');
-                $result = $this->user_model->addNewDemande($demandeInfo);
+                $result = $this->demande_model->addNewDemande($demandeInfo);
 
                 if($result > 0)
                 {
-                    $this->session->set_flashdata('success', 'Création de l\'utilisateur réussie');
+                    $this->session->set_flashdata('success', 'La création de la demande a réussie');
                 }
                 else
                 {
-                    $this->session->set_flashdata('error', 'La création de l\'utilisateur a échouée');
+                    $this->session->set_flashdata('error', 'La création de la demande a échouée');
                 }
 
                 redirect('addDemande');
@@ -155,71 +315,12 @@ class Demande extends BaseController
         }
     }
 
-    /**
-     * This function is used to add new user profil to the system
-     */
-    function addNewProfil()
-    {
-        if($this->isAdmin() == TRUE)
-        {
-            $this->loadThis();
-        }
-        else
-        {
-            $this->load->library('form_validation');
-
-            $this->form_validation->set_rules('fname','First Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('lname','Last Name','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('email','Email','trim|required|valid_email|xss_clean|max_length[128]');
-            $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
-            $this->form_validation->set_rules('fixe','Mobile Number','required|min_length[10]|xss_clean');
-            $this->form_validation->set_rules('cpostal','Code Postal','required|min_length[5]|xss_clean');
-            $this->form_validation->set_rules('adresse','Adresse','trim|required|max_length[256]|xss_clean');
-            $this->form_validation->set_rules('city','Ville','trim|required|max_length[128]|xss_clean');
-            $this->form_validation->set_rules('country','Pay','trim|required|max_length[128]|xss_clean');
-
-
-            if($this->form_validation->run() == FALSE)
-            {
-                $this->addProfil();
-            }
-            else
-            {
-              /*
-                $name = ucwords(strtolower($this->input->post('fname')));
-                $email = $this->input->post('email');
-                $password = $this->input->post('password');
-                $roleId = $this->input->post('role');
-                $mobile = $this->input->post('mobile');
-
-                $userInfo = array('email'=>$email, 'password'=>getHashedPassword($password), 'roleId'=>$roleId, 'name'=> $name,
-                                    'mobile'=>$mobile, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
-
-                $this->load->model('user_model');
-                */
-                $result = 1;//$this->user_model->addNewUser($userInfo);
-
-
-                if($result > 0)
-                {
-                    $this->session->set_flashdata('success', 'Création du profil réussie');
-                }
-                else
-                {
-                    $this->session->set_flashdata('error', 'La création du profil a échouée');
-                }
-
-                redirect('addProfil');
-            }
-        }
-    }
-
 
     /**
      * This function is used load user edit information
      * @param number $userId : Optional : This is user id
      */
-    function editOld($userId = NULL)
+    function editDemandeOld($userId = NULL)
     {
         if($this->isAdmin() == TRUE || $userId == 1)
         {

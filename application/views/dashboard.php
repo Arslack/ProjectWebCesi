@@ -37,7 +37,7 @@
                 <div class="icon">
                   <i class="ion ion-chatboxes"></i>
                 </div>
-		        <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+		        <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -58,9 +58,12 @@
            if($role == ROLE_VALIDEUR)
             {
             ?>
+<<<<<<< HEAD
 
 			
 
+=======
+>>>>>>> 71e67cbc418be3d0c4c64cdf08321f9e37de9561
     			  <!-- small box -->
                   <div class="small-box bg-aqua">
                     <div class="inner">
@@ -68,10 +71,21 @@
                       <p>Nouvelle demande</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
-    				   <a href="<?php echo base_url(); ?>userListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+    				   <a href="<?php echo base_url(); ?>newDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
+
+                    <div class="small-box bg-aqua">
+                      <div class="inner">
+                        <h3><?php echo $countActualDemande;?></h3>
+                        <p>Demandes en traitement</p>
+                      </div>
+                      <div class="icon">
+                        <i class="ion ion-chatboxes"></i>
+                      </div>
+                 <a href="<?php echo base_url(); ?>actualDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                      </div>
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
                   <!-- small box -->
@@ -81,9 +95,9 @@
                       <p>Demandes validés</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>validDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
@@ -91,12 +105,12 @@
                   <div class="small-box bg-red">
                     <div class="inner">
                       <h3><?php echo $countrefuseDemande;?></h3>
-                      <p>Demandes Rejetés</p>
+                      <p>Demandes refusées</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person-add"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>refusDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div><!-- ./col -->
 			         <?php
@@ -127,14 +141,17 @@
                       <p>Mes demandes</p>
                     </div>
                     <div class="icon">
-                      <i class="fa fa-list-ul"></i>
+                      <i class="ion ion-chatboxes"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>demande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>demandeListing" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div><!-- ./col -->
                <?php
              }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 71e67cbc418be3d0c4c64cdf08321f9e37de9561
             ?>
           </div>
     </section>

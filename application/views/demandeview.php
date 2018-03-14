@@ -41,8 +41,6 @@
                       <th>Date mise à jour</th>
                       <th>Date création</th>
           					  <th>Date de fin prévue</th>
-
-                      <th class="text-center">Actions</th>
                     </tr>
                     <?php
 
@@ -58,10 +56,6 @@
                       <td><?php echo $record->datemaj ?></td>
                       <td><?php echo $record->dateorigine ?></td>
                       <td><?php echo $record->datefinprevue ?></td>
-                      <td class="text-center">
-                          <a class="btn btn-sm btn-info" href="<?php echo base_url().'editDemandeOld/'.$record->id; ?>"><i class="fa fa-pencil"></i></a>
-                          <a class="btn btn-sm btn-danger deleteDemande" href="#" data-id="<?php echo $record->id; ?>"><i class="fa fa-trash"></i></a>
-                      </td>
                     </tr>
                     <?php
                         }
@@ -71,22 +65,20 @@
 
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
-                    <?php echo $this->pagination->create_links(); ?>
+                    <?php //echo $this->pagination->create_links(); ?>
                 </div>
               </div><!-- /.box -->
             </div>
         </div>
     </section>
 </div>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/commonDemande.js" charset="utf-8"></script>
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery('ul.pagination li a').click(function (e) {
             e.preventDefault();
             var link = jQuery(this).get(0).href;
             var value = link.substring(link.lastIndexOf('/') + 1);
-            jQuery("#searchList").attr("action", baseURL + "demande/" + value);
+            jQuery("#searchList").attr("action", baseURL + "demandeListing/" + value);
             jQuery("#searchList").submit();
         });
     });
-</script>
