@@ -91,7 +91,7 @@
                     <div class="icon">
                       <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>Validdemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>validDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div><!-- ./col -->
                 <div class="col-lg-3 col-xs-6">
@@ -104,7 +104,7 @@
                     <div class="icon">
                       <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="<?php echo base_url(); ?>Validdemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo base_url(); ?>refusDemande" class="small-box-footer">Liste <i class="fa fa-arrow-circle-right"></i></a>
                   </div>
                 </div><!-- ./col -->
 			         <?php

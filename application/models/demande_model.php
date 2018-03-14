@@ -224,7 +224,6 @@ class Demande_model extends CI_Model
        $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
        $this->db->where('U.idService', $serviceId);
        $this->db->where('TB.idEtat', $etatid);
-       $this->db->where('U.isDeleted', 0);
 
        if(!empty($searchText)) {
            $likeCriteria = "(TB.id LIKE '%".$searchText."%'
@@ -248,7 +247,7 @@ class Demande_model extends CI_Model
      * function listeDemandeparidEtat
 	 * param $userid
      */
-    function listeDemandeparEtatService($etatid,$serviceId,  $searchText = '', $page, $segment)
+    function listeDemandeparEtatService($etatid, $serviceId,  $searchText = '', $page, $segment)
     {
         $this->db->select('TB.id, TB.dateorigine, TB.datemaj, TB.datefinprevue,TE.titre as Etat, TB.description,TB.titre');
         $this->db->from('demande as TB');
@@ -256,9 +255,23 @@ class Demande_model extends CI_Model
         $this->db->join('etat as TE', 'TE.id = TB.idEtat','left');
         $this->db->where('U.idService', $serviceId);
         $this->db->where('TB.idEtat', $etatid);
-        $this->db->where('U.isDeleted', 0);
+        if(!empty($searchText)) {
+            $likeCriteria = "(TB.id LIKE '%".$searchText."%'
+                            OR  TB.dateorigine  LIKE '%".$searchText."%'
+                            OR  TB.datemaj LIKE '%".$searchText."%'
+                            OR  TB.datemaj LIKE '%".$searchText."%'
+                            OR  TB.datefinprevue LIKE '%".$searchText."%'
+                            OR  TE.titre LIKE '%".$searchText."%'
+                            OR  TB.titre LIKE '%".$searchText."%'
+                            OR  TB.description LIKE '%".$searchText."%'
+                            OR  TB.datefinprevue LIKE '%".$searchText."%')";
+            $this->db->where($likeCriteria);
+        }
 
+        $this->db->limit($page, $segment);
         $query = $this->db->get();
+
+        return ($query->result());
 
         return ($query->result());
     }

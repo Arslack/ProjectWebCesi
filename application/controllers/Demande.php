@@ -35,10 +35,11 @@ class Demande extends BaseController
     /**
      * This function is used to load the user list
      */
-    function demandeListingparService()
+    function newDemande()
     {
 
             $this->load->model('demande_model');
+            $this->load->model('user_model');
 
             $searchText = $this->input->post('searchText');
             $data['searchText'] = $searchText;
@@ -48,16 +49,116 @@ class Demande extends BaseController
            // $userId = $this->session->userdata('userId');
 		         $userId=$this->global ['vendorId'];
              $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = 0;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
 
-            $count = $this->demande_model->nbDemandeparEtatService(0,$userInfo->idService);
+            $count = $this->demande_model->nbDemandeparEtatService(1,$serviceId, $searchText);
 
 			$returns = $this->paginationCompress ( "demande/", $count, 5 );
 
-            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $userInfo->idService, $returns["page"], $returns["segment"]);
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
 
             $this->global['pageTitle'] = 'Liste des demandes';
 
-            $this->loadViews("demande", $this->global, $data, NULL);
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function actualDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = -1;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
+
+
+            $count = $this->demande_model->nbDemandeparEtatService(2,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function validDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+             if(empty($userInfo->idService)) {
+               $serviceId = -1;
+             } else {
+               $serviceId = $userInfo->idService;
+             }
+
+            $count = $this->demande_model->nbDemandeparEtatService(3,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0, $serviceId, $searchText, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
+
+    }
+    function refusDemande()
+    {
+
+            $this->load->model('demande_model');
+            $this->load->model('user_model');
+
+            $searchText = $this->input->post('searchText');
+            $data['searchText'] = $searchText;
+
+            $this->load->library('pagination');
+
+            if(empty($userInfo->idService)) {
+              $serviceId = -1;
+            } else {
+              $serviceId = $userInfo->idService;
+            }
+
+           // $userId = $this->session->userdata('userId');
+             $userId=$this->global ['vendorId'];
+             $userInfo = $this->user_model->getUserInfo($userId);
+
+            $count = $this->demande_model->nbDemandeparEtatService(4,$serviceId, $searchText);
+
+      $returns = $this->paginationCompress ( "demande/", $count, 5 );
+
+            $data['demandeRecords'] = $this->demande_model->listeDemandeparEtatService(0,$serviceId, $returns["page"], $returns["segment"]);
+
+            $this->global['pageTitle'] = 'Liste des demandes';
+
+            $this->loadViews("demandeService", $this->global, $data, NULL);
 
     }
 

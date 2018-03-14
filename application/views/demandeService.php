@@ -83,7 +83,7 @@
             e.preventDefault();
             var link = jQuery(this).get(0).href;
             var value = link.substring(link.lastIndexOf('/') + 1);
-            jQuery("#searchList").attr("action", baseURL + "demande/" + value);
+            jQuery("#searchList").attr("action", baseURL + "demandeService/" + value);
             jQuery("#searchList").submit();
         });
     });
