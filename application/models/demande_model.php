@@ -2,7 +2,22 @@
 
 class Demande_model extends CI_Model
 {
-
+ /**
+     * This function used to delete demande information by id
+     * @param number $demandeId : This is demande id
+     * @return true/false
+     */
+    function deleteDemande($demandeId)
+    {
+		$this->db->where('TB.id', $demandeId);
+		$this->db->limit(1);
+		if (!$this->db->delete('demande')) {
+         return false;
+         }
+        else
+         print_r($this->db->affected_rows());            
+    }
+  
 
   /**
    * This function is used to add new user to system
