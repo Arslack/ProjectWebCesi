@@ -14,7 +14,6 @@ $email='';
 $mobile='';
 if(!empty($demande))
 {
-  var_dump($demande);
     foreach ($demande as $d)
     {
     $demandeId = $d->id;

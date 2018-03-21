@@ -9,15 +9,23 @@ class Demande_model extends CI_Model
      */
     function deleteDemande($demandeId)
     {
-		$this->db->where('TB.id', $demandeId);
+		$this->db->where('U.idDemande', $demandeId);
+    $this->db->join('demande_dossier as U', 'D.id = U.idDossier','left');
+    $this->db->delete('dossier as D');
+
+    $this->db->where('idDemande', $demandeId)
+    $this->db->delete('demande_dossier'))
+
+    $this->db->where('id', $demandeId);
+
 		$this->db->limit(1);
 		if (!$this->db->delete('demande')) {
          return false;
          }
         else
-         print_r($this->db->affected_rows());            
+         print_r($this->db->affected_rows());
     }
-  
+
 
   /**
    * This function is used to add new user to system
