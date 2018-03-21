@@ -53,7 +53,7 @@
                       <td><?php echo $record->email ?></td>
                       <td><?php echo $record->mobile ?></td>
                       <td class="text-center">
-                          <a class="btn btn-success addUser" href="#"  data-serviceId="<?php echo $serviceId; ?>"  data-userId="<?php echo $record->userId; ?>"><i class="glyphicon glyphicon-plus-sign"></i></a>
+                          <a class="btn btn-sm btn-success deleteUser" href="#"  data-serviceid="<?php echo $serviceId; ?>" data-userid="<?php echo $record->userId; ?>"> <i class="fa fa-pencil"></i></a>
                       </td>
                     </tr>
                     <?php
