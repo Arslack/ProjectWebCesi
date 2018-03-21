@@ -47,7 +47,7 @@
                                 <div class="row">
                                   <div class="col-md-6">
                                       <div class="form-group">
-                                          <label for="role">Secteur concerner par la demande</label>
+                                          <label for="role">Service concerné par la demande</label>
                                           <select class="form-control required" id="service" name="service">
                                               <option value="0">Choisir le secteur</option>
                                               <?php
