@@ -19,7 +19,7 @@
  			type : "POST",
  			dataType : "json",
  			url : hitURL,
- 			data : { userId : userId; serviceId : serviceId }
+ 			data : { userId : userId, serviceId : serviceId }
  			}).done(function(data){
  				console.log(data);
  				currentRow.parents('tr').remove();
