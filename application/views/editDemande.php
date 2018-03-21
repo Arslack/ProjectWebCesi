@@ -1,7 +1,7 @@
 <?php
 
 $demandeId = '';
-$filename= 'test';
+$filename= '';
 $datefin = '';
 $titre = '';
 $desc = '';
@@ -95,7 +95,7 @@ if(!empty($user))
                                         <div class="col-md-6">
                                           <div class="form-group">
                                               <label for="file">Fichier au format pdf ou zip</label>
-                                              <a href="<?php echo base_url(); ?>files/<?php echo $file; ?>"><?php echo $file; ?></a>
+                                              <a href="<?php echo base_url(); ?>files/<?php echo $filename; ?>"><?php echo $filename; ?></a>
 
                                           </div>
                                         </div>
