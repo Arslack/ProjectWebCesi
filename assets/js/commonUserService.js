@@ -5,8 +5,8 @@
 
  jQuery(document).ready(function(){
 
- 	jQuery(document).on("click", ".deleteUser", function(){
- 		var userId = $(this).data("userid"),
+ 	jQuery(document).on("click", ".addUser", function(){
+ 		var userId = $(this).data("userId"),
       serviceId = $(this).data("serviceId"),
  			hitURL = baseURL + "addNewUserService",
  			currentRow = $(this);
