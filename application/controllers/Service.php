@@ -267,7 +267,7 @@ class Service extends BaseController
         }
         else
         {
-            $serviceId = $this->input->post('serviceId');
+            $serviceId = $this->input->post('id');
 
             $result = $this->service_model->deleteService($serviceId);
 
