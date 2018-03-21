@@ -13,8 +13,8 @@ class Demande_model extends CI_Model
     $this->db->join('demande_dossier as U', 'D.id = U.idDossier','left');
     $this->db->delete('dossier as D');
 
-    $this->db->where('idDemande', $demandeId)
-    $this->db->delete('demande_dossier'))
+    $this->db->where('idDemande', $demandeId);
+    $this->db->delete('demande_dossier');
 
     $this->db->where('id', $demandeId);
 
