@@ -96,6 +96,7 @@ if(!empty($user))
                                         <div class="col-md-6">
                                           <div class="form-group">
                                               <label for="file">Fichier au format pdf ou zip</label>
+                                              <a href="<?php echo base_url(); ?>files/<?php echo $file; ?>"><?php echo $file; ?></a>
 
                                           </div>
                                         </div>
